@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+            <rect width="600" height="400" fill="#12151B"/>
+            <circle cx="300" cy="200" r="130" stroke="#E02D37" stroke-opacity="0.15" stroke-width="2" stroke-dasharray="8 8"/>
+            <circle cx="300" cy="200" r="90" stroke="#E02D37" stroke-opacity="0.3" stroke-width="2"/>
+            <!-- Motion sensor shape -->
+            <rect x="250" y="130" width="100" height="140" rx="16" fill="#1B1F27" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="2"/>
+            <!-- Fresnel Lens -->
+            <path d="M265 170 Q300 200 335 170 Q300 220 265 170 Z" fill="#252B37" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1.5"/>
+            <!-- LED indicator -->
+            <circle cx="300" cy="150" r="4" fill="#E02D37"/>
+            <circle cx="300" cy="150" r="8" fill="#E02D37" fill-opacity="0.3"/>
+            <!-- Alarm radio wave pulses -->
+            <path d="M370 170 A 50 50 0 0 1 370 230" stroke="#E02D37" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M390 155 A 80 80 0 0 1 390 245" stroke="#E02D37" stroke-width="2" stroke-linecap="round" stroke-opacity="0.6"/>
+            <path d="M230 170 A 50 50 0 0 0 230 230" stroke="#E02D37" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M210 155 A 80 80 0 0 0 210 245" stroke="#E02D37" stroke-width="2" stroke-linecap="round" stroke-opacity="0.6"/>
+            <!-- Badge -->
+            <text x="300" y="320" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="#8E95A5" letter-spacing="2">PIR MOTION &amp; PERIMETER</text>
+        </svg>

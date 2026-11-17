@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Onest:wght@300;400;500;600;700&family=Sofia+Sans+Condensed:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0E1014;
+  color: #FFFFFF;
+  font-family: 'Onest', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom subtle grid background */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Subtle radial glow */
+.bg-radial-glow {
+  background: radial-gradient(circle at 50% 20%, rgba(224, 45, 55, 0.12) 0%, rgba(14, 16, 20, 0) 70%);
+}
+
+/* Tech corner crosshairs for cards */
+.tech-card {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #14171D;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: #181C24;
+}
+
+.tech-card.border-red-active {
+  border-color: #E02D37;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0E1014;
+}
+::-webkit-scrollbar-thumb {
+  background: #232834;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E02D37;
+}
+
+/* Smooth ticker hover pause */
+.ticker-track:hover {
+  animation-play-state: paused;
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 80" fill="none">
+            <rect width="160" height="80" rx="40" fill="#1C212B" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="2"/>
+            <!-- PTZ Speed Dome Camera -->
+            <circle cx="80" cy="38" r="24" fill="#252C3A" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1.5"/>
+            <circle cx="80" cy="38" r="14" fill="#0E1014" stroke="#E02D37" stroke-width="2"/>
+            <circle cx="80" cy="38" r="5" fill="#E02D37"/>
+            <circle cx="82" cy="36" r="2" fill="#FFFFFF"/>
+            <path d="M60 22 L100 22 L94 15 L66 15 Z" fill="#3A4356"/>
+        </svg>
