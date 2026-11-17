@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Onest:wght@300;400;500;600;700&family=Sofia+Sans+Condensed:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Onest:wght@300;400;500;600;700;800&family=Sofia+Sans+Condensed:wght@500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -29,21 +29,239 @@ body {
   background: radial-gradient(circle at 50% 20%, rgba(224, 45, 55, 0.12) 0%, rgba(14, 16, 20, 0) 70%);
 }
 
-/* Tech corner crosshairs for cards */
+/* Chamfered tech cut badges (top-left & bottom-right cut at 45 deg) */
+.tag-chamfered {
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  background-color: #FFFFFF;
+  color: #0E1014;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  font-size: 13px;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+}
+
+.tag-chamfered:hover {
+  background-color: #F0F2F5;
+  transform: translateY(-1px);
+}
+
+/* Chamfered button with single bottom-right 45-deg cut (from Figma) */
+.btn-chamfered {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  background-color: #FFFFFF;
+  color: #0E1014;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 22px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-chamfered:hover {
+  background-color: #E02D37;
+  color: #FFFFFF;
+}
+
+/* Split CTA button (Figma design: Red button inside white 1px border) */
+.btn-split-cta {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid #FFFFFF;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(224, 45, 55, 0.2);
+}
+
+.btn-split-cta:hover {
+  box-shadow: 0 8px 30px rgba(224, 45, 55, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-split-cta .split-label {
+  background-color: #E02D37;
+  color: #FFFFFF;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.btn-split-cta:hover .split-label {
+  background-color: #EF3B45;
+}
+
+.btn-split-cta .split-icon {
+  background-color: #E02D37;
+  color: #FFFFFF;
+  border-left: 1px solid #FFFFFF;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.btn-split-cta:hover .split-icon {
+  background-color: #EF3B45;
+  padding-left: 4px;
+}
+
+/* Tech card styling with glowing hover border */
 .tech-card {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: #14171D;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
 .tech-card:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  background: #181C24;
+  border-color: rgba(224, 45, 55, 0.6);
+  background: #171B22;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(224, 45, 55, 0.15);
+  transform: translateY(-3px);
 }
 
-.tech-card.border-red-active {
+/* Section Header Red Dash Style */
+.section-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8E95A5;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-tag .section-number {
+  color: #FFFFFF;
+}
+
+.section-tag .section-dash {
+  width: 24px;
+  height: 2px;
+  background-color: #E02D37;
+  display: inline-block;
+}
+
+/* Interactive Photo Pill inside Title (fdrv.pro animation style) */
+.photo-pill-inline {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  height: 52px;
+  width: 100px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin: 0 8px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.photo-pill-inline img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.photo-pill-inline:hover {
+  width: 150px;
   border-color: #E02D37;
+  box-shadow: 0 0 25px rgba(224, 45, 55, 0.4);
+}
+
+.photo-pill-inline:hover img {
+  transform: scale(1.08);
+}
+
+/* Accordion Rows for Section 04 */
+.stage-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.stage-row:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stage-row:hover, .stage-row.is-active {
+  border-top-color: #E02D37;
+}
+
+.stage-row:hover .stage-title, .stage-row.is-active .stage-title {
+  color: #E02D37;
+}
+
+.stage-row:hover .stage-num, .stage-row.is-active .stage-num {
+  border-color: #E02D37;
+  color: #FFFFFF;
+  background-color: rgba(224, 45, 55, 0.1);
+}
+
+/* Corner HUD crosshairs */
+.corner-tl {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+.corner-tr {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+.corner-bl {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+.corner-br {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
 }
 
 /* Custom scrollbar */
@@ -66,3 +284,4 @@ body {
 .ticker-track:hover {
   animation-play-state: paused;
 }
+
