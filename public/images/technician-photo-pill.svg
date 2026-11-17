@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" fill="none">
+        <rect width="200" height="100" rx="50" fill="#1C212B" stroke="#E02D37" stroke-width="2"/>
+        <clipPath id="pill-clip">
+            <rect width="200" height="100" rx="50"/>
+        </clipPath>
+        <g clip-path="url(#pill-clip)">
+            <!-- Background electrical panel -->
+            <rect x="0" y="0" width="200" height="100" fill="#12151D"/>
+            <line x1="20" y1="20" x2="180" y2="20" stroke="#2B3242" stroke-width="6"/>
+            <line x1="20" y1="50" x2="180" y2="50" stroke="#2B3242" stroke-width="6"/>
+            <line x1="20" y1="80" x2="180" y2="80" stroke="#2B3242" stroke-width="6"/>
+            
+            <!-- Technician silhouette in helmet -->
+            <!-- Safety Helmet (White / Orange) -->
+            <ellipse cx="90" cy="38" rx="24" ry="16" fill="#F8FAFC"/>
+            <path d="M66 38 Q90 22 114 38 Z" fill="#F8FAFC"/>
+            <rect x="64" y="38" width="52" height="5" rx="2" fill="#E02D37"/>
+            <!-- Face profile -->
+            <circle cx="90" cy="50" r="14" fill="#E2B193"/>
+            <!-- Work Uniform (Navy Blue / Hi-Vis Orange stripe) -->
+            <path d="M60 95 C60 68 75 62 90 62 C105 62 120 68 120 95 Z" fill="#1E293B"/>
+            <path d="M72 75 L108 75" stroke="#F59E0B" stroke-width="4"/>
+            <!-- Tablet with diagnostics wireframe in hands -->
+            <rect x="110" y="45" width="45" height="34" rx="4" fill="#0A0C10" stroke="#E02D37" stroke-width="1.5" transform="rotate(-10 110 45)"/>
+            <line x1="116" y1="55" x2="142" y2="51" stroke="#10B981" stroke-width="2"/>
+            <line x1="118" y1="63" x2="136" y2="60" stroke="#38BDF8" stroke-width="2"/>
+        </g>
+    </svg>

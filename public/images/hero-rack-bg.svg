@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" fill="none">
+        <rect width="1920" height="1080" fill="#0E1014"/>
+        <defs>
+            <radialGradient id="hero-spot" cx="50%" cy="35%" r="55%">
+                <stop offset="0%" stop-color="#E02D37" stop-opacity="0.18"/>
+                <stop offset="50%" stop-color="#181216" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#0E1014" stop-opacity="1"/>
+            </radialGradient>
+            <linearGradient id="rack-grad" x1="0" y1="0" x2="0" y2="100%">
+                <stop offset="0%" stop-color="#151922" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#0A0C0F" stop-opacity="0.95"/>
+            </linearGradient>
+            <filter id="blur-led" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="8"/>
+            </filter>
+        </defs>
+        
+        <!-- Radial atmosphere -->
+        <rect width="1920" height="1080" fill="url(#hero-spot)"/>
+        
+        <!-- Telecom / Server rack horizontal unit slots silhouette -->
+        <g opacity="0.35">
+            <!-- Server rack rails and rows -->
+            <rect x="0" y="320" width="1920" height="120" fill="url(#rack-grad)" stroke="#FFFFFF" stroke-opacity="0.05"/>
+            <rect x="0" y="460" width="1920" height="140" fill="url(#rack-grad)" stroke="#FFFFFF" stroke-opacity="0.05"/>
+            <rect x="0" y="620" width="1920" height="140" fill="url(#rack-grad)" stroke="#FFFFFF" stroke-opacity="0.05"/>
+            <rect x="0" y="780" width="1920" height="160" fill="url(#rack-grad)" stroke="#FFFFFF" stroke-opacity="0.05"/>
+            
+            <!-- Patch ports slots in rows -->
+            <path d="M 100 380 H 1820 M 100 520 H 1820 M 100 680 H 1820 M 100 840 H 1820" stroke="#FFFFFF" stroke-opacity="0.08" stroke-dasharray="8 12"/>
+        </g>
+        
+        <!-- Glowing green & blue status LEDs (bokeh effect matching Figma rack photo) -->
+        <g opacity="0.85">
+            <!-- Green status LEDs -->
+            <circle cx="340" cy="520" r="4" fill="#10B981" filter="url(#blur-led)"/>
+            <circle cx="340" cy="520" r="2.5" fill="#34D399"/>
+            <circle cx="480" cy="520" r="4" fill="#10B981" filter="url(#blur-led)"/>
+            <circle cx="480" cy="520" r="2.5" fill="#34D399"/>
+            <circle cx="620" cy="520" r="4" fill="#10B981" filter="url(#blur-led)"/>
+            <circle cx="620" cy="520" r="2.5" fill="#34D399"/>
+            <circle cx="920" cy="520" r="4" fill="#10B981" filter="url(#blur-led)"/>
+            <circle cx="920" cy="520" r="2.5" fill="#34D399"/>
+            <circle cx="1180" cy="520" r="4" fill="#10B981" filter="url(#blur-led)"/>
+            <circle cx="1180" cy="520" r="2.5" fill="#34D399"/>
+            
+            <!-- Blue 10G link LEDs -->
+            <circle cx="410" cy="520" r="5" fill="#3B82F6" filter="url(#blur-led)"/>
+            <circle cx="410" cy="520" r="3" fill="#60A5FA"/>
+            <circle cx="750" cy="520" r="5" fill="#3B82F6" filter="url(#blur-led)"/>
+            <circle cx="750" cy="520" r="3" fill="#60A5FA"/>
+            <circle cx="1050" cy="520" r="5" fill="#3B82F6" filter="url(#blur-led)"/>
+            <circle cx="1050" cy="520" r="3" fill="#60A5FA"/>
+            <circle cx="1320" cy="520" r="5" fill="#3B82F6" filter="url(#blur-led)"/>
+            <circle cx="1320" cy="520" r="3" fill="#60A5FA"/>
+            <circle cx="1560" cy="520" r="5" fill="#3B82F6" filter="url(#blur-led)"/>
+            <circle cx="1560" cy="520" r="3" fill="#60A5FA"/>
+
+            <!-- Second row LEDs -->
+            <circle cx="360" cy="680" r="4" fill="#10B981" filter="url(#blur-led)"/>
+            <circle cx="360" cy="680" r="2" fill="#34D399"/>
+            <circle cx="540" cy="680" r="4" fill="#10B981" filter="url(#blur-led)"/>
+            <circle cx="540" cy="680" r="2" fill="#34D399"/>
+            <circle cx="880" cy="680" r="5" fill="#3B82F6" filter="url(#blur-led)"/>
+            <circle cx="880" cy="680" r="3" fill="#60A5FA"/>
+            <circle cx="1220" cy="680" r="4" fill="#10B981" filter="url(#blur-led)"/>
+            <circle cx="1220" cy="680" r="2" fill="#34D399"/>
+        </g>
+        
+        <!-- Fine technical grid overlay -->
+        <g stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="1">
+            <line x1="320" y1="0" x2="320" y2="1080"/>
+            <line x1="640" y1="0" x2="640" y2="1080"/>
+            <line x1="960" y1="0" x2="960" y2="1080"/>
+            <line x1="1280" y1="0" x2="1280" y2="1080"/>
+            <line x1="1600" y1="0" x2="1600" y2="1080"/>
+        </g>
+    </svg>
