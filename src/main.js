@@ -1,47 +1,4 @@
-import { 
-  createIcons, 
-  Cctv, 
-  Phone, 
-  ArrowUpRight, 
-  Menu, 
-  X, 
-  ArrowDown, 
-  Calculator, 
-  ShieldCheck, 
-  Boxes, 
-  ChevronRight, 
-  ChevronDown, 
-  Wrench, 
-  Camera, 
-  Mail, 
-  MapPin, 
-  Check, 
-  VideoOff 
-} from 'lucide';
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize specific Lucide icons
-  createIcons({
-    icons: {
-      Cctv,
-      Phone,
-      ArrowUpRight,
-      Menu,
-      X,
-      ArrowDown,
-      Calculator,
-      ShieldCheck,
-      Boxes,
-      ChevronRight,
-      ChevronDown,
-      Wrench,
-      Camera,
-      Mail,
-      MapPin,
-      Check,
-      VideoOff
-    }
-  });
 
   // 1. Live REC Timer (CCTV timecode)
   const recTimerEl = document.getElementById('rec-timer');
@@ -82,33 +39,115 @@ document.addEventListener('DOMContentLoaded', () => {
   if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeMobileMenu);
   mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
 
-  // 3. FAQ Accordion Toggle
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const button = item.querySelector('.faq-button');
-    const answer = item.querySelector('.faq-answer');
-    const chevron = item.querySelector('.faq-chevron');
+  // 3. Scroll-triggered Number Counters (Section 03 fdrv.pro reference)
+  const counterEls = document.querySelectorAll('.counter-val');
+  let countersAnimated = false;
 
-    if (button && answer) {
-      button.addEventListener('click', () => {
-        const isOpen = !answer.classList.contains('hidden');
-        // Close all others
-        faqItems.forEach(other => {
-          const otherAns = other.querySelector('.faq-answer');
-          const otherChev = other.querySelector('.faq-chevron');
-          if (otherAns) otherAns.classList.add('hidden');
-          if (otherChev) otherChev.classList.remove('rotate-180');
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !countersAnimated) {
+        countersAnimated = true;
+        counterEls.forEach(counter => {
+          const target = parseInt(counter.dataset.target, 10);
+          if (isNaN(target)) return;
+          if (target === 0) {
+            counter.textContent = '0';
+            return;
+          }
+          let current = 0;
+          const duration = 1600; // ms
+          const stepTime = 20; // ms
+          const totalSteps = duration / stepTime;
+          const increment = target / totalSteps;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              counter.textContent = target;
+              clearInterval(timer);
+            } else {
+              counter.textContent = Math.floor(current);
+            }
+          }, stepTime);
         });
+      }
+    });
+  }, { threshold: 0.3 });
 
-        if (!isOpen) {
-          answer.classList.remove('hidden');
-          if (chevron) chevron.classList.add('rotate-180');
-        }
-      });
-    }
+  const statsSection = document.querySelector('.counter-val');
+  if (statsSection) {
+    countObserver.observe(statsSection.closest('section'));
+  }
+
+  // 4. Section 04: Interactive Step Accordion Rows
+  const stageRows = document.querySelectorAll('.stage-row');
+  stageRows.forEach(row => {
+    row.addEventListener('click', () => {
+      stageRows.forEach(r => r.classList.remove('is-active'));
+      row.classList.add('is-active');
+    });
   });
 
-  // 4. Phone Input Masking
+  // 5. FAQ Accordion Toggle
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const answer = item.querySelector('.faq-answer');
+      const icon = item.querySelector('.faq-icon');
+      if (!answer) return;
+
+      const isClosed = answer.classList.contains('hidden');
+
+      // Close all
+      faqItems.forEach(other => {
+        const otherAns = other.querySelector('.faq-answer');
+        const otherIcon = other.querySelector('.faq-icon');
+        if (otherAns) otherAns.classList.add('hidden');
+        if (otherIcon) otherIcon.textContent = '+';
+      });
+
+      if (isClosed) {
+        answer.classList.remove('hidden');
+        if (icon) icon.textContent = '−';
+      }
+    });
+  });
+
+  // 6. Interactive Calculator
+  const calcButtons = document.querySelectorAll('#calc-service-group .calc-btn');
+  const areaSlider = document.getElementById('area-slider');
+  const areaVal = document.getElementById('area-val');
+  const calcTotalPrice = document.getElementById('calc-total-price');
+  let currentRate = 450; // default rate per sq meter base
+
+  function updateCalcTotal() {
+    const area = parseInt(areaSlider ? areaSlider.value : '150', 10);
+    if (areaVal) areaVal.textContent = area;
+    const baseEquipment = 25000;
+    const total = Math.round(baseEquipment + (area * currentRate));
+    if (calcTotalPrice) {
+      calcTotalPrice.textContent = total.toLocaleString('ru-RU');
+    }
+  }
+
+  calcButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      calcButtons.forEach(b => {
+        b.classList.remove('border-brand-red', 'text-white');
+        b.classList.add('border-white/10', 'text-white/70');
+      });
+      btn.classList.add('border-brand-red', 'text-white');
+      btn.classList.remove('border-white/10', 'text-white/70');
+      currentRate = parseInt(btn.dataset.rate, 10) || 450;
+      updateCalcTotal();
+    });
+  });
+
+  if (areaSlider) {
+    areaSlider.addEventListener('input', updateCalcTotal);
+  }
+
+  // 7. Strict Phone Input Formatting and Validation
   const phoneInputs = document.querySelectorAll('input[type="tel"]');
   phoneInputs.forEach(input => {
     input.addEventListener('input', (e) => {
@@ -131,98 +170,98 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Interactive Estimate Calculator
-  const serviceOptions = document.querySelectorAll('.service-pill-btn');
-  const serviceHiddenInput = document.getElementById('selected-service');
-  const priceDisplay = document.getElementById('calc-price-display');
+  // 8. Modal Lead Form Handling
+  const leadModal = document.getElementById('lead-modal');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+  const openModalBtns = document.querySelectorAll('.open-modal-btn');
+  const leadForm = document.getElementById('lead-form');
+  const modalSuccess = document.getElementById('modal-success');
+  const modalSuccessClose = document.getElementById('modal-success-close');
 
-  const servicePrices = {
-    'cctv': 'от 28 000 ₽',
-    'skud': 'от 34 000 ₽',
-    'alarm': 'от 22 000 ₽',
-    'fire': 'от 45 000 ₽',
-    'sks': 'от 30 000 ₽',
-    'electro': 'от 40 000 ₽',
-    'complex': 'от 95 000 ₽'
-  };
+  function openModal() {
+    if (!leadModal) return;
+    leadModal.classList.remove('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = 'hidden';
+    if (leadForm) leadForm.classList.remove('hidden');
+    if (modalSuccess) modalSuccess.classList.add('hidden');
+  }
 
-  serviceOptions.forEach(btn => {
-    btn.addEventListener('click', () => {
-      serviceOptions.forEach(b => {
-        b.classList.remove('bg-brand-red', 'text-white', 'border-brand-red');
-        b.classList.add('bg-brand-surface', 'text-brand-muted', 'border-white/10');
-      });
-      btn.classList.add('bg-brand-red', 'text-white', 'border-brand-red');
-      btn.classList.remove('bg-brand-surface', 'text-brand-muted', 'border-white/10');
-      const val = btn.dataset.service;
-      if (serviceHiddenInput) serviceHiddenInput.value = val;
-      if (priceDisplay && servicePrices[val]) {
-        priceDisplay.textContent = servicePrices[val];
-      }
+  function closeModal() {
+    if (!leadModal) return;
+    leadModal.classList.add('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = '';
+  }
+
+  openModalBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
     });
   });
 
-  // 6. Lead Modal (Заявка отправлена)
-  const modal = document.getElementById('success-modal');
-  const modalBackdrop = document.getElementById('modal-backdrop');
-  const closeModalBtns = document.querySelectorAll('.close-modal-btn');
-  const leadForms = document.querySelectorAll('.lead-form');
-
-  function openSuccessModal(name) {
-    if (modal) {
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      const nameEl = document.getElementById('modal-client-name');
-      if (nameEl && name) nameEl.textContent = name;
-    }
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (modalSuccessClose) modalSuccessClose.addEventListener('click', closeModal);
+  if (leadModal) {
+    leadModal.addEventListener('click', (e) => {
+      if (e.target === leadModal) closeModal();
+    });
   }
 
-  function closeSuccessModal() {
-    if (modal) {
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-  }
-
-  closeModalBtns.forEach(btn => btn.addEventListener('click', closeSuccessModal));
-  if (modalBackdrop) modalBackdrop.addEventListener('click', closeSuccessModal);
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSuccessModal();
+    if (e.key === 'Escape') {
+      closeModal();
+      closeMobileMenu();
+    }
   });
 
-  leadForms.forEach(form => {
-    form.addEventListener('submit', (e) => {
+  // Modal Form Submit with strict validation
+  if (leadForm) {
+    leadForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const nameInput = form.querySelector('input[name="name"]');
-      const phoneInput = form.querySelector('input[name="phone"]');
+      const phoneInput = document.getElementById('modal-phone');
+      const phoneError = document.getElementById('modal-phone-error');
+      const cleanPhone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
 
-      if (!phoneInput || phoneInput.value.replace(/\D/g, '').length < 11) {
-        phoneInput.focus();
-        phoneInput.classList.add('border-brand-red', 'ring-2', 'ring-brand-red/30');
-        setTimeout(() => {
-          phoneInput.classList.remove('ring-2', 'ring-brand-red/30');
-        }, 1500);
+      if (cleanPhone.length < 11) {
+        if (phoneError) phoneError.classList.remove('hidden');
+        if (phoneInput) {
+          phoneInput.focus();
+          phoneInput.classList.add('border-brand-red');
+        }
         return;
       }
 
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `
-        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        Отправляем...
-      `;
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        const nameVal = nameInput ? nameInput.value : '';
-        form.reset();
-        openSuccessModal(nameVal);
-      }, 700);
+      if (phoneError) phoneError.classList.add('hidden');
+      if (leadForm) leadForm.classList.add('hidden');
+      if (modalSuccess) modalSuccess.classList.remove('hidden');
+      leadForm.reset();
     });
-  });
+  }
+
+  // Calculator Form Submit with validation
+  const calcForm = document.getElementById('calc-form');
+  if (calcForm) {
+    calcForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const phoneInput = document.getElementById('calc-phone');
+      const phoneError = document.getElementById('calc-phone-error');
+      const cleanPhone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+
+      if (cleanPhone.length < 11) {
+        if (phoneError) phoneError.classList.remove('hidden');
+        if (phoneInput) {
+          phoneInput.focus();
+          phoneInput.classList.add('border-brand-red');
+        }
+        return;
+      }
+
+      if (phoneError) phoneError.classList.add('hidden');
+      openModal();
+      if (leadForm) leadForm.classList.add('hidden');
+      if (modalSuccess) modalSuccess.classList.remove('hidden');
+      calcForm.reset();
+    });
+  }
+
 });
