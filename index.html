@@ -10,54 +10,35 @@
 </head>
 <body class="bg-brand-dark text-white selection:bg-brand-red selection:text-white font-sans antialiased bg-tech-grid">
 
-  <!-- ==================== TOP HUD BAR ==================== -->
-  <aside aria-label="Технический статус" class="w-full bg-[#0A0C0F] border-b border-white/10 text-xs font-mono py-2.5 px-4 md:px-8 flex justify-between items-center text-brand-muted">
-    <div class="flex items-center space-x-4">
-      <span class="flex items-center text-brand-red font-semibold">
-        <span class="w-2.5 h-2.5 rounded-full bg-brand-red inline-block mr-2 animate-pulse-rec"></span>
-        REC <span id="rec-timer" class="ml-1 text-white">00:00:00</span>
-      </span>
-      <span class="hidden sm:inline text-white/30">|</span>
-      <span class="hidden sm:inline text-brand-muted">ВЛАДИВОСТОК: <span class="text-white">9:00 – 21:00</span></span>
-      <span class="hidden md:inline text-white/30">|</span>
-      <span class="hidden md:inline text-brand-muted">ЛИЦЕНЗИЯ МЧС № 25-06-2021-001844</span>
-    </div>
-    <div class="flex items-center space-x-4">
-      <a href="tel:+74232000000" class="hover:text-brand-red transition-colors font-bold text-white tracking-wider flex items-center font-mono">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block mr-2"></span>
-        +7 (423) 200-00-00
-      </a>
-    </div>
-  </aside>
-
-  <!-- ==================== HEADER ==================== -->
-  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-brand-dark/95 border-b border-white/10">
+  <!-- ==================== HEADER (FIGMA CANONICAL: CLEAN WHITE BAR) ==================== -->
+  <header class="sticky top-0 z-40 w-full bg-white border-b border-gray-200 shadow-sm transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Logo: Exact Figma Icon & Typography -->
+      <!-- Logo: Exact Figma Icon & Typography (Dark version for white background) -->
       <a href="/" class="flex items-center group py-2">
-        <img src="/icons/logo.svg" alt="Монтажная Империя" class="h-10 sm:h-12 w-auto transition-transform group-hover:scale-[1.02]">
+        <img src="/icons/logo-dark.svg" alt="Монтажная Империя" class="h-10 sm:h-12 w-auto transition-transform group-hover:scale-[1.02]">
       </a>
 
-      <!-- Desktop Navigation (Matching Figma) -->
-      <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-white/80">
+      <!-- Desktop Navigation (Matching Figma 1440px) -->
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-gray-800">
         <a href="#services" class="hover:text-brand-red transition-colors">Услуги</a>
         <a href="#expertise" class="hover:text-brand-red transition-colors">О компании</a>
         <a href="#cases" class="hover:text-brand-red transition-colors">Кейсы</a>
-        <a href="#brands" class="hover:text-brand-red transition-colors">Заказчики</a>
+        <a href="#spheres" class="hover:text-brand-red transition-colors">Сферы работы</a>
+        <a href="#faq" class="hover:text-brand-red transition-colors">FAQ</a>
         <a href="#contacts" class="hover:text-brand-red transition-colors">Контакты</a>
       </nav>
 
       <!-- Header Action: Chamfered Button from Figma -->
       <div class="hidden sm:flex items-center space-x-4">
-        <button class="btn-chamfered open-modal-btn">
+        <button class="btn-chamfered open-modal-btn !bg-[#0E1014] !text-white hover:!bg-brand-red">
           ВЫЕЗД БЕСПЛАТНО
         </button>
       </div>
 
       <!-- Mobile Burger Button -->
       <div class="lg:hidden flex items-center">
-        <button id="mobile-menu-btn" class="p-2 text-white/80 hover:text-brand-red hover:bg-brand-surface border border-white/10 rounded transition-colors" aria-label="Открыть меню">
+        <button id="mobile-menu-btn" class="p-2 text-gray-800 hover:text-brand-red hover:bg-gray-100 rounded transition-colors" aria-label="Открыть меню">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
@@ -81,11 +62,13 @@
 
       <nav class="flex flex-col space-y-4 py-6 font-condensed text-xl uppercase tracking-wider">
         <a href="#services" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">01. Услуги</a>
-        <a href="#expertise" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">02. О компании</a>
+        <a href="#expertise" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">02. Экспертиза</a>
         <a href="#cases" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">03. Кейсы</a>
         <a href="#stages" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">04. Этапы</a>
-        <a href="#calc" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">05. Калькулятор</a>
-        <a href="#contacts" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">06. Контакты</a>
+        <a href="#spheres" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">05. Сферы работы</a>
+        <a href="#calc" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">06. Калькулятор</a>
+        <a href="#faq" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">07. FAQ</a>
+        <a href="#contacts" class="mobile-nav-link text-white/80 hover:text-brand-red transition-colors">08. Контакты</a>
       </nav>
     </div>
 
@@ -99,8 +82,8 @@
     </div>
   </div>
 
-  <!-- ==================== HERO SECTION (FIGMA CANONICAL) ==================== -->
-  <section class="relative min-h-[88vh] flex items-center justify-center overflow-hidden border-b border-white/10" style="background-image: linear-gradient(180deg, rgba(14,16,20,0.82) 0%, rgba(14,16,20,0.95) 100%), url('/images/hero-rack-bg.svg'); background-size: cover; background-position: center;">
+  <!-- ==================== HERO SECTION (FIGMA CANONICAL 1440px) ==================== -->
+  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-white/10 bg-[#0E1014]" style="background-image: linear-gradient(180deg, rgba(14,16,20,0.85) 0%, rgba(14,16,20,0.96) 100%), url('/images/hero-rack-bg.svg'); background-size: cover; background-position: center;">
     
     <!-- HUD Crosshair Corner Brackets -->
     <div class="corner-tl"></div>
@@ -110,6 +93,15 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10 w-full">
       
+      <!-- CCTV REC Timecode placed directly inside Hero below corner bracket -->
+      <div class="flex items-center space-x-3 text-xs font-mono text-brand-red mb-6">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand-red inline-block animate-pulse-rec"></span>
+        <span class="font-bold tracking-wider">REC</span>
+        <span id="rec-timer" class="text-white">00:00:00</span>
+        <span class="text-white/30 hidden sm:inline">|</span>
+        <span class="text-brand-muted hidden sm:inline">ВЛАДИВОСТОК: 9:00 – 21:00</span>
+      </div>
+
       <!-- Chamfered Info Badges Row (Figma specs: Hexagonal cut corners, white background, black bold mono font) -->
       <div class="flex flex-wrap items-center gap-3 mb-8">
         <span class="tag-chamfered">БИЗНЕСУ И ЧАСТНЫМ КЛИЕНТАМ</span>
@@ -151,13 +143,13 @@
       <div class="flex items-center space-x-8 text-white font-condensed font-bold uppercase tracking-widest text-lg sm:text-xl px-4">
         <span>СКУД</span>
         <span class="text-white/50 text-xs">■</span>
-        <span class="flex items-center"><svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H5V6h14v12z"/></svg>ДОМОФОНЫ</span>
+        <span>ДОМОФОНЫ</span>
         <span class="text-white/50 text-xs">■</span>
         <span>ОХРАННАЯ СИГНАЛИЗАЦИЯ</span>
         <span class="text-white/50 text-xs">■</span>
         <span>ПОЖАРНАЯ СИГНАЛИЗАЦИЯ</span>
         <span class="text-white/50 text-xs">■</span>
-        <span class="flex items-center"><svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>ВИДЕОНАБЛЮДЕНИЕ</span>
+        <span>ВИДЕОНАБЛЮДЕНИЕ</span>
         <span class="text-white/50 text-xs">■</span>
         <span>СКС</span>
         <span class="text-white/50 text-xs">■</span>
@@ -168,13 +160,13 @@
       <div class="flex items-center space-x-8 text-white font-condensed font-bold uppercase tracking-widest text-lg sm:text-xl px-4">
         <span>СКУД</span>
         <span class="text-white/50 text-xs">■</span>
-        <span class="flex items-center"><svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H5V6h14v12z"/></svg>ДОМОФОНЫ</span>
+        <span>ДОМОФОНЫ</span>
         <span class="text-white/50 text-xs">■</span>
         <span>ОХРАННАЯ СИГНАЛИЗАЦИЯ</span>
         <span class="text-white/50 text-xs">■</span>
         <span>ПОЖАРНАЯ СИГНАЛИЗАЦИЯ</span>
         <span class="text-white/50 text-xs">■</span>
-        <span class="flex items-center"><svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>ВИДЕОНАБЛЮДЕНИЕ</span>
+        <span>ВИДЕОНАБЛЮДЕНИЕ</span>
         <span class="text-white/50 text-xs">■</span>
         <span>СКС</span>
         <span class="text-white/50 text-xs">■</span>
@@ -184,7 +176,7 @@
     </div>
   </section>
 
-  <!-- ==================== 01 — ЭКСПЕРТИЗА ==================== -->
+  <!-- ==================== 01 — ЭКСПЕРТИЗА (FIGMA CANONICAL 3 CARDS) ==================== -->
   <section id="expertise" class="py-20 sm:py-28 border-b border-white/10 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -195,8 +187,8 @@
             <span class="section-dash"></span>
             <span>ЭКСПЕРТИЗА</span>
           </div>
-          <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-6xl md:text-7xl text-white leading-none">
-            ПОЛНЫЙ КОМПЛЕКС УСЛУГ<br>ПО БЕЗОПАСНОСТИ
+          <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-6xl md:text-7xl text-white leading-tight">
+            ПОМОЖЕМ ПРИНЯТЬ РЕШЕНИЕ,<br>КОТОРОЕ НЕ ПРИДЁТСЯ ПЕРЕДЕЛЫВАТЬ
           </h2>
         </div>
 
@@ -205,50 +197,66 @@
         </button>
       </div>
 
-      <!-- Expertise Pillars Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Exact 3 Figma Cards: Смета, Склад, Гарантия -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <div class="tech-card p-6">
-          <div class="text-brand-red font-mono font-bold text-sm mb-4">ЛИЦЕНЗИЯ МЧС</div>
-          <h3 class="font-condensed font-bold text-2xl uppercase mb-3 text-white">ОФИЦИАЛЬНЫЙ ДОПУСК</h3>
-          <p class="text-sm text-brand-muted leading-relaxed">
-            Лицензия МЧС на монтаж, техобслуживание и ремонт средств обеспечения пожарной безопасности зданий и сооружений.
-          </p>
-          <div class="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-white/50">
-            № 25-06-2021-001844
+        <!-- Card 1: Card — Смета -->
+        <div class="tech-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-brand-red font-mono font-bold text-xs uppercase tracking-wider mb-4 flex items-center">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-red mr-2"></span>
+              ТОЧНАЯ СМЕТА
+            </div>
+            <h3 class="font-condensed font-bold text-2xl uppercase mb-3 text-white">
+              ФИКСАЦИЯ СМЕТЫ ДО НАЧАЛА РАБОТ
+            </h3>
+            <p class="text-sm text-brand-muted leading-relaxed">
+              Никаких скрытых платежей или непредвиденных расходов в процессе. Подробный расчет оборудования, кабельной продукции и монтажа фиксируется в официальном договоре.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 font-mono text-xs text-white/50 flex items-center justify-between">
+            <span>ЦЕНА В ДОГОВОРЕ НЕ МЕНЯЕТСЯ</span>
+            <span class="text-brand-red">01</span>
           </div>
         </div>
 
-        <div class="tech-card p-6">
-          <div class="text-brand-red font-mono font-bold text-sm mb-4">ОБОРУДОВАНИЕ</div>
-          <h3 class="font-condensed font-bold text-2xl uppercase mb-3 text-white">СОБСТВЕННЫЙ СКЛАД</h3>
-          <p class="text-sm text-brand-muted leading-relaxed">
-            Прямые поставки от Hikvision, Dahua, Болид, DKC и Рубеж без наценок посредников. Всё оборудование сертифицировано в РФ.
-          </p>
-          <div class="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-white/50">
-            В НАЛИЧИИ ВО ВЛАДИВОСТОКЕ
+        <!-- Card 2: Card — Склад -->
+        <div class="tech-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-brand-red font-mono font-bold text-xs uppercase tracking-wider mb-4 flex items-center">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-red mr-2"></span>
+              ОБОРУДОВАНИЕ
+            </div>
+            <h3 class="font-condensed font-bold text-2xl uppercase mb-3 text-white">
+              СОБСТВЕННЫЙ СКЛАД ВО ВЛАДИВОСТОКЕ
+            </h3>
+            <p class="text-sm text-brand-muted leading-relaxed">
+              Прямые поставки от Hikvision, Dahua, Болид, DKC и Рубеж без посредников. Все ходовые позиции видеокамер, кабеля и контроллеров всегда в наличии без задержек.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 font-mono text-xs text-white/50 flex items-center justify-between">
+            <span>БЕЗ ЗАДЕРЖЕК И ОЖИДАНИЯ</span>
+            <span class="text-brand-red">02</span>
           </div>
         </div>
 
-        <div class="tech-card p-6">
-          <div class="text-brand-red font-mono font-bold text-sm mb-4">ГАРАНТИЯ</div>
-          <h3 class="font-condensed font-bold text-2xl uppercase mb-3 text-white">ДО 3 ЛЕТ НА РАБОТЫ</h3>
-          <p class="text-sm text-brand-muted leading-relaxed">
-            Юридический договор с фиксацией итоговой сметы и сроков. Собственная сервисная служба с оперативным выездом в течение 24 часов.
-          </p>
-          <div class="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-white/50">
-            ПО ДОГОВОРУ И ПОД КЛЮЧ
+        <!-- Card 3: Card — Гарантия -->
+        <div class="tech-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-brand-red font-mono font-bold text-xs uppercase tracking-wider mb-4 flex items-center">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-red mr-2"></span>
+              ГАРАНТИЯ
+            </div>
+            <h3 class="font-condensed font-bold text-2xl uppercase mb-3 text-white">
+              ДО 3 ЛЕТ НА ОБОРУДОВАНИЕ И РАБОТЫ
+            </h3>
+            <p class="text-sm text-brand-muted leading-relaxed">
+              Официальный юридический договор, полный пакет исполнительной документации, сдача инспекторам МЧС и собственная сервисная служба со срочным выездом за 24 часа.
+            </p>
           </div>
-        </div>
-
-        <div class="tech-card p-6">
-          <div class="text-brand-red font-mono font-bold text-sm mb-4">КОМАНДА</div>
-          <h3 class="font-condensed font-bold text-2xl uppercase mb-3 text-white">АТТЕСТОВАННЫЕ ИНЖЕНЕРЫ</h3>
-          <p class="text-sm text-brand-muted leading-relaxed">
-            Штатные монтажники и проектировщики с профильным образованием, допусками по электробезопасности и стажем более 10 лет.
-          </p>
-          <div class="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-white/50">
-            СТРОГО ПО ГОСТ И СНИП
+          <div class="mt-8 pt-4 border-t border-white/10 font-mono text-xs text-white/50 flex items-center justify-between">
+            <span>СЕРВИСНОЕ ТО ПО РЕГЛАМЕНТУ</span>
+            <span class="text-brand-red">03</span>
           </div>
         </div>
 
@@ -257,37 +265,42 @@
     </div>
   </section>
 
-  <!-- ==================== 02 — НАПРАВЛЕНИЯ И УСЛУГИ (FIGMA CANONICAL CARDS) ==================== -->
+  <!-- ==================== 02 — НАПРАВЛЕНИЯ И УСЛУГИ (FIGMA REAL IMAGES) ==================== -->
   <section id="services" class="py-20 sm:py-28 border-b border-white/10 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="mb-14">
-        <div class="section-tag mb-4">
-          <span class="section-number">02</span>
-          <span class="section-dash"></span>
-          <span>НАПРАВЛЕНИЯ И УСЛУГИ</span>
+      <div class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div class="section-tag mb-4">
+            <span class="section-number">02</span>
+            <span class="section-dash"></span>
+            <span>НАПРАВЛЕНИЯ И УСЛУГИ</span>
+          </div>
+          <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-6xl md:text-7xl text-white leading-none">
+            ВСЕ СИСТЕМЫ ПОД КЛЮЧ
+          </h2>
         </div>
-        <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-6xl md:text-7xl text-white leading-none">
-          РЕШАЕМ ЗАДАЧИ ЛЮБОЙ СЛОЖНОСТИ
-        </h2>
+        <p class="text-brand-muted font-sans text-sm sm:text-base max-w-md leading-relaxed">
+          Один договор на все системы. Один надежный подрядчик несёт полную ответственность за результат.
+        </p>
       </div>
 
-      <!-- 6 Service Cards (Figma exact match with hardware cutouts and red link) -->
+      <!-- 6 Canonical Service Cards with Real Figma Visuals -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <!-- Card 1: ПОЖАРНАЯ СИГНАЛИЗАЦИЯ -->
-        <div class="tech-card p-8 flex flex-col justify-between min-h-[380px] group">
+        <!-- Card 1: ПОЖАРНАЯ СИГНАЛИЗАЦИЯ (Real Smoke Detector + Manual Call Point) -->
+        <div class="tech-card p-8 flex flex-col justify-between min-h-[400px] group">
           <div>
             <h3 class="font-condensed font-extrabold text-3xl uppercase tracking-wide text-white leading-none mb-4">
               ПОЖАРНАЯ<br>СИГНАЛИЗАЦИЯ
             </h3>
             <p class="text-white/70 font-sans text-base leading-relaxed max-w-xs mb-6">
-              Проект, монтаж и обслуживание АПС. Сдача надзорным органам.
+              Проект, монтаж и обслуживание АПС. Сдача надзорным органам МЧС.
             </p>
           </div>
 
-          <div class="relative w-full h-36 flex items-end justify-center mb-6">
-            <img src="/images/fire-card-visual.svg" alt="Пожарная сигнализация" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
+          <div class="relative w-full h-40 flex items-center justify-center mb-6">
+            <img src="/images/fire-figma.png" alt="Пожарная сигнализация" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
           </div>
 
           <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
@@ -296,29 +309,8 @@
           </a>
         </div>
 
-        <!-- Card 2: СКС -->
-        <div class="tech-card p-8 flex flex-col justify-between min-h-[380px] group">
-          <div>
-            <h3 class="font-condensed font-extrabold text-3xl uppercase tracking-wide text-white leading-none mb-4">
-              СКС
-            </h3>
-            <p class="text-white/70 font-sans text-base leading-relaxed max-w-xs mb-6">
-              Структурированные кабельные сети, ЛВС и серверные «под ключ».
-            </p>
-          </div>
-
-          <div class="relative w-full h-36 flex items-end justify-center mb-6">
-            <img src="/images/sks-card-visual.svg" alt="СКС кабельные сети" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
-          </div>
-
-          <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
-            <span>ОСТАВИТЬ ЗАЯВКУ</span>
-            <span class="ml-1.5 text-base">↗</span>
-          </a>
-        </div>
-
-        <!-- Card 3: ВИДЕОНАБЛЮДЕНИЕ -->
-        <div class="tech-card p-8 flex flex-col justify-between min-h-[380px] group">
+        <!-- Card 2: ВИДЕОНАБЛЮДЕНИЕ (Real Phone with Live Camera Analytics) -->
+        <div class="tech-card p-8 flex flex-col justify-between min-h-[400px] group">
           <div>
             <h3 class="font-condensed font-extrabold text-3xl uppercase tracking-wide text-white leading-none mb-4">
               ВИДЕОНАБЛЮДЕНИЕ
@@ -328,8 +320,8 @@
             </p>
           </div>
 
-          <div class="relative w-full h-36 flex items-end justify-center mb-6">
-            <img src="/images/cctv-card-visual.svg" alt="Видеонаблюдение" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
+          <div class="relative w-full h-40 flex items-center justify-center mb-6">
+            <img src="/images/cctv-phone-figma.png" alt="Видеонаблюдение" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
           </div>
 
           <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
@@ -338,8 +330,8 @@
           </a>
         </div>
 
-        <!-- Card 4: СКУД -->
-        <div class="tech-card p-8 flex flex-col justify-between min-h-[380px] group">
+        <!-- Card 3: СКУД (Access Control Terminal) -->
+        <div class="tech-card p-8 flex flex-col justify-between min-h-[400px] group">
           <div>
             <h3 class="font-condensed font-extrabold text-3xl uppercase tracking-wide text-white leading-none mb-4">
               СКУД И ТУРНИКЕТЫ
@@ -349,8 +341,29 @@
             </p>
           </div>
 
-          <div class="relative w-full h-36 flex items-end justify-center mb-6">
-            <img src="/images/skud-card-visual.svg" alt="СКУД" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
+          <div class="relative w-full h-40 flex items-center justify-center mb-6">
+            <img src="/images/service-skud.svg" alt="СКУД" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
+          </div>
+
+          <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
+            <span>ОСТАВИТЬ ЗАЯВКУ</span>
+            <span class="ml-1.5 text-base">↗</span>
+          </a>
+        </div>
+
+        <!-- Card 4: СКС (Real RJ45 Patch Cables from Figma) -->
+        <div class="tech-card p-8 flex flex-col justify-between min-h-[400px] group">
+          <div>
+            <h3 class="font-condensed font-extrabold text-3xl uppercase tracking-wide text-white leading-none mb-4">
+              СКС И СЕРВЕРНЫЕ
+            </h3>
+            <p class="text-white/70 font-sans text-base leading-relaxed max-w-xs mb-6">
+              Структурированные кабельные сети, ЛВС и серверные «под ключ».
+            </p>
+          </div>
+
+          <div class="relative w-full h-40 flex items-center justify-center mb-6">
+            <img src="/images/sks-cables-figma.png" alt="СКС кабельные сети" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
           </div>
 
           <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
@@ -360,7 +373,7 @@
         </div>
 
         <!-- Card 5: ЭЛЕКТРОМОНТАЖ -->
-        <div class="tech-card p-8 flex flex-col justify-between min-h-[380px] group">
+        <div class="tech-card p-8 flex flex-col justify-between min-h-[400px] group">
           <div>
             <h3 class="font-condensed font-extrabold text-3xl uppercase tracking-wide text-white leading-none mb-4">
               ЭЛЕКТРОМОНТАЖ
@@ -370,8 +383,8 @@
             </p>
           </div>
 
-          <div class="relative w-full h-36 flex items-end justify-center mb-6">
-            <img src="/images/electro-card-visual.svg" alt="Электромонтаж" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
+          <div class="relative w-full h-40 flex items-center justify-center mb-6">
+            <img src="/images/service-electro.svg" alt="Электромонтаж" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
           </div>
 
           <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
@@ -380,19 +393,19 @@
           </a>
         </div>
 
-        <!-- Card 6: ОХРАННАЯ СИГНАЛИЗАЦИЯ -->
-        <div class="tech-card p-8 flex flex-col justify-between min-h-[380px] group">
+        <!-- Card 6: ПРОЕКТ, СХЕМА И СМЕТА (Real 3D Document Sheet) -->
+        <div class="tech-card p-8 flex flex-col justify-between min-h-[400px] group">
           <div>
             <h3 class="font-condensed font-extrabold text-3xl uppercase tracking-wide text-white leading-none mb-4">
-              ОХРАННАЯ СИГНАЛИЗАЦИЯ
+              ПРОЕКТ И СМЕТА
             </h3>
             <p class="text-white/70 font-sans text-base leading-relaxed max-w-xs mb-6">
-              Охрана периметра, датчики движения, герконы, интеграция с ЧОП и пультом.
+              Проектирование небольших объектов. Крупные — по проекту заказчика.
             </p>
           </div>
 
-          <div class="relative w-full h-36 flex items-end justify-center mb-6">
-            <img src="/images/alarm-card-visual.svg" alt="Охранная сигнализация" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
+          <div class="relative w-full h-40 flex items-center justify-center mb-6">
+            <img src="/images/project-doc-figma.png" alt="Проект и смета" class="max-h-full object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105">
           </div>
 
           <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
@@ -403,6 +416,51 @@
 
       </div>
 
+    </div>
+  </section>
+
+  <!-- ==================== RED CTA BANNER 1 (FIGMA CANONICAL) ==================== -->
+  <section class="py-12 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative bg-gradient-to-r from-[#E02D37] via-[#C9222C] to-[#8F141B] rounded-2xl p-8 sm:p-12 overflow-hidden shadow-2xl border border-white/20">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          
+          <div class="lg:col-span-8 space-y-6">
+            <h2 class="font-condensed font-extrabold uppercase text-3xl sm:text-5xl md:text-6xl text-white leading-tight">
+              НЕ НАШЛИ СВОЮ ЗАДАЧУ?
+            </h2>
+            <p class="text-white/90 font-sans text-base sm:text-xl max-w-2xl leading-relaxed">
+              Оставьте заявку и мы подберём наилучшее решение под вашу индивидуальную задачу в течение 10 минут.
+            </p>
+            
+            <div class="flex flex-wrap gap-2.5 pt-2">
+              <span class="tag-chamfered !text-xs !py-1.5 !px-3 !bg-white !text-black">ВЫЕЗД БЕСПЛАТНО</span>
+              <span class="tag-chamfered !text-xs !py-1.5 !px-3 !bg-white !text-black">ПРОЕКТ ЗА 3 ДНЯ</span>
+              <span class="tag-chamfered !text-xs !py-1.5 !px-3 !bg-white !text-black">ГАРАНТИЯ 3 ГОДА</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col items-start lg:items-end space-y-4">
+            <a href="tel:+74232000000" class="font-mono text-xl sm:text-2xl font-extrabold text-white hover:text-white/80 transition-colors">
+              +7 (423) 200-00-00
+            </a>
+            <div class="font-mono text-xs text-white/70">Ежедневно 9:00 – 21:00</div>
+            
+            <button class="open-modal-btn px-6 py-3.5 bg-black hover:bg-gray-900 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-lg flex items-center space-x-2">
+              <span>ОСТАВИТЬ ЗАЯВКУ</span>
+              <span>→</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Floating Bullet CCTV camera on the right background -->
+        <div class="absolute right-0 bottom-0 top-0 w-1/3 pointer-events-none opacity-30 lg:opacity-75 flex items-center justify-end">
+          <img src="/images/cta-bullet-cam.png" alt="CCTV Bullet Camera" class="h-full object-contain filter drop-shadow-2xl">
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -418,15 +476,15 @@
 
       <!-- Headline with Interactive Expanding Photo Pill (Exact Figma fdrv.pro reference!) -->
       <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-6xl md:text-7xl lg:text-[84px] text-white leading-[1.05] mb-16 max-w-5xl">
-        ЭТИ ЦИФРЫ ОБЪЯСНЯЮТ<br>
-        <span class="photo-pill-inline" title="Инженеры Монтажной Империи">
-          <img src="/images/technician-photo-pill.svg" alt="Инженер Монтажная Империя">
+        ЦИФРЫ ОБЪЯСНЯЮТ ПОЧЕМУ НАС ЗОВУТ
+        <span class="photo-pill-inline" title="Инженер Монтажной Империи">
+          <img src="/images/technician-real.png" alt="Инженер Монтажная Империя">
         </span>
         НА СЛОЖНЫЕ ОБЪЕКТЫ
       </h2>
 
-      <!-- Animated Big Numbers Grid (Counter on scroll) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Animated Big Numbers Grid (Counter on scroll matching Figma 1440px) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
 
         <!-- Stat 1: 12 лет -->
         <div class="border-t-2 border-white/10 pt-6 hover:border-brand-red transition-colors">
@@ -456,40 +514,34 @@
           </div>
         </div>
 
-        <!-- Stat 3: 24 ч -->
+        <!-- Stat 3: 98 % -->
         <div class="border-t-2 border-white/10 pt-6 hover:border-brand-red transition-colors">
           <div class="font-condensed font-extrabold text-6xl sm:text-7xl lg:text-8xl text-white mb-2 leading-none flex items-baseline">
-            <span class="counter-val" data-target="24">24</span>
-            <span class="text-4xl sm:text-5xl ml-1 font-semibold text-white/80">ч</span>
+            <span class="counter-val" data-target="98">98</span>
+            <span class="text-4xl sm:text-5xl ml-1 font-semibold text-white/80">%</span>
           </div>
           <div class="font-mono text-xs font-bold uppercase tracking-wider text-brand-red mb-1">
-            ВРЕМЯ РЕАКЦИИ
+            ПРИЁМКА С ПЕРВОГО РАЗА
           </div>
           <div class="text-sm text-brand-muted">
-            Срочный выезд сервисной бригады при авариях и неисправностях.
-          </div>
-        </div>
-
-        <!-- Stat 4: 0 ₽ -->
-        <div class="border-t-2 border-white/10 pt-6 hover:border-brand-red transition-colors">
-          <div class="font-condensed font-extrabold text-6xl sm:text-7xl lg:text-8xl text-white mb-2 leading-none flex items-baseline">
-            <span class="counter-val" data-target="0">0</span>
-            <span class="text-4xl sm:text-5xl ml-1 font-semibold text-brand-red">₽</span>
-          </div>
-          <div class="font-mono text-xs font-bold uppercase tracking-wider text-brand-red mb-1">
-            ВЫЕЗД И РАСЧЕТ СМЕТЫ
-          </div>
-          <div class="text-sm text-brand-muted">
-            Бесплатный выезд инженера и подробный сметный расчет до копейки.
+            Включая государственные, муниципальные и режимные объекты Приморья.
           </div>
         </div>
 
       </div>
 
+      <!-- Action button matching Figma Section 3 -->
+      <div>
+        <a href="#lead-modal" class="btn-split-cta open-modal-btn group inline-flex">
+          <span class="split-label">ОСТАВИТЬ ЗАЯВКУ</span>
+          <span class="split-icon">→</span>
+        </a>
+      </div>
+
     </div>
   </section>
 
-  <!-- ==================== 04 — ЭТАПЫ РАБОТЫ (FIGMA EXACT ACCORDION ROWS) ==================== -->
+  <!-- ==================== 04 — ЭТАПЫ РАБОТЫ (FIGMA EXACT 2-COLUMN WITH 3D HARDWARE) ==================== -->
   <section id="stages" class="py-20 sm:py-28 border-b border-white/10 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -500,95 +552,106 @@
           <span>ЭТАПЫ РАБОТЫ</span>
         </div>
         <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-6xl md:text-7xl text-white leading-none">
-          ВСЕ СИСТЕМЫ ПОД КЛЮЧ
+          КАК ПРОИСХОДИТ УСТАНОВКА
         </h2>
       </div>
 
-      <!-- 5 Interactive Step Rows from Figma: [ 01 ] to [ 05 ] -->
-      <div class="stage-accordion space-y-0">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: 5 Interactive Step Rows from Figma: [ 01 ] to [ 05 ] -->
+        <div class="lg:col-span-7 stage-accordion space-y-0">
 
-        <!-- Step 01 -->
-        <div class="stage-row is-active" data-step="1">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div class="flex items-center space-x-6">
-              <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
-                [ 01 ]
-              </span>
-              <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-4xl uppercase text-white transition-colors">
-                ЗАЯВКА
-              </h3>
+          <!-- Step 01 -->
+          <div class="stage-row is-active" data-step="1">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+              <div class="flex items-center space-x-6">
+                <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
+                  [ 01 ]
+                </span>
+                <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-3xl uppercase text-white transition-colors">
+                  ЗАЯВКА
+                </h3>
+              </div>
+              <p class="text-brand-muted font-sans text-sm sm:text-base max-w-md leading-relaxed">
+                Оставьте заявку через сайт или позвоните нам. Мы внимательно выслушаем ваши задачи, проконсультируем по возможным решениям и договоримся о времени выезда специалиста.
+              </p>
             </div>
-            <p class="text-brand-muted font-sans text-sm sm:text-base max-w-xl leading-relaxed">
-              Оставьте заявку через сайт или позвоните нам. Мы внимательно выслушаем ваши задачи, проконсультируем по возможным решениям и договоримся о времени выезда специалиста.
-            </p>
           </div>
+
+          <!-- Step 02 -->
+          <div class="stage-row" data-step="2">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+              <div class="flex items-center space-x-6">
+                <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
+                  [ 02 ]
+                </span>
+                <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-3xl uppercase text-white transition-colors">
+                  КОНСУЛЬТАЦИЯ И ВЫЕЗД
+                </h3>
+              </div>
+              <p class="text-brand-muted font-sans text-sm sm:text-base max-w-md leading-relaxed">
+                Инженер бесплатно выезжает на объект во Владивостоке или Приморском крае, проводит обследование, оценивает кабельные трассы и делает точные замеры.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="stage-row" data-step="3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+              <div class="flex items-center space-x-6">
+                <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
+                  [ 03 ]
+                </span>
+                <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-3xl uppercase text-white transition-colors">
+                  ПРОЕКТ
+                </h3>
+              </div>
+              <p class="text-brand-muted font-sans text-sm sm:text-base max-w-md leading-relaxed">
+                Готовим рабочий проект и прозрачную смету с фиксированной стоимостью. Подбираем оборудование под ваш бюджет и согласуем график производства работ.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="stage-row" data-step="4">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+              <div class="flex items-center space-x-6">
+                <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
+                  [ 04 ]
+                </span>
+                <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-3xl uppercase text-white transition-colors">
+                  МОНТАЖ
+                </h3>
+              </div>
+              <p class="text-brand-muted font-sans text-sm sm:text-base max-w-md leading-relaxed">
+                Профессиональный монтаж оборудования строго по ГОСТ и СНиП. Настройка серверов, аналитики и ПО, тестирование всех каналов связи и обучение персонала.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 05 -->
+          <div class="stage-row" data-step="5">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+              <div class="flex items-center space-x-6">
+                <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
+                  [ 05 ]
+                </span>
+                <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-3xl uppercase text-white transition-colors">
+                  СДАЧА И ПОДДЕРЖКА
+                </h3>
+              </div>
+              <p class="text-brand-muted font-sans text-sm sm:text-base max-w-md leading-relaxed">
+                Сдача объекта надзорным органам (МЧС), передача полного пакета исполнительной документации, гарантийный сертификат до 3 лет и регулярное ТО.
+              </p>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Step 02 -->
-        <div class="stage-row" data-step="2">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div class="flex items-center space-x-6">
-              <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
-                [ 02 ]
-              </span>
-              <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-4xl uppercase text-white transition-colors">
-                КОНСУЛЬТАЦИЯ И ВЫЕЗД
-              </h3>
-            </div>
-            <p class="text-brand-muted font-sans text-sm sm:text-base max-w-xl leading-relaxed">
-              Инженер бесплатно выезжает на объект во Владивостоке или Приморском крае, проводит обследование, оценивает кабельные трассы и делает точные замеры.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 03 -->
-        <div class="stage-row" data-step="3">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div class="flex items-center space-x-6">
-              <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
-                [ 03 ]
-              </span>
-              <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-4xl uppercase text-white transition-colors">
-                ПРОЕКТ И СМЕТА
-              </h3>
-            </div>
-            <p class="text-brand-muted font-sans text-sm sm:text-base max-w-xl leading-relaxed">
-              Готовим рабочий проект и прозрачную смету с фиксированной стоимостью. Подбираем оборудование под ваш бюджет и согласуем график производства работ.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 04 -->
-        <div class="stage-row" data-step="4">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div class="flex items-center space-x-6">
-              <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
-                [ 04 ]
-              </span>
-              <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-4xl uppercase text-white transition-colors">
-                МОНТАЖ И ПУСКОНАЛАДКА
-              </h3>
-            </div>
-            <p class="text-brand-muted font-sans text-sm sm:text-base max-w-xl leading-relaxed">
-              Профессиональный монтаж оборудования строго по ГОСТ и СНиП. Настройка серверов, аналитики и ПО, тестирование всех каналов связи и обучение персонала.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 05 -->
-        <div class="stage-row" data-step="5">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div class="flex items-center space-x-6">
-              <span class="font-mono text-sm px-3 py-1 border border-white/20 text-white/70 stage-num transition-colors">
-                [ 05 ]
-              </span>
-              <h3 class="stage-title font-condensed font-extrabold text-2xl sm:text-4xl uppercase text-white transition-colors">
-                СДАЧА И ПОДДЕРЖКА
-              </h3>
-            </div>
-            <p class="text-brand-muted font-sans text-sm sm:text-base max-w-xl leading-relaxed">
-              Сдача объекта надзорным органам (МЧС), передача полного пакета исполнительной документации, гарантийный сертификат до 3 лет и регулярное ТО.
-            </p>
+        <!-- Right: 3D Isometric Floating Composite of Hardware from Figma -->
+        <div class="lg:col-span-5 flex items-center justify-center relative">
+          <div class="relative w-full max-w-md flex items-center justify-center p-4">
+            <img src="/images/stages-hardware-figma.png" alt="Оборудование систем безопасности" class="w-full h-auto object-contain filter drop-shadow-2xl animate-float">
           </div>
         </div>
 
@@ -597,8 +660,8 @@
     </div>
   </section>
 
-  <!-- ==================== 05 — ОБЛАСТЬ РАБОТЫ (FIGMA SECTION) ==================== -->
-  <section class="py-20 sm:py-28 border-b border-white/10 relative">
+  <!-- ==================== 05 — ОБЛАСТЬ РАБОТЫ (FIGMA REAL SPHERE PHOTOS & CLIENT LOGOS) ==================== -->
+  <section id="spheres" class="py-20 sm:py-28 border-b border-white/10 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="mb-14">
@@ -612,41 +675,99 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 4 Photo Cards matching Figma with chamfered bottom corners -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         
-        <div class="tech-card p-8 group">
-          <div class="text-brand-red font-mono text-xs uppercase tracking-wider mb-3">КОММЕРЦИЯ</div>
-          <h3 class="font-condensed font-bold text-3xl uppercase text-white mb-3">БИЗНЕС-ЦЕНТРЫ И ТРЦ</h3>
-          <p class="text-brand-muted text-sm leading-relaxed mb-6">
-            Комплексные системы пожаротушения, интеллектуальное видеонаблюдение за посетителями, скоростные турникеты и учет рабочего времени.
-          </p>
-          <div class="font-mono text-xs text-white/40">ОТ 500 ДО 50 000 М²</div>
+        <!-- Card 1: КОММЕРЧЕСКАЯ НЕДВИЖИМОСТЬ -->
+        <div class="tech-card card-chamfered p-6 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="relative w-full h-48 bg-[#1A1D24] overflow-hidden photo-chamfered">
+              <img src="/images/sphere-commercial-clean.png" alt="Коммерческая недвижимость" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <h3 class="font-condensed font-bold text-2xl uppercase text-white leading-tight">
+              КОММЕРЧЕСКАЯ НЕДВИЖИМОСТЬ
+            </h3>
+            <p class="text-brand-muted text-sm leading-relaxed">
+              Торговые центры, магазины и общественные пространства. Подбираем решения с учётом внешнего вида, функциональности и сроков ввода.
+            </p>
+          </div>
         </div>
 
-        <div class="tech-card p-8 group">
-          <div class="text-brand-red font-mono text-xs uppercase tracking-wider mb-3">ПРОМЫШЛЕННОСТЬ</div>
-          <h3 class="font-condensed font-bold text-3xl uppercase text-white mb-3">СКЛАДЫ И ЗАВОДЫ</h3>
-          <p class="text-brand-muted text-sm leading-relaxed mb-6">
-            Охрана периметра, автоматические шлагбаумы со считыванием номеров фур, оптоволоконные трассы и взрывозащищенные датчики.
-          </p>
-          <div class="font-mono text-xs text-white/40">ВЫСОКАЯ СТЕПЕНЬ ЗАЩИТЫ IP67</div>
+        <!-- Card 2: СОЦИАЛЬНЫЕ И ГОСУДАРСТВЕННЫЕ ОБЪЕКТЫ -->
+        <div class="tech-card card-chamfered p-6 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="relative w-full h-48 bg-[#1A1D24] overflow-hidden photo-chamfered">
+              <img src="/images/sphere-social-figma.png" alt="Социальные и государственные объекты" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <h3 class="font-condensed font-bold text-2xl uppercase text-white leading-tight">
+              СОЦИАЛЬНЫЕ И ГОСУДАРСТВЕННЫЕ ОБЪЕКТЫ
+            </h3>
+            <p class="text-brand-muted text-sm leading-relaxed">
+              Школы, детские сады и другие учреждения. Работаем с требованиями по безопасности, энергоэффективности и нормативам эксплуатации.
+            </p>
+          </div>
         </div>
 
-        <div class="tech-card p-8 group">
-          <div class="text-brand-red font-mono text-xs uppercase tracking-wider mb-3">НЕДВИЖИМОСТЬ</div>
-          <h3 class="font-condensed font-bold text-3xl uppercase text-white mb-3">ЖК И КОТТЕДЖИ</h3>
-          <p class="text-brand-muted text-sm leading-relaxed mb-6">
-            IP-домофония с приложением в телефоне, контроль доступа в паркинг, бесшовный Wi-Fi по всей территории и умный дом.
-          </p>
-          <div class="font-mono text-xs text-white/40">ДЛЯ ЗАСТРОЙЩИКОВ И ЧАСТНЫХ ЛИЦ</div>
+        <!-- Card 3: АДМИНИСТРАТИВНЫЕ И ОБЩЕСТВЕННЫЕ ЗДАНИЯ -->
+        <div class="tech-card card-chamfered p-6 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="relative w-full h-48 bg-[#1A1D24] overflow-hidden photo-chamfered">
+              <img src="/images/sphere-admin-figma.png" alt="Административные и общественные здания" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <h3 class="font-condensed font-bold text-2xl uppercase text-white leading-tight">
+              АДМИНИСТРАТИВНЫЕ И ОБЩЕСТВЕННЫЕ ЗДАНИЯ
+            </h3>
+            <p class="text-brand-muted text-sm leading-relaxed">
+              Бизнес-центры, офисные и городские пространства. Учитываем требования к срокам, согласованиям и точности реализации проекта.
+            </p>
+          </div>
         </div>
 
+        <!-- Card 4: ПРОМЫШЛЕННЫЕ И СКЛАДСКИЕ ОБЪЕКТЫ -->
+        <div class="tech-card card-chamfered p-6 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="relative w-full h-48 bg-[#1A1D24] overflow-hidden photo-chamfered">
+              <img src="/images/sphere-commercial.png" alt="Промышленные и складские объекты" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <h3 class="font-condensed font-bold text-2xl uppercase text-white leading-tight">
+              ПРОМЫШЛЕННЫЕ И СКЛАДСКИЕ ОБЪЕКТЫ
+            </h3>
+            <p class="text-brand-muted text-sm leading-relaxed">
+              Производственные цеха, логистические склады и портовые терминалы. Взрывозащита IP67, резервирование линий и кабельные трассы.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Client Logos in Row from Figma Artboard -->
+      <div class="border-t border-white/10 pt-8">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center text-center">
+          <div class="font-mono text-xs font-bold uppercase tracking-wider text-white/70 hover:text-white transition-colors p-3 border border-white/5 bg-brand-surface">
+            ФССП РОССИЯ
+          </div>
+          <div class="font-mono text-xs font-bold uppercase tracking-wider text-white/70 hover:text-white transition-colors p-3 border border-white/5 bg-brand-surface">
+            СБЕРБАНК
+          </div>
+          <div class="font-mono text-xs font-bold uppercase tracking-wider text-white/70 hover:text-white transition-colors p-3 border border-white/5 bg-brand-surface">
+            МЧС РОССИЯ
+          </div>
+          <div class="font-mono text-xs font-bold uppercase tracking-wider text-white/70 hover:text-white transition-colors p-3 border border-white/5 bg-brand-surface">
+            ГАЗПРОМ
+          </div>
+          <div class="font-mono text-xs font-bold uppercase tracking-wider text-white/70 hover:text-white transition-colors p-3 border border-white/5 bg-brand-surface">
+            Т-БАНК
+          </div>
+          <div class="font-mono text-xs font-bold uppercase tracking-wider text-white/70 hover:text-white transition-colors p-3 border border-white/5 bg-brand-surface">
+            ГЕРБ РФ
+          </div>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ==================== 06 — КЕЙСЫ (FIGMA PROJECTS) ==================== -->
+  <!-- ==================== 06 — КЕЙСЫ (FIGMA CANONICAL PROJECTS) ==================== -->
   <section id="cases" class="py-20 sm:py-28 border-b border-white/10 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -658,51 +779,81 @@
             <span>КЕЙСЫ</span>
           </div>
           <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-6xl md:text-7xl text-white leading-none">
-            РЕАЛИЗОВАННЫЕ ПРОЕКТЫ
+            ОБЪЕКТЫ, КОТОРЫЕ МЫ ЗАЩИТИЛИ
           </h2>
         </div>
-        <p class="text-brand-muted font-mono text-xs uppercase tracking-wider max-w-xs">
-          БОЛЕЕ 450 ОБЪЕКТОВ СДАНО В СРОК С ПОЛНЫМ СООТВЕТСТВИЕМ НОРМАТИВАМ
+        <p class="text-brand-muted font-sans text-sm sm:text-base max-w-md leading-relaxed">
+          не просто устанавливаем системы — управляем всем процессом: от подбора оборудования до установки и сдачи объекта. Держим в курсе на каждом этапе
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- Case 1 -->
+        <!-- Case 1: БИЗНЕС-ЦЕНТР СБЕРБАНКА -->
         <div class="tech-card overflow-hidden group">
-          <div class="h-56 bg-brand-surface-light border-b border-white/10 relative overflow-hidden flex items-center justify-center p-6">
-            <img src="/images/cctv-card-visual.svg" alt="Кейс Логистический терминал" class="max-h-full object-contain filter drop-shadow-xl transition-transform duration-300 group-hover:scale-105">
-            <span class="absolute top-4 left-4 tag-chamfered !text-xs !py-1 !px-2.5">ЛОГИСТИКА</span>
+          <div class="h-60 bg-brand-surface-light border-b border-white/10 relative overflow-hidden flex items-center justify-center p-6">
+            <div class="corner-tl"></div>
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="corner-br"></div>
+            <img src="/images/cctv-phone-figma.png" alt="Бизнес-центр Сбербанка" class="max-h-full object-contain filter drop-shadow-xl transition-transform duration-300 group-hover:scale-105">
+            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+              <span class="tag-chamfered !text-xs !py-1 !px-2.5">ВИДЕОНАБЛЮДЕНИЕ</span>
+              <span class="tag-chamfered !text-xs !py-1 !px-2.5">СКУД</span>
+            </div>
+            <div class="absolute bottom-4 right-4 font-mono text-[10px] text-emerald-400 bg-black/60 px-2 py-0.5 border border-emerald-500/30">
+              ● ОБЪЕКТ СДАН
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-condensed font-bold text-2xl uppercase text-white mb-2">БИЗНЕС-ЦЕНТР СБЕРБАНКА</h3>
+            <p class="text-sm text-brand-muted leading-relaxed mb-4">
+              Комплекс видеонаблюдения высокой четкости, биометрический контроль доступа турникетов, автоматическая пожарная сигнализация.
+            </p>
+            <div class="font-mono text-xs text-brand-red font-bold">НА ТЕХНИЧЕСКОМ ОБСЛУЖИВАНИИ</div>
+          </div>
+        </div>
+
+        <!-- Case 2: ЛОГИСТИЧЕСКИЙ ХАБ «ВОСТОК» -->
+        <div class="tech-card overflow-hidden group">
+          <div class="h-60 bg-brand-surface-light border-b border-white/10 relative overflow-hidden flex items-center justify-center p-6">
+            <div class="corner-tl"></div>
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="corner-br"></div>
+            <img src="/images/cta-bullet-cam.png" alt="Логистический хаб Восток" class="max-h-full object-contain filter drop-shadow-xl transition-transform duration-300 group-hover:scale-105">
+            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+              <span class="tag-chamfered !text-xs !py-1 !px-2.5">ЛОГИСТИКА</span>
+              <span class="tag-chamfered !text-xs !py-1 !px-2.5">СКС</span>
+            </div>
+            <div class="absolute bottom-4 right-4 font-mono text-[10px] text-emerald-400 bg-black/60 px-2 py-0.5 border border-emerald-500/30">
+              ● ОБЪЕКТ СДАН
+            </div>
           </div>
           <div class="p-6">
             <h3 class="font-condensed font-bold text-2xl uppercase text-white mb-2">ЛОГИСТИЧЕСКИЙ ХАБ «ВОСТОК»</h3>
             <p class="text-sm text-brand-muted leading-relaxed mb-4">
-              Монтаж 140 IP-камер 4K с распознаванием автомобильных номеров, оптоволоконная сеть 10G и СКУД шлагбаумов.
+              Монтаж 140 IP-камер 4K с распознаванием автомобильных номеров, оптоволоконная сеть 10G и СКУД скоростных шлагбаумов.
             </p>
             <div class="font-mono text-xs text-brand-red font-bold">СРОК РЕАЛИЗАЦИИ: 28 ДНЕЙ</div>
           </div>
         </div>
 
-        <!-- Case 2 -->
+        <!-- Case 3: ЖИЛОЙ КОМПЛЕКС «МАЯК» -->
         <div class="tech-card overflow-hidden group">
-          <div class="h-56 bg-brand-surface-light border-b border-white/10 relative overflow-hidden flex items-center justify-center p-6">
-            <img src="/images/fire-card-visual.svg" alt="Кейс Бизнес-центр" class="max-h-full object-contain filter drop-shadow-xl transition-transform duration-300 group-hover:scale-105">
-            <span class="tag-chamfered absolute top-4 left-4 !text-xs !py-1 !px-2.5">БИЗНЕС-ЦЕНТР</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-condensed font-bold text-2xl uppercase text-white mb-2">БЦ «ЗОЛОТОЙ РОГ» (16 ЭТАЖЕЙ)</h3>
-            <p class="text-sm text-brand-muted leading-relaxed mb-4">
-              Адресно-аналоговая пожарная сигнализация на базе оборудования «Болид», СОУЭ 4-го типа и сдача инспектору МЧС с 1-го раза.
-            </p>
-            <div class="font-mono text-xs text-brand-red font-bold">СДАЧА МЧС: 100% ПРИЕМКА</div>
-          </div>
-        </div>
-
-        <!-- Case 3 -->
-        <div class="tech-card overflow-hidden group">
-          <div class="h-56 bg-brand-surface-light border-b border-white/10 relative overflow-hidden flex items-center justify-center p-6">
-            <img src="/images/skud-card-visual.svg" alt="Кейс Жилой комплекс" class="max-h-full object-contain filter drop-shadow-xl transition-transform duration-300 group-hover:scale-105">
-            <span class="tag-chamfered absolute top-4 left-4 !text-xs !py-1 !px-2.5">ЖК ПРЕМИУМ</span>
+          <div class="h-60 bg-brand-surface-light border-b border-white/10 relative overflow-hidden flex items-center justify-center p-6">
+            <div class="corner-tl"></div>
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="corner-br"></div>
+            <img src="/images/fire-figma.png" alt="Жилой комплекс Маяк" class="max-h-full object-contain filter drop-shadow-xl transition-transform duration-300 group-hover:scale-105">
+            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+              <span class="tag-chamfered !text-xs !py-1 !px-2.5">ЖК ПРЕМИУМ</span>
+              <span class="tag-chamfered !text-xs !py-1 !px-2.5">АПС</span>
+            </div>
+            <div class="absolute bottom-4 right-4 font-mono text-[10px] text-emerald-400 bg-black/60 px-2 py-0.5 border border-emerald-500/30">
+              ● ОБЪЕКТ СДАН
+            </div>
           </div>
           <div class="p-6">
             <h3 class="font-condensed font-bold text-2xl uppercase text-white mb-2">ЖИЛОЙ КОМПЛЕКС «МАЯК»</h3>
@@ -718,107 +869,39 @@
     </div>
   </section>
 
-  <!-- ==================== 07 — РАСЧЕТ СТОИМОСТИ (ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР) ==================== -->
-  <section id="calc" class="py-20 sm:py-28 border-b border-white/10 relative bg-radial-glow">
+  <!-- ==================== RED CTA BANNER 2 (FIGMA CANONICAL) ==================== -->
+  <section class="py-12 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative bg-gradient-to-r from-[#E02D37] via-[#C9222C] to-[#8F141B] rounded-2xl p-8 sm:p-12 overflow-hidden shadow-2xl border border-white/20">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative z-10">
+          <div>
+            <h2 class="font-condensed font-extrabold uppercase text-3xl sm:text-5xl text-white leading-tight mb-2">
+              НЕ НАШЛИ СВОЮ ЗАДАЧУ?
+            </h2>
+            <p class="text-white/90 text-sm sm:text-lg">
+              Оставьте заявку и мы подберём наилучшее решение под вашу индивидуальную задачу.
+            </p>
+          </div>
+          <button class="open-modal-btn px-8 py-4 bg-white hover:bg-gray-100 text-black font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-xl">
+            ОСТАВИТЬ ЗАЯВКУ →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 07 — FAQ (FIGMA ACCORDION) ==================== -->
+  <section id="faq" class="py-20 sm:py-28 border-b border-white/10 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="mb-14">
         <div class="section-tag mb-4">
           <span class="section-number">07</span>
           <span class="section-dash"></span>
-          <span>РАСЧЕТ СТОИМОСТИ</span>
-        </div>
-        <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-6xl md:text-7xl text-white leading-none">
-          КАЛЬКУЛЯТОР БЕЗОПАСНОСТИ
-        </h2>
-      </div>
-
-      <div class="tech-card p-6 sm:p-10 lg:p-12">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          
-          <div class="lg:col-span-2 space-y-8">
-            <!-- 1. System type -->
-            <div>
-              <label class="block font-mono text-xs uppercase tracking-wider text-brand-muted mb-3">1. ВЫБЕРИТЕ СИСТЕМУ</label>
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="calc-service-group">
-                <button type="button" data-rate="450" class="calc-btn active p-3 text-left border border-brand-red bg-brand-surface font-mono text-xs uppercase font-bold text-white transition-colors">
-                  Видеонаблюдение
-                </button>
-                <button type="button" data-rate="380" class="calc-btn p-3 text-left border border-white/10 bg-brand-surface font-mono text-xs uppercase font-bold text-white/70 hover:border-white/30 transition-colors">
-                  Пожарная (АПС)
-                </button>
-                <button type="button" data-rate="320" class="calc-btn p-3 text-left border border-white/10 bg-brand-surface font-mono text-xs uppercase font-bold text-white/70 hover:border-white/30 transition-colors">
-                  СКУД / Домофон
-                </button>
-                <button type="button" data-rate="280" class="calc-btn p-3 text-left border border-white/10 bg-brand-surface font-mono text-xs uppercase font-bold text-white/70 hover:border-white/30 transition-colors">
-                  СКС / Сети
-                </button>
-                <button type="button" data-rate="420" class="calc-btn p-3 text-left border border-white/10 bg-brand-surface font-mono text-xs uppercase font-bold text-white/70 hover:border-white/30 transition-colors">
-                  Электрика
-                </button>
-                <button type="button" data-rate="600" class="calc-btn p-3 text-left border border-white/10 bg-brand-surface font-mono text-xs uppercase font-bold text-white/70 hover:border-white/30 transition-colors">
-                  Комплекс под ключ
-                </button>
-              </div>
-            </div>
-
-            <!-- 2. Object Area Slider -->
-            <div>
-              <div class="flex justify-between items-center mb-3">
-                <label class="font-mono text-xs uppercase tracking-wider text-brand-muted">2. ПЛОЩАДЬ ОБЪЕКТА</label>
-                <span class="font-mono text-sm font-bold text-white"><span id="area-val">150</span> м²</span>
-              </div>
-              <input type="range" id="area-slider" min="30" max="2500" step="10" value="150" class="w-full accent-brand-red bg-brand-surface h-2 rounded cursor-pointer">
-              <div class="flex justify-between text-xs font-mono text-brand-muted mt-2">
-                <span>30 м²</span>
-                <span>500 м²</span>
-                <span>1 000 м²</span>
-                <span>2 500 м²</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Total Calculation & Quick Submit -->
-          <div class="bg-brand-surface-light border border-white/10 p-6 flex flex-col justify-between">
-            <div>
-              <div class="font-mono text-xs uppercase tracking-wider text-brand-muted mb-2">ОРИЕНТИРОВОЧНАЯ СТОИМОСТЬ</div>
-              <div class="font-condensed font-extrabold text-5xl sm:text-6xl text-white mb-2 leading-none">
-                <span id="calc-total-price">67 500</span> <span class="text-3xl text-brand-red">₽</span>
-              </div>
-              <div class="text-xs text-brand-muted leading-relaxed mb-6">
-                * Включает проектирование, оборудование, монтаж и пусконаладку. Точная цена фиксируется после бесплатного выезда инженера.
-              </div>
-            </div>
-
-            <form id="calc-form" class="space-y-3">
-              <div>
-                <input type="tel" id="calc-phone" required placeholder="+7 (___) ___-__-__" class="w-full bg-brand-surface border border-white/20 p-3 font-mono text-sm text-white placeholder-white/30 focus:border-brand-red focus:outline-none transition-colors">
-                <div id="calc-phone-error" class="hidden text-brand-red font-mono text-xs mt-1">Введите корректный номер (10-11 цифр)</div>
-              </div>
-              <button type="submit" class="w-full py-3.5 bg-brand-red hover:bg-brand-red-hover text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors">
-                Зафиксировать смету
-              </button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== 08 — FAQ ==================== -->
-  <section id="faq" class="py-20 sm:py-28 border-b border-white/10 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="mb-14">
-        <div class="section-tag mb-4">
-          <span class="section-number">08</span>
-          <span class="section-dash"></span>
           <span>FAQ</span>
         </div>
         <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-6xl md:text-7xl text-white leading-none">
-          ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ
+          ЧАСТЫЕ ВОПРОСЫ
         </h2>
       </div>
 
@@ -877,20 +960,61 @@
     </div>
   </section>
 
-  <!-- ==================== BRANDS SECTION ==================== -->
-  <section id="brands" class="py-16 border-b border-white/10 bg-[#0A0C0F]">
+  <!-- ==================== 08 — ОБСУДИМ ВАШ ПРОЕКТ? (FIGMA LEAD SECTION WITH REAL TECHNICIAN PHOTO) ==================== -->
+  <section class="py-20 sm:py-28 border-b border-white/10 relative bg-brand-surface">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center font-mono text-xs uppercase tracking-widest text-brand-muted mb-8">
-        ИСПОЛЬЗУЕМ СЕРТИФИЦИРОВАННОЕ ОБОРУДОВАНИЕ МИРОВЫХ И ОТЕЧЕСТВЕННЫХ ЛИДЕРОВ
+      
+      <div class="tech-card p-8 sm:p-12 overflow-hidden relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Left: Contact Form -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <div class="section-tag mb-3">
+                <span class="section-number">08</span>
+                <span class="section-dash"></span>
+                <span>ОБСУДИМ ВАШ ПРОЕКТ?</span>
+              </div>
+              <h2 class="font-condensed font-extrabold uppercase text-4xl sm:text-5xl text-white leading-none mb-3">
+                БЕСПЛАТНЫЙ ВЫЕЗД И РАСЧЕТ СМЕТЫ
+              </h2>
+              <p class="text-sm text-brand-muted leading-relaxed">
+                Оставьте контакты, и дежурный инженер свяжется с вами в течение 10 минут для консультации и согласования выезда.
+              </p>
+            </div>
+
+            <form id="calc-form" class="space-y-4">
+              <div>
+                <input type="text" id="cta-name" placeholder="Ваше имя" class="w-full bg-[#0E1014] border border-white/20 p-3.5 font-sans text-sm text-white placeholder-white/30 focus:border-brand-red focus:outline-none transition-colors">
+              </div>
+              <div>
+                <input type="tel" id="calc-phone" required placeholder="+7 (___) ___-__-__" class="w-full bg-[#0E1014] border border-white/20 p-3.5 font-mono text-sm text-white placeholder-white/30 focus:border-brand-red focus:outline-none transition-colors">
+                <div id="calc-phone-error" class="hidden text-brand-red font-mono text-xs mt-1">Введите корректный номер телефона (не менее 10 цифр)</div>
+              </div>
+              <div>
+                <textarea id="cta-comment" rows="3" placeholder="Опишите задачу или тип объекта (например: Склад 1200 м², видеонаблюдение и СКУД)" class="w-full bg-[#0E1014] border border-white/20 p-3.5 font-sans text-sm text-white placeholder-white/30 focus:border-brand-red focus:outline-none transition-colors resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-4 bg-brand-red hover:bg-brand-red-hover text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors shadow-lg">
+                Оставить заявку на бесплатный выезд →
+              </button>
+            </form>
+          </div>
+
+          <!-- Right: Real Technician Photo from Figma -->
+          <div class="lg:col-span-5 flex items-center justify-center">
+            <div class="relative w-full max-w-sm rounded-xl overflow-hidden border border-white/20 shadow-2xl">
+              <img src="/images/technician-real.png" alt="Инженер Монтажная Империя" class="w-full h-auto object-cover">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4">
+                <div class="font-mono text-xs font-bold text-white">ИНЖЕНЕР СЛУЖБЫ МОНТАЖА</div>
+                <div class="text-[11px] text-white/70">Выезд по Владивостоку и краю ежедневно</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 items-center opacity-70">
-        <div class="flex justify-center p-4 border border-white/5 bg-brand-surface font-mono font-bold text-sm tracking-wider">HIKVISION</div>
-        <div class="flex justify-center p-4 border border-white/5 bg-brand-surface font-mono font-bold text-sm tracking-wider">DAHUA</div>
-        <div class="flex justify-center p-4 border border-white/5 bg-brand-surface font-mono font-bold text-sm tracking-wider">БОЛИД</div>
-        <div class="flex justify-center p-4 border border-white/5 bg-brand-surface font-mono font-bold text-sm tracking-wider">РУБЕЖ</div>
-        <div class="flex justify-center p-4 border border-white/5 bg-brand-surface font-mono font-bold text-sm tracking-wider">DKC</div>
-        <div class="flex justify-center p-4 border border-white/5 bg-brand-surface font-mono font-bold text-sm tracking-wider">SIGUR</div>
-      </div>
+
     </div>
   </section>
 
@@ -926,7 +1050,7 @@
             <li><a href="#expertise" class="hover:text-brand-red transition-colors">О компании</a></li>
             <li><a href="#stages" class="hover:text-brand-red transition-colors">Этапы работы</a></li>
             <li><a href="#cases" class="hover:text-brand-red transition-colors">Реализованные кейсы</a></li>
-            <li><a href="#calc" class="hover:text-brand-red transition-colors">Калькулятор стоимости</a></li>
+            <li><a href="#spheres" class="hover:text-brand-red transition-colors">Сферы работы</a></li>
             <li><a href="#faq" class="hover:text-brand-red transition-colors">Частые вопросы</a></li>
           </ul>
         </div>
