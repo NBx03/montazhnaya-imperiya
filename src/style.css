@@ -287,6 +287,17 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
 }
 
+/* Smooth radial mask to blend hardware seamlessly with zero rectangular borders */
+.blend-hardware {
+  mask-image: radial-gradient(circle at center, black 55%, transparent 95%);
+  -webkit-mask-image: radial-gradient(circle at center, black 55%, transparent 95%);
+}
+
+.stage-num {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
