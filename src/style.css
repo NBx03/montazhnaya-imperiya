@@ -37,6 +37,71 @@ body {
     radial-gradient(circle at 12% 65%, rgba(185, 48, 30, 0.09) 0%, transparent 50%);
 }
 
+/* Continuous Multi-Section Ambient Glow Architecture matching Figma */
+.ambient-glow-sec1 {
+  background: radial-gradient(ellipse 70% 60% at 85% 0%, rgba(215, 75, 35, 0.24) 0%, rgba(165, 45, 25, 0.10) 38%, transparent 72%);
+  animation: ambientFloat1 7s ease-in-out infinite alternate;
+}
+
+.ambient-glow-sec2 {
+  background: 
+    radial-gradient(ellipse 75% 65% at 88% 20%, rgba(215, 75, 35, 0.22) 0%, rgba(165, 45, 25, 0.08) 45%, transparent 75%),
+    radial-gradient(ellipse 55% 45% at 8% 75%, rgba(185, 48, 30, 0.08) 0%, transparent 65%);
+  animation: ambientFloat2 9s ease-in-out infinite alternate;
+}
+
+.ambient-glow-sec3 {
+  background: radial-gradient(ellipse 70% 60% at 5% 45%, rgba(215, 75, 35, 0.18) 0%, rgba(165, 45, 25, 0.07) 38%, transparent 70%);
+  animation: ambientFloat1 8s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat1 {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(14px) scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes ambientFloat2 {
+  0% {
+    transform: translateY(-6px) scale(0.98);
+    opacity: 0.88;
+  }
+  100% {
+    transform: translateY(12px) scale(1.03);
+    opacity: 1;
+  }
+}
+
+/* Section 01: Headline Masked Line-by-Line Reveal */
+.title-reveal-line {
+  display: block;
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.is-visible .title-reveal-line {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+/* Section 01: Cards Staggered Slide-Up Entrance */
+.card-stagger {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.is-visible .card-stagger {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Exact Figma Red CTA Banner Gradient: Dark on left -> Fiery Orange on right */
 .banner-figma-gradient {
   background: linear-gradient(98deg, #18191E 0%, #35171B 16%, #792328 38%, #B43625 65%, #CB4E24 85%, #D65A26 100%);
