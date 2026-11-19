@@ -1758,18 +1758,121 @@
   </main>
 
   <!-- ========================================================================= -->
-  <!-- 13. FOOTER                                                                -->
+  <!-- 13. FOOTER — EXACT FIGMA 1-TO-1 SPEC                                      -->
   <!-- ========================================================================= -->
-  <footer id="footer" class="py-12 bg-[#090A0D] border-t border-white/10 text-white/50 font-mono text-xs">
-    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div class="flex items-center space-x-4">
-        <img src="/icons/logo-icon.png" alt="Монтажная Империя" class="h-6 w-auto opacity-70">
-        <span>© 2026 ООО «Монтажная Империя». Все права защищены.</span>
-      </div>
-      <div class="text-right">
-        <span>Владивосток • ИНН 2540000000 • Лицензия МЧС</span>
-      </div>
+  <footer id="footer" class="tech-plate-footer text-white overflow-hidden relative">
+    
+    <!-- Top Chamfered Border Line (M 0 48 L 48 0 L 100% 0) -->
+    <div class="pointer-events-none absolute top-0 left-0 right-0 h-[48px] z-20 overflow-hidden">
+      <!-- Desktop / Tablet: 48px cut -->
+      <svg viewBox="0 0 1440 48" preserveAspectRatio="none" class="w-full h-full hidden sm:block" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0 48 L 48 0 L 1440 0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+      </svg>
+      <!-- Mobile: 32px cut -->
+      <svg viewBox="0 0 375 32" preserveAspectRatio="none" class="w-full h-full sm:hidden" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0 32 L 32 0 L 375 0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+      </svg>
     </div>
+
+    <!-- Subtle bottom ambient glow behind watermark -->
+    <div class="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-48 bg-[radial-gradient(ellipse_at_bottom,rgba(224,45,55,0.08)_0%,transparent_70%)] z-0"></div>
+
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10 pt-16 sm:pt-20 lg:pt-24">
+      
+      <!-- Upper Section: Brand + Location (Left) vs Contacts + Socials (Right) -->
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 lg:gap-16 pb-12">
+        
+        <!-- Left Column: Logo, Title, Tagline & Address -->
+        <div>
+          <!-- Logo & Brand Header -->
+          <div class="flex items-center space-x-3.5 mb-5 sm:mb-6">
+            <img src="/images/footer-logo-mi.png" alt="МИ" class="w-10 h-10 object-contain shrink-0">
+            <div>
+              <!-- Exact Spec: Onest 18 Bold -->
+              <span class="font-sans font-bold text-[18px] text-white tracking-wide block leading-tight">
+                МОНТАЖНАЯ ИМПЕРИЯ
+              </span>
+              <!-- Exact Spec: JetBrains Mono 14 medium -->
+              <span class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wider block mt-0.5">
+                ОХРАНА · ЭЛЕКТРОМОНТАЖ
+              </span>
+            </div>
+          </div>
+
+          <!-- Exact Spec: JetBrains Mono 14 medium -->
+          <div class="font-mono font-medium text-[13px] sm:text-[14px] uppercase tracking-wider flex flex-wrap items-center gap-x-4 gap-y-1.5">
+            <span class="text-white/80">г. Владивосток, Приморский край</span>
+            <span class="text-white/40">ПН-ВС · 9:00-20:00</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Phone, Email & Social Icons -->
+        <div class="flex flex-col sm:flex-row sm:items-start lg:items-center gap-6 sm:gap-8 lg:gap-10">
+          <div>
+            <!-- Exact Spec: JetBrains Mono 28 bold -->
+            <a href="tel:+74232000000" class="font-mono font-bold text-[22px] sm:text-[26px] lg:text-[28px] text-white hover:text-brand-red transition-colors block leading-tight tracking-tight underline decoration-white/25 underline-offset-4 hover:decoration-brand-red">
+              +7 (423) 200-00-00
+            </a>
+            <!-- Exact Spec: JetBrains Mono 28 bold -->
+            <a href="mailto:info@montazh-imperia.ru" class="font-mono font-bold text-[20px] sm:text-[24px] lg:text-[28px] text-white hover:text-brand-red transition-colors block mt-2 sm:mt-2.5 leading-tight tracking-tight">
+              info@montazh-imperia.ru
+            </a>
+          </div>
+
+          <!-- Social Icons (WhatsApp, Telegram, Chat) -->
+          <div class="flex items-center space-x-3.5 pt-1">
+            <a href="https://wa.me/74232000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-9 h-9 sm:w-10 sm:h-10 hover:scale-110 hover:brightness-110 transition-all shrink-0">
+              <img src="/images/icon-whatsapp.png" alt="WhatsApp" class="w-full h-full object-contain">
+            </a>
+            <a href="https://t.me/montazh_imperia" target="_blank" rel="noopener" aria-label="Telegram" class="w-9 h-9 sm:w-10 sm:h-10 hover:scale-110 hover:brightness-110 transition-all shrink-0">
+              <img src="/images/icon-telegram.png" alt="Telegram" class="w-full h-full object-contain">
+            </a>
+            <a href="#" aria-label="Чат" class="w-9 h-9 sm:w-10 sm:h-10 hover:scale-110 hover:brightness-110 transition-all shrink-0">
+              <img src="/images/icon-chat-bubble.png" alt="Чат" class="w-full h-full object-contain">
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Divider line -->
+      <div class="border-t border-white/10 pt-8 pb-10 sm:pb-14">
+        
+        <!-- Middle Row: Legal Details (Left) vs Links (Right) -->
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 text-[13px] sm:text-[14px] font-mono font-medium">
+          
+          <!-- Exact Spec: JetBrains Mono 14 Medium -->
+          <div class="text-white/40 uppercase tracking-wider">
+            ООО «МОНТАЖНАЯ ИМПЕРИЯ» · ИНН 0000000000 · ОГРН 0000000000000
+          </div>
+
+          <!-- Exact Spec: JetBrains Mono 14 Medium -->
+          <div class="flex flex-wrap items-center gap-x-6 sm:gap-x-8 gap-y-2 uppercase tracking-wider">
+            <a href="#privacy" class="text-white/60 hover:text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-colors">
+              ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
+            </a>
+            <a href="#requisites" class="text-white/60 hover:text-white transition-colors">
+              РЕКВИЗИТЫ
+            </a>
+            <a href="#" class="text-white/60 hover:text-white transition-colors">
+              ГДЕ РАЗРАБОТАТЬ САЙТ?
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Exact Spec: Fira Sans Extra Condensed 168 semibold -->
+      <!-- Giant semi-transparent watermark spanning full width, partially cropped at bottom -->
+      <div class="w-full overflow-hidden select-none pointer-events-none text-center">
+        <div class="font-condensed font-semibold text-[68px] sm:text-[110px] md:text-[140px] lg:text-[168px] leading-none text-white/[0.04] uppercase tracking-normal whitespace-nowrap -mb-6 sm:-mb-10 lg:-mb-14">
+          МОНТАЖНАЯ ИМПЕРИЯ
+        </div>
+      </div>
+
+    </div>
+
   </footer>
 
   <script type="module" src="/src/main.js"></script>
