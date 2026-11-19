@@ -38,6 +38,30 @@ body {
 }
 
 /* Continuous Multi-Section Ambient Glow Architecture matching Figma */
+.ambient-glow-sections-1-2 {
+  background-image: 
+    /* Upper-right glow in Section 01 under ticker */
+    radial-gradient(ellipse 65% 22% at 85% 5%, rgba(215, 75, 35, 0.22) 0%, rgba(165, 45, 25, 0.08) 35%, transparent 70%),
+    /* Mid-right transition glow bridging Section 01 into Section 02 */
+    radial-gradient(ellipse 68% 28% at 88% 30%, rgba(215, 75, 35, 0.20) 0%, rgba(165, 45, 25, 0.08) 42%, transparent 75%),
+    /* Core right-side ambient illumination in Section 02 */
+    radial-gradient(ellipse 72% 34% at 88% 54%, rgba(215, 75, 35, 0.22) 0%, rgba(165, 45, 25, 0.08) 45%, transparent 75%),
+    /* Soft accent glow on bottom-left in Section 02 */
+    radial-gradient(ellipse 52% 24% at 10% 84%, rgba(185, 48, 30, 0.08) 0%, transparent 65%);
+  animation: ambientFloat12 11s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat12 {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.90;
+  }
+  100% {
+    transform: translateY(14px) scale(1.02);
+    opacity: 1;
+  }
+}
+
 .ambient-glow-sec1 {
   background: radial-gradient(ellipse 70% 60% at 85% 0%, rgba(215, 75, 35, 0.24) 0%, rgba(165, 45, 25, 0.10) 38%, transparent 72%);
   animation: ambientFloat1 7s ease-in-out infinite alternate;
