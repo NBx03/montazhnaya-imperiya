@@ -14,39 +14,42 @@
   <!-- 00. HEADER (EXACT MATCH TO FIGMA SCREENSHOT)                              -->
   <!-- ========================================================================= -->
   <header id="header" class="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
-    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-16 sm:h-[68px] flex items-center justify-between">
       
       <!-- Logo: Exact PNG from Figma -->
       <a href="/" class="flex items-center group py-1">
-        <img src="/icons/logo-header.png" alt="Монтажная Империя" class="h-9 sm:h-10 w-auto object-contain">
+        <img src="/icons/logo-header.png" alt="Монтажная Империя" class="h-8 sm:h-9 w-auto object-contain">
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center space-x-9 text-sm font-medium text-[#111827]">
-        <a href="#services" class="hover:text-brand-red transition-colors">Услуги</a>
+      <!-- Desktop Navigation: Exactly matching Figma screenshot with active/hover underline on Услуги -->
+      <nav class="hidden lg:flex items-center space-x-8 text-[13.5px] font-sans font-normal text-[#1E232E]">
+        <a href="#services" class="text-black underline underline-offset-4 decoration-1 hover:text-brand-red transition-colors">Услуги</a>
         <a href="#expertise" class="hover:text-brand-red transition-colors">О компании</a>
         <a href="#cases" class="hover:text-brand-red transition-colors">Кейсы</a>
         <a href="#clients" class="hover:text-brand-red transition-colors">Заказчики</a>
         <a href="#contacts" class="hover:text-brand-red transition-colors">Контакты</a>
       </nav>
 
-      <!-- Header Right: Phone, Hours, Telegram, WhatsApp (NO extra button as in screenshot) -->
-      <div class="hidden sm:flex items-center space-x-4 lg:space-x-5">
+      <!-- Header Right: Phone (underlined), Hours, Outlined Square Telegram, Outlined Square WhatsApp -->
+      <div class="hidden sm:flex items-center space-x-4 lg:space-x-4">
         <div class="text-right">
-          <a href="tel:+74232000000" class="block font-mono font-extrabold text-[15px] text-[#0E1014] hover:text-brand-red transition-colors leading-tight">
+          <a href="tel:+74232000000" class="block font-mono font-bold text-[14px] text-[#0E1014] hover:text-brand-red underline underline-offset-2 transition-colors leading-tight">
             +7 (423) 200-00-00
           </a>
-          <span class="block text-[11px] font-sans text-gray-500 font-medium">Ежедневно 9:00–21:00</span>
+          <span class="block text-[11px] font-sans text-gray-500 font-normal leading-tight mt-0.5">Ежедневно 9:00–21:00</span>
         </div>
 
-        <div class="flex items-center space-x-2">
-          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#0088cc] hover:opacity-90 flex items-center justify-center transition-opacity shadow-sm" title="Telegram">
-            <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+        <!-- Square Outlined Messengers from Figma -->
+        <div class="flex items-center space-x-1.5">
+          <!-- Telegram: Square Outlined Box with Blue Border -->
+          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="w-7 h-7 sm:w-8 sm:h-8 rounded-[3px] border border-[#0088cc] bg-white hover:bg-[#0088cc]/10 flex items-center justify-center transition-colors shadow-sm" title="Telegram">
+            <svg class="w-4 h-4 text-[#0088cc] fill-current" viewBox="0 0 24 24">
+              <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.673c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
             </svg>
           </a>
-          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#25D366] hover:opacity-90 flex items-center justify-center transition-opacity shadow-sm" title="WhatsApp">
-            <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24">
+          <!-- WhatsApp: Square Outlined Box with Green Border -->
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="w-7 h-7 sm:w-8 sm:h-8 rounded-[3px] border border-[#25D366] bg-white hover:bg-[#25D366]/10 flex items-center justify-center transition-colors shadow-sm" title="WhatsApp">
+            <svg class="w-4 h-4 text-[#25D366] fill-current" viewBox="0 0 24 24">
               <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm0 18.09c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.32c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 012.41 5.83c.01 4.54-3.69 8.23-8.22 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.17-.48-.29z"/>
             </svg>
           </a>
