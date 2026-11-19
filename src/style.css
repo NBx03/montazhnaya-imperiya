@@ -914,3 +914,9 @@ body {
   animation-play-state: paused;
 }
 
+/* Modals visibility when hidden */
+#lead-modal.opacity-0,
+#success-modal.opacity-0 {
+  visibility: hidden;
+}
+
