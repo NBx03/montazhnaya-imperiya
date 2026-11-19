@@ -35,6 +35,11 @@ body {
     radial-gradient(circle at 12% 65%, rgba(185, 48, 30, 0.09) 0%, transparent 50%);
 }
 
+.bg-ambient-glow-stats {
+  background-image: 
+    radial-gradient(circle at 10% 80%, rgba(215, 60, 30, 0.20) 0%, rgba(165, 40, 20, 0.08) 35%, transparent 65%);
+}
+
 /* Exact Figma Red CTA Banner Gradient: Dark on left -> Fiery Orange on right */
 .banner-figma-gradient {
   background: linear-gradient(98deg, #18191E 0%, #35171B 16%, #792328 38%, #B43625 65%, #CB4E24 85%, #D65A26 100%);
@@ -172,6 +177,73 @@ body {
   height: 2px;
   background-color: #E02D37;
   display: inline-block;
+}
+
+/* Interactive Chamfered Technical Photo inside Title (fdrv.pro animation style) */
+.inline-tech-photo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  height: 40px;
+  margin: 0 8px;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .inline-tech-photo {
+    height: 50px;
+    margin: 0 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inline-tech-photo {
+    height: 58px;
+    margin: 0 16px;
+  }
+}
+
+.inline-tech-photo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.5));
+}
+
+.inline-tech-photo:hover {
+  transform: scale(1.08);
+}
+
+/* Continuous Marquee Ticker Keyframes */
+@keyframes tickerLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes tickerReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-ticker-left {
+  display: flex;
+  width: max-content;
+  animation: tickerLeft 32s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker-reverse {
+  display: flex;
+  width: max-content;
+  animation: tickerReverse 32s linear infinite;
+  will-change: transform;
+}
+
+.hover\:pause:hover {
+  animation-play-state: paused;
 }
 
 /* Interactive Photo Pill inside Title (fdrv.pro animation style) */

@@ -39,44 +39,54 @@ document.addEventListener('DOMContentLoaded', () => {
   if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeMobileMenu);
   mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
 
-  // 3. Scroll-triggered Number Counters (Section 03 fdrv.pro reference)
-  const counterEls = document.querySelectorAll('.counter-val');
+  // 3. Fast Odometer Animation for Section 03 (Figma annotation: "У цифр быстрый одометр")
+  const odometerEls = document.querySelectorAll('.stat-odometer, .counter-val');
   let countersAnimated = false;
+
+  function runFastOdometer() {
+    odometerEls.forEach(counter => {
+      const target = parseInt(counter.dataset.target, 10);
+      if (isNaN(target)) return;
+      if (target === 0) {
+        counter.textContent = '0';
+        return;
+      }
+
+      const duration = 1100; // ms: fast and responsive
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Exponential deceleration curve for crisp mechanical odometer feel
+        const ease = 1 - Math.pow(1 - progress, 4);
+        const currentVal = Math.floor(ease * target);
+
+        counter.textContent = currentVal;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          counter.textContent = target; // Ensure exact final target number
+        }
+      }
+
+      requestAnimationFrame(update);
+    });
+  }
 
   const countObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !countersAnimated) {
         countersAnimated = true;
-        counterEls.forEach(counter => {
-          const target = parseInt(counter.dataset.target, 10);
-          if (isNaN(target)) return;
-          if (target === 0) {
-            counter.textContent = '0';
-            return;
-          }
-          let current = 0;
-          const duration = 1600; // ms
-          const stepTime = 20; // ms
-          const totalSteps = duration / stepTime;
-          const increment = target / totalSteps;
-
-          const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-              counter.textContent = target;
-              clearInterval(timer);
-            } else {
-              counter.textContent = Math.floor(current);
-            }
-          }, stepTime);
-        });
+        runFastOdometer();
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.25 });
 
-  const statsSection = document.querySelector('.counter-val');
+  const statsSection = document.getElementById('why-us') || document.querySelector('.stat-odometer, .counter-val')?.closest('section');
   if (statsSection) {
-    countObserver.observe(statsSection.closest('section'));
+    countObserver.observe(statsSection);
   }
 
   // 4. Section 04: Interactive Step Accordion Rows
