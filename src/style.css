@@ -400,36 +400,43 @@ body {
   filter: drop-shadow(0 0 16px rgba(224, 45, 55, 0.4));
 }
 
-/* Continuous Marquee Ticker Keyframes */
-@keyframes tickerLeft {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+/* Bulletproof Seamless Infinite Marquee Ticker (fdrv.pro kinetic typography style) */
+@keyframes marqueeScrollLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
 }
 
-@keyframes tickerReverse {
-  0% { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+@keyframes marqueeScrollRight {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-.animate-ticker-left {
+.animate-marquee-left {
   display: flex;
   align-items: center;
-  width: max-content;
   flex-shrink: 0;
-  animation: tickerLeft 40s linear infinite;
+  animation: marqueeScrollLeft 38s linear infinite;
   will-change: transform;
 }
 
-.animate-ticker-reverse {
+.animate-marquee-right {
   display: flex;
   align-items: center;
-  width: max-content;
   flex-shrink: 0;
-  animation: tickerReverse 36s linear infinite;
+  animation: marqueeScrollRight 38s linear infinite;
   will-change: transform;
 }
 
-.hover\:pause:hover {
+.ticker-wrapper:hover .animate-marquee-left,
+.ticker-wrapper:hover .animate-marquee-right {
   animation-play-state: paused;
 }
 
