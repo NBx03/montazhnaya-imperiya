@@ -71,6 +71,107 @@ body {
   }
 }
 
+/* Technical Plate Block - Section 06 (Unified Cases + Red Banner 2 Block) */
+.tech-plate-sec6 {
+  background-color: #131418;
+  position: relative;
+  /* Seamless top (0 0), bottom-right cut 48px */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), calc(100% - 48px) 100%, 0 100%);
+}
+
+@media (max-width: 639px) {
+  .tech-plate-sec6 {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0 100%);
+  }
+}
+
+/* Stacking Cards Grid Container */
+.case-cards-stack-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  position: relative;
+  padding-bottom: 140px;
+}
+
+@media (max-width: 639px) {
+  .case-cards-stack-grid {
+    padding-bottom: 90px;
+  }
+}
+
+.case-card {
+  grid-area: 1 / 1 / 2 / 2;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, filter, opacity;
+}
+
+/* Base stack positions (Figma Overlapping Layering) */
+.case-card.card-pos-back {
+  z-index: 10;
+  transform: translateY(0px) scale(0.95);
+  transform-origin: top center;
+  filter: brightness(0.45);
+  opacity: 0.55;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.case-card.card-pos-middle {
+  z-index: 20;
+  transform: translateY(64px) scale(0.975);
+  transform-origin: top center;
+  filter: brightness(0.7);
+  opacity: 0.8;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.case-card.card-pos-front {
+  z-index: 30;
+  transform: translateY(128px) scale(1);
+  transform-origin: top center;
+  filter: brightness(1);
+  opacity: 1;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.85);
+  cursor: default;
+}
+
+@media (max-width: 639px) {
+  .case-card.card-pos-middle {
+    transform: translateY(40px) scale(0.97);
+  }
+  .case-card.card-pos-front {
+    transform: translateY(80px) scale(1);
+  }
+}
+
+/* Metric tile chamfer */
+.case-metric-tile {
+  background-color: #1A1C22;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.case-metric-tile:hover {
+  background-color: #22252C;
+  border-color: rgba(224, 45, 55, 0.35);
+}
+
+.case-tab-btn {
+  transition: all 0.25s ease;
+}
+.case-tab-btn.active {
+  background-color: #E02D37;
+  color: #ffffff;
+  border-color: #E02D37;
+}
+
 .ambient-glow-sec2 {
   position: absolute;
   top: 0;

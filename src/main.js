@@ -133,12 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeMobileMenu);
   mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
 
-  // 3. Fast Odometer Animation for Section 03 (Figma annotation: "У цифр быстрый одометр")
-  const odometerEls = document.querySelectorAll('.stat-odometer, .counter-val');
-  let countersAnimated = false;
-
-  function runFastOdometer() {
-    odometerEls.forEach(counter => {
+  // Fast mechanical odometer animation helper (Figma annotation: "У цифр быстрый одометр")
+  function animateOdometerGroup(elements, duration = 1000) {
+    elements.forEach(counter => {
       const target = parseInt(counter.dataset.target, 10);
       if (isNaN(target)) return;
       if (target === 0) {
@@ -146,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const duration = 1100; // ms: fast and responsive
       const startTime = performance.now();
 
       function update(currentTime) {
@@ -169,18 +165,98 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !countersAnimated) {
-        countersAnimated = true;
-        runFastOdometer();
+  // 3. Fast Odometer Animation for Section 03
+  const sec3Odometers = document.querySelectorAll('#why-us .stat-odometer');
+  let sec3Animated = false;
+  const statsSection = document.getElementById('why-us');
+  if (statsSection && sec3Odometers.length) {
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !sec3Animated) {
+          sec3Animated = true;
+          animateOdometerGroup(sec3Odometers, 1100);
+        }
+      });
+    }, { threshold: 0.25 });
+    countObserver.observe(statsSection);
+  }
+
+  // 3.1. Section 06: Stacking Cases Cards & Fast Odometer Controller
+  const caseCards = document.querySelectorAll('.case-card');
+  const caseTabs = document.querySelectorAll('.case-tab-btn');
+  let activeCaseIdx = 0;
+
+  function setCaseStack(targetIdx) {
+    if (targetIdx < 0 || targetIdx >= caseCards.length) return;
+    activeCaseIdx = targetIdx;
+
+    // Update tabs
+    caseTabs.forEach((btn, idx) => {
+      if (idx === targetIdx) {
+        btn.classList.add('active');
+        btn.classList.remove('bg-[#141519]', 'text-white/60', 'border-white/10');
+        btn.classList.add('bg-[#1A1C22]', 'text-white', 'border-white/20');
+      } else {
+        btn.classList.remove('active');
+        btn.classList.remove('bg-[#1A1C22]', 'text-white', 'border-white/20');
+        btn.classList.add('bg-[#141519]', 'text-white/60', 'border-white/10');
       }
     });
-  }, { threshold: 0.25 });
 
-  const statsSection = document.getElementById('why-us') || document.querySelector('.stat-odometer, .counter-val')?.closest('section');
-  if (statsSection) {
-    countObserver.observe(statsSection);
+    // Update 3 cards stacking depth (Figma: "Наслаивание карточек с перекрытием предыдущей, её затемнением и уменьшением")
+    caseCards.forEach((card) => {
+      const cardIdx = parseInt(card.dataset.caseIdx, 10);
+      card.classList.remove('card-pos-front', 'card-pos-middle', 'card-pos-back');
+
+      if (cardIdx === targetIdx) {
+        card.classList.add('card-pos-front');
+        // Trigger fast odometer for this card
+        const cardOdometers = card.querySelectorAll('.stat-odometer');
+        animateOdometerGroup(cardOdometers, 800);
+      } else if (cardIdx === (targetIdx + 1) % 3) {
+        card.classList.add('card-pos-middle');
+      } else {
+        card.classList.add('card-pos-back');
+      }
+    });
+  }
+
+  // Click on card tabs
+  caseTabs.forEach((tab) => {
+    tab.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(tab.dataset.caseIndex, 10);
+      setCaseStack(idx);
+    });
+  });
+
+  // Click on layered cards
+  caseCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const idx = parseInt(card.dataset.caseIdx, 10);
+      if (idx !== activeCaseIdx) {
+        setCaseStack(idx);
+      }
+    });
+  });
+
+  // Section 06 Intersection Observer to trigger initial fast odometer
+  const casesSection = document.getElementById('cases');
+  let casesAnimated = false;
+  if (casesSection) {
+    const casesObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !casesAnimated) {
+          casesAnimated = true;
+          const frontCard = document.querySelector('.case-card.card-pos-front');
+          if (frontCard) {
+            const frontOdometers = frontCard.querySelectorAll('.stat-odometer');
+            animateOdometerGroup(frontOdometers, 900);
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+    casesObserver.observe(casesSection);
   }
 
   // 4. Section 04: Interactive Step Accordion Rows
