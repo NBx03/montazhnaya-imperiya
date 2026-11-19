@@ -218,13 +218,17 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 03. SECTION 01 — ЭКСПЕРТИЗА (EXACT 1-TO-1 MATCH TO FIGMA SCREENSHOT)       -->
+    <!-- SECTIONS 01 & 02 WRAPPER: CONTINUOUS SEAMLESS AMBIENT GLOW BACKDROP       -->
     <!-- ========================================================================= -->
-    <section id="expertise" class="py-20 sm:py-24 relative overflow-hidden bg-transparent">
-      <!-- Ambient Glow (Top Right under ticker, seamlessly flowing into Section 02) -->
-      <div class="ambient-glow ambient-glow-sec1 pointer-events-none absolute inset-0"></div>
+    <div class="relative overflow-hidden">
+      <!-- Unified Ambient Glow across Section 01 & Section 02 (Eliminates boundary artifacts) -->
+      <div class="ambient-glow ambient-glow-sections-1-2 pointer-events-none absolute inset-0 z-0"></div>
 
-      <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+      <!-- ========================================================================= -->
+      <!-- 03. SECTION 01 — ЭКСПЕРТИЗА (EXACT 1-TO-1 MATCH TO FIGMA SCREENSHOT)       -->
+      <!-- ========================================================================= -->
+      <section id="expertise" class="py-20 sm:py-24 relative z-10 bg-transparent">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         
         <!-- Header Grid: Title Left, Text Right (Exact Figma Proportions & Typography) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14">
@@ -308,10 +312,7 @@
     <!-- ========================================================================= -->
     <!-- 04. SECTION 02 — УСЛУГИ / ВСЕ СИСТЕМЫ ПОД КЛЮЧ (EXACT FIGMA ASYMMETRIC GRID) -->
     <!-- ========================================================================= -->
-    <section id="services" class="py-20 sm:py-28 relative overflow-hidden bg-transparent">
-      <!-- Ambient Glow (Connecting from Section 01, down right edge and bottom-left) -->
-      <div class="ambient-glow ambient-glow-sec2 pointer-events-none absolute inset-0"></div>
-
+    <section id="services" class="py-20 sm:py-28 relative z-10 bg-transparent">
       <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         
         <!-- Header: Title Left (Fira Sans Extra Condensed Medium 60), Subtitle Right -->
@@ -560,6 +561,7 @@
         </div>
       </div>
     </section>
+    </div>
 
     <!-- ========================================================================= -->
     <!-- 06. SECTION 03 — ПОЧЕМУ МЫ / ЦИФРЫ (EXACT FIGMA 1-TO-1 MATCH)             -->
