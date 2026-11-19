@@ -335,60 +335,91 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 8. Modal Lead Form Handling
+  // 8. Lead Consult Modal & Success Modal (Exact Figma 1440px Specs)
   const leadModal = document.getElementById('lead-modal');
-  const closeModalBtn = document.getElementById('close-modal-btn');
+  const closeLeadModalBtn = document.getElementById('close-lead-modal');
   const openModalBtns = document.querySelectorAll('.open-modal-btn');
-  const leadForm = document.getElementById('lead-form');
-  const modalSuccess = document.getElementById('modal-success');
-  const modalSuccessClose = document.getElementById('modal-success-close');
+  const modalLeadForm = document.getElementById('modal-lead-form');
 
-  function openModal() {
+  const successModal = document.getElementById('success-modal');
+  const closeSuccessModalBtn = document.getElementById('close-success-modal');
+  const modalHomeBtn = document.getElementById('modal-home-btn');
+
+  function openLeadModal() {
     if (!leadModal) return;
+    closeMobileMenu();
     leadModal.classList.remove('opacity-0', 'pointer-events-none');
     document.body.style.overflow = 'hidden';
-    if (leadForm) leadForm.classList.remove('hidden');
-    if (modalSuccess) modalSuccess.classList.add('hidden');
   }
 
-  function closeModal() {
+  function closeLeadModal() {
     if (!leadModal) return;
     leadModal.classList.add('opacity-0', 'pointer-events-none');
+    if (!successModal || successModal.classList.contains('opacity-0')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  function openSuccessModal() {
+    if (!successModal) return;
+    closeLeadModal();
+    closeMobileMenu();
+    successModal.classList.remove('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSuccessModal() {
+    if (!successModal) return;
+    successModal.classList.add('opacity-0', 'pointer-events-none');
     document.body.style.overflow = '';
   }
 
   openModalBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      openModal();
+      openLeadModal();
     });
   });
 
-  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-  if (modalSuccessClose) modalSuccessClose.addEventListener('click', closeModal);
+  if (closeLeadModalBtn) closeLeadModalBtn.addEventListener('click', closeLeadModal);
+  if (closeSuccessModalBtn) closeSuccessModalBtn.addEventListener('click', closeSuccessModal);
+
+  if (modalHomeBtn) {
+    modalHomeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeSuccessModal();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   if (leadModal) {
     leadModal.addEventListener('click', (e) => {
-      if (e.target === leadModal) closeModal();
+      if (e.target === leadModal) closeLeadModal();
+    });
+  }
+
+  if (successModal) {
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) closeSuccessModal();
     });
   }
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      closeModal();
+      closeLeadModal();
+      closeSuccessModal();
       closeMobileMenu();
     }
   });
 
-  // Modal Form Submit with strict validation
-  if (leadForm) {
-    leadForm.addEventListener('submit', (e) => {
+  // Modal Lead Form Submit with validation
+  if (modalLeadForm) {
+    modalLeadForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const phoneInput = document.getElementById('modal-phone');
-      const phoneError = document.getElementById('modal-phone-error');
+      const phoneInput = document.getElementById('modal-lead-phone');
       const cleanPhone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
 
       if (cleanPhone.length < 11) {
-        if (phoneError) phoneError.classList.remove('hidden');
         if (phoneInput) {
           phoneInput.focus();
           phoneInput.classList.add('border-brand-red');
@@ -396,10 +427,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      if (phoneError) phoneError.classList.add('hidden');
-      if (leadForm) leadForm.classList.add('hidden');
-      if (modalSuccess) modalSuccess.classList.remove('hidden');
-      leadForm.reset();
+      if (phoneInput) phoneInput.classList.remove('border-brand-red');
+      modalLeadForm.reset();
+      openSuccessModal();
     });
   }
 
@@ -581,7 +611,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Section 07: Consult Form Submission
   const consultForm = document.getElementById('consult-form');
-  const consultSuccess = document.getElementById('consult-success');
   if (consultForm) {
     consultForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -595,13 +624,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       if (phoneInput) phoneInput.classList.remove('border-brand-red');
-      if (consultSuccess) consultSuccess.classList.remove('hidden');
-      const submitBtn = consultForm.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.classList.add('opacity-60', 'pointer-events-none');
-      }
       consultForm.reset();
+      openSuccessModal();
     });
   }
 

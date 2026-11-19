@@ -3,67 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 — Сигнал потерян | Монтажная Империя</title>
-  <link rel="icon" type="image/svg+xml" href="/icons/hikvision.svg">
+  <title>404 — Страница не найдена | Монтажная Империя</title>
+  <link rel="icon" type="image/png" href="/icons/logo-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css">
 </head>
-<body class="bg-brand-dark text-white font-sans antialiased bg-tech-grid min-h-screen flex flex-col justify-between">
+<body class="bg-[#0E1014] text-white font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-brand-red selection:text-white">
 
-  <!-- Header -->
-  <header class="w-full bg-brand-dark/95 border-b border-white/10 py-5 px-6">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <a href="/" class="flex items-center group">
-        <img src="/icons/logo.svg" alt="Монтажная Империя" class="h-10 w-auto">
+  <!-- Desktop & Tablet Header (Exact Match to Index Header) -->
+  <header class="w-full bg-white border-b border-black/10 sticky top-0 z-40 transition-all duration-300">
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center space-x-3 group">
+        <img src="/icons/logo-header-hd.png" alt="Монтажная Империя" class="h-9 w-auto">
       </a>
-      <a href="tel:+74232000000" class="font-mono text-sm text-white hover:text-brand-red transition-colors flex items-center">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block mr-2"></span>
-        +7 (423) 200-00-00
-      </a>
+
+      <!-- Desktop Nav: Onest 16 medium -->
+      <nav class="hidden md:flex items-center space-x-8 font-sans font-medium text-[16px] text-[#0E1014]">
+        <a href="/#services" class="hover:text-brand-red transition-colors">Услуги</a>
+        <a href="/#expertise" class="hover:text-brand-red transition-colors">О компании</a>
+        <a href="/#cases" class="hover:text-brand-red transition-colors">Кейсы</a>
+        <a href="/#sectors" class="hover:text-brand-red transition-colors">Заказчики</a>
+        <a href="/#faq" class="hover:text-brand-red transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Right: Phone & Socials -->
+      <div class="hidden sm:flex items-center space-x-6">
+        <div class="text-right">
+          <a href="tel:+74232000000" class="font-sans font-bold text-[16px] text-[#0E1014] hover:text-brand-red transition-colors block leading-tight">
+            +7 (423) 200-00-00
+          </a>
+          <span class="font-sans font-normal text-[12px] text-[#8E95A5] block mt-0.5">
+            Ежедневно 9:00–21:00
+          </span>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded overflow-hidden flex items-center justify-center hover:scale-105 transition-transform" title="Telegram">
+            <img src="/icons/btn-telegram.png" alt="Telegram" class="w-full h-full object-cover">
+          </a>
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded overflow-hidden flex items-center justify-center hover:scale-105 transition-transform" title="WhatsApp">
+            <img src="/icons/btn-whatsapp.png" alt="WhatsApp" class="w-full h-full object-cover">
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile/Tablet Home Button -->
+      <div class="sm:hidden flex items-center">
+        <a href="/" class="font-mono text-xs text-[#0E1014] font-bold px-3 py-1.5 border border-black/10 rounded">
+          НА ГЛАВНУЮ
+        </a>
+      </div>
+
     </div>
   </header>
 
-  <!-- 404 Main Content -->
-  <main class="flex-1 flex items-center justify-center px-4 py-20 bg-radial-glow">
-    <div class="tech-card max-w-xl w-full p-8 sm:p-12 text-center border-brand-red/30">
+  <!-- 404 Main Stage: Exact 1440px Figma Spec -->
+  <main class="relative flex-1 min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden bg-[#0E1014] text-white px-6 py-12">
+    
+    <!-- Subtle Technical Grid Lines -->
+    <div class="absolute inset-0 pointer-events-none bg-tech-grid opacity-30"></div>
+
+    <!-- Center Warm Amber Glow -->
+    <div class="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_60%_55%_at_50%_45%,rgba(225,80,25,0.24)_0%,rgba(180,50,20,0.10)_35%,transparent_75%)]"></div>
+
+    <!-- Left CCTV Camera (pointing diagonally up towards 404) -->
+    <div class="pointer-events-none absolute left-0 bottom-8 sm:bottom-16 lg:bottom-20 w-[220px] sm:w-[360px] lg:w-[460px] max-w-none transform -translate-x-6 sm:-translate-x-12 lg:-translate-x-14 z-10 select-none">
+      <img src="/images/camera-404-left.png" alt="CCTV Camera Left" class="w-full h-auto object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]">
+    </div>
+
+    <!-- Right CCTV Camera (pointing diagonally down towards 404) -->
+    <div class="pointer-events-none absolute right-0 top-6 sm:top-12 lg:top-16 w-[220px] sm:w-[360px] lg:w-[460px] max-w-none transform translate-x-6 sm:translate-x-12 lg:translate-x-14 z-10 select-none">
+      <img src="/images/camera-404-right.png" alt="CCTV Camera Right" class="w-full h-auto object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]">
+    </div>
+
+    <!-- Center Content Block -->
+    <div class="relative z-20 text-center max-w-2xl mx-auto flex flex-col items-center">
       
-      <!-- Video signal loss glitch box -->
-      <div class="relative w-28 h-28 mx-auto mb-6 bg-brand-dark border border-brand-red/40 flex items-center justify-center">
-        <span class="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-brand-red"></span>
-        <span class="absolute top-1 right-1 w-2 h-2 border-t-2 border-r-2 border-brand-red"></span>
-        <span class="absolute bottom-1 left-1 w-2 h-2 border-b-2 border-l-2 border-brand-red"></span>
-        <span class="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-brand-red"></span>
-        <i data-lucide="video-off" class="w-12 h-12 text-brand-red animate-pulse"></i>
+      <!-- SYSTEM ERROR Badge: JetBrains Mono 16 Bold -->
+      <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm mb-3 sm:mb-4">
+        <span class="font-mono font-bold text-[14px] sm:text-[16px] text-white/80 uppercase tracking-widest">
+          SYSTEM ERROR
+        </span>
       </div>
 
-      <div class="inline-block px-3 py-1 bg-brand-red/10 border border-brand-red text-brand-red font-mono text-xs font-bold uppercase tracking-widest mb-4">
-        ОШИБКА 404 // NO VIDEO FEED
-      </div>
-
-      <h1 class="font-condensed font-bold text-5xl sm:text-6xl uppercase tracking-tight text-white mb-4">
-        СИГНАЛ ПОТЕРЯН
+      <!-- 404: Fira Sans Extra Condensed 280 Medium -->
+      <h1 class="font-condensed font-medium text-[140px] sm:text-[210px] lg:text-[280px] text-white leading-none tracking-normal select-none my-1 sm:my-2 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+        404
       </h1>
 
-      <p class="text-brand-muted text-sm leading-relaxed mb-8 max-w-md mx-auto">
-        Запрашиваемый сектор не отвечает или был перемещен на другой сервер безопасности. Вернитесь на главную страницу для мониторинга активных систем.
+      <!-- Title: Fira Sans Extra Condensed 52 medium -->
+      <h2 class="font-condensed font-medium text-3xl sm:text-4xl lg:text-[52px] uppercase text-white tracking-normal leading-tight mb-4">
+        СТРАНИЦА НЕ НАЙДЕНА
+      </h2>
+
+      <!-- Subtitle: Onest 16 regular -->
+      <p class="font-sans font-normal text-[15px] sm:text-[16px] text-white/70 max-w-md mx-auto mb-8 leading-relaxed">
+        Запрашиваемая страница не существует, была удалена или перенесена по новому адресу.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="/" class="btn-chamfered !bg-brand-red !text-white hover:!bg-brand-red-hover w-full sm:w-auto text-center inline-block">
-          ВЕРНУТЬСЯ НА ГЛАВНУЮ ↗
-        </a>
-        <a href="tel:+74232000000" class="btn-chamfered w-full sm:w-auto text-center inline-block">
-          СВЯЗАТЬСЯ С ИНЖЕНЕРОМ
+      <!-- Button: JetBrains Mono 16 bold -->
+      <div>
+        <a href="/" class="btn-split-cta group inline-flex">
+          <span class="split-label !bg-brand-red !text-white font-mono font-bold text-[15px] sm:text-[16px] uppercase tracking-wider px-8 py-4 justify-center group-hover:!bg-[#C7242D] transition-colors">
+            НА ГЛАВНУЮ
+          </span>
+          <span class="split-icon !bg-brand-red !text-white !border-white px-4 flex items-center justify-center font-bold text-lg group-hover:!bg-[#C7242D] transition-colors">
+            <span class="inline-block transition-transform duration-200 group-hover:-rotate-45">→</span>
+          </span>
         </a>
       </div>
 
     </div>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="w-full border-t border-white/10 py-6 px-6 text-center text-xs font-mono text-brand-muted">
-    © 2014–2026 ООО «Монтажная Империя» — Владивосток
-  </footer>
-
-  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
