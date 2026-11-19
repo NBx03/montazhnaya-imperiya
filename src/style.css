@@ -42,19 +42,19 @@ body {
   background: linear-gradient(98deg, #18191E 0%, #35171B 16%, #792328 38%, #B43625 65%, #CB4E24 85%, #D65A26 100%);
 }
 
-/* Chamfered tech cut badges (top-left & bottom-right cut at 45 deg) */
+/* Chamfered tech cut badges (top-left & bottom-right cut at 45 deg) - JetBrains Mono 16 Medium */
 .tag-chamfered {
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
   background-color: #FFFFFF;
   color: #0E1014;
   font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   display: inline-flex;
   align-items: center;
-  padding: 6px 14px;
-  font-size: 13px;
+  padding: 8px 16px;
+  font-size: 16px;
   line-height: 1.2;
   transition: all 0.2s ease;
 }
@@ -62,6 +62,70 @@ body {
 .tag-chamfered:hover {
   background-color: #F0F2F5;
   transform: translateY(-1px);
+}
+
+/* Staggered Entrance Animation for Hero Badges */
+.tag-chamfered-stagger {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: badgeSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.tag-chamfered-stagger:nth-child(1) { animation-delay: 0.25s; }
+.tag-chamfered-stagger:nth-child(2) { animation-delay: 0.45s; }
+.tag-chamfered-stagger:nth-child(3) { animation-delay: 0.65s; }
+
+@keyframes badgeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Headline Line-Mask Reveal (okna-veles-group style) */
+.line-mask {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.hero-title-reveal {
+  display: block;
+  transform: translateY(115%);
+  opacity: 0;
+  animation: heroTitleSlideUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.15s;
+}
+
+@keyframes heroTitleSlideUp {
+  0% {
+    transform: translateY(115%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* CCTV REC Blinking Dot */
+@keyframes recBlink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.15;
+    transform: scale(0.9);
+  }
+}
+
+.rec-dot {
+  animation: recBlink 1.2s ease-in-out infinite;
 }
 
 /* Chamfered button with single bottom-right 45-deg cut (from Figma) */

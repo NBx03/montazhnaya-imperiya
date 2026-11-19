@@ -11,47 +11,43 @@
 <body class="bg-brand-dark text-white selection:bg-brand-red selection:text-white font-sans antialiased min-h-screen flex flex-col justify-between">
 
   <!-- ========================================================================= -->
-  <!-- 00. HEADER (EXACT MATCH TO FIGMA SCREENSHOT)                              -->
+  <!-- 00. HEADER (EXACT MATCH TO FIGMA SCREENSHOT & ANIMATIONS)                  -->
   <!-- ========================================================================= -->
-  <header id="header" class="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
+  <header id="header" class="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm transition-transform duration-300 ease-in-out">
     <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-16 sm:h-[68px] flex items-center justify-between">
       
-      <!-- Logo: Exact PNG from Figma -->
+      <!-- Logo: High-res crisp asset -->
       <a href="/" class="flex items-center group py-1">
-        <img src="/icons/logo-header.png" alt="Монтажная Империя" class="h-8 sm:h-9 w-auto object-contain">
+        <img src="/icons/logo-header-hd.png" alt="Монтажная Империя" class="h-8 sm:h-9 w-auto object-contain">
       </a>
 
-      <!-- Desktop Navigation: Exactly matching Figma screenshot with active/hover underline on Услуги -->
-      <nav class="hidden lg:flex items-center space-x-8 text-[13.5px] font-sans font-normal text-[#1E232E]">
-        <a href="#services" class="text-black underline underline-offset-4 decoration-1 hover:text-brand-red transition-colors">Услуги</a>
+      <!-- Desktop Navigation: Onest 16 Regular -->
+      <nav class="hidden lg:flex items-center space-x-8 text-[16px] font-sans font-normal text-[#1E232E]">
+        <a href="#services" class="hover:text-brand-red transition-colors">Услуги</a>
         <a href="#expertise" class="hover:text-brand-red transition-colors">О компании</a>
         <a href="#cases" class="hover:text-brand-red transition-colors">Кейсы</a>
         <a href="#clients" class="hover:text-brand-red transition-colors">Заказчики</a>
         <a href="#contacts" class="hover:text-brand-red transition-colors">Контакты</a>
       </nav>
 
-      <!-- Header Right: Phone (underlined), Hours, Outlined Square Telegram, Outlined Square WhatsApp -->
-      <div class="hidden sm:flex items-center space-x-4 lg:space-x-4">
+      <!-- Header Right: Phone (Onest 18 Bold), Hours (Onest 14 Regular), Messengers -->
+      <div class="hidden sm:flex items-center space-x-4 lg:space-x-5">
         <div class="text-right">
-          <a href="tel:+74232000000" class="block font-mono font-bold text-[14px] text-[#0E1014] hover:text-brand-red underline underline-offset-2 transition-colors leading-tight">
+          <a href="tel:+74232000000" class="block font-sans font-bold text-[18px] text-[#0E1014] hover:text-brand-red transition-colors leading-tight">
             +7 (423) 200-00-00
           </a>
-          <span class="block text-[11px] font-sans text-gray-500 font-normal leading-tight mt-0.5">Ежедневно 9:00–21:00</span>
+          <span class="block text-[14px] font-sans font-normal text-gray-500 leading-tight mt-0.5">Ежедневно 9:00–21:00</span>
         </div>
 
-        <!-- Square Outlined Messengers from Figma -->
-        <div class="flex items-center space-x-1.5">
-          <!-- Telegram: Square Outlined Box with Blue Border -->
-          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="w-7 h-7 sm:w-8 sm:h-8 rounded-[3px] border border-[#0088cc] bg-white hover:bg-[#0088cc]/10 flex items-center justify-center transition-colors shadow-sm" title="Telegram">
-            <svg class="w-4 h-4 text-[#0088cc] fill-current" viewBox="0 0 24 24">
-              <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.673c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
-            </svg>
+        <!-- Messengers: Exact buttons from Figma -->
+        <div class="flex items-center space-x-2">
+          <!-- Telegram -->
+          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-[4px] overflow-hidden flex items-center justify-center hover:opacity-90 transition-opacity shadow-sm" title="Telegram">
+            <img src="/icons/btn-telegram.png" alt="Telegram" class="w-full h-full object-cover">
           </a>
-          <!-- WhatsApp: Square Outlined Box with Green Border -->
-          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="w-7 h-7 sm:w-8 sm:h-8 rounded-[3px] border border-[#25D366] bg-white hover:bg-[#25D366]/10 flex items-center justify-center transition-colors shadow-sm" title="WhatsApp">
-            <svg class="w-4 h-4 text-[#25D366] fill-current" viewBox="0 0 24 24">
-              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm0 18.09c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.32c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 012.41 5.83c.01 4.54-3.69 8.23-8.22 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.17-.48-.29z"/>
-            </svg>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-[4px] overflow-hidden flex items-center justify-center hover:opacity-90 transition-opacity shadow-sm" title="WhatsApp">
+            <img src="/icons/btn-whatsapp.png" alt="WhatsApp" class="w-full h-full object-cover">
           </a>
         </div>
       </div>
@@ -73,7 +69,7 @@
   <div id="mobile-drawer" class="fixed top-0 right-0 h-full w-[280px] sm:w-[340px] max-w-[85vw] bg-brand-surface border-l border-white/10 z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between overflow-y-auto">
     <div>
       <div class="flex items-center justify-between pb-5 border-b border-white/10">
-        <img src="/icons/logo-header.png" alt="Монтажная Империя" class="h-8 w-auto">
+        <img src="/icons/logo-header-hd.png" alt="Монтажная Империя" class="h-8 w-auto">
         <button id="close-menu-btn" class="p-2 text-white/60 hover:text-white" aria-label="Закрыть">✕</button>
       </div>
       <nav class="flex flex-col space-y-4 py-6 font-condensed text-xl uppercase tracking-wider">
@@ -85,17 +81,21 @@
       </nav>
     </div>
     <div class="pt-6 border-t border-white/10 space-y-4">
-      <a href="tel:+74232000000" class="block font-mono text-base font-bold text-white hover:text-brand-red">+7 (423) 200-00-00</a>
-      <div class="flex space-x-3">
-        <a href="https://t.me/" class="px-4 py-2 bg-[#0088cc] text-white rounded text-xs font-mono">Telegram</a>
-        <a href="https://wa.me/" class="px-4 py-2 bg-[#25D366] text-white rounded text-xs font-mono">WhatsApp</a>
+      <a href="tel:+74232000000" class="block font-sans text-[18px] font-bold text-white hover:text-brand-red">+7 (423) 200-00-00</a>
+      <div class="flex items-center space-x-3">
+        <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-[4px] overflow-hidden flex items-center justify-center hover:opacity-90 transition-opacity" title="Telegram">
+          <img src="/icons/btn-telegram.png" alt="Telegram" class="w-full h-full object-cover">
+        </a>
+        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-[4px] overflow-hidden flex items-center justify-center hover:opacity-90 transition-opacity" title="WhatsApp">
+          <img src="/icons/btn-whatsapp.png" alt="WhatsApp" class="w-full h-full object-cover">
+        </a>
       </div>
     </div>
   </div>
 
   <main class="flex-grow">
     <!-- ========================================================================= -->
-    <!-- 01. HERO (EXACT 1-TO-1 MATCH TO FIGMA SCREENSHOT)                         -->
+    <!-- 01. HERO (EXACT 1-TO-1 MATCH TO FIGMA SCREENSHOT & ANIMATIONS)            -->
     <!-- ========================================================================= -->
     <section id="hero" class="relative min-h-[660px] lg:min-h-[700px] flex items-center overflow-hidden border-b border-white/10 bg-[#0E1014]" style="background-image: url('/images/hero-rack-bg.jpg'); background-size: cover; background-position: center;">
       
@@ -112,9 +112,9 @@
         
         <!-- Top HUD Bar: REC Timecode on Left + Battery on Right -->
         <div class="flex items-center justify-between mb-8">
-          <!-- REC 00:00:00 -->
+          <!-- REC 00:00:00 (Blinking dot + timer starts on load) -->
           <div class="flex items-center space-x-2.5 text-xs font-mono text-white/90">
-            <span class="w-2.5 h-2.5 rounded-full bg-brand-red inline-block animate-pulse-rec shadow-[0_0_8px_#E02D37]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-red inline-block rec-dot shadow-[0_0_8px_#E02D37]"></span>
             <span class="font-bold tracking-wider text-brand-red">REC</span>
             <span id="rec-timer" class="tracking-widest text-white/90 font-mono">00:00:00</span>
           </div>
@@ -133,42 +133,44 @@
         <!-- Middle: Headline + Right Offer Subtitle with Connecting Horizontal Guide -->
         <div class="my-auto">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center mb-6">
-            <!-- Left H1: СИСТЕМЫ ЗАЩИТЫ -->
+            <!-- Left H1: СИСТЕМЫ ЗАЩИТЫ (Fira Sans Extra Condensed Medium 100 with line-mask reveal) -->
             <div class="lg:col-span-7">
-              <h1 class="font-condensed font-extrabold uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[104px] text-white tracking-tight leading-[0.9]">
-                СИСТЕМЫ ЗАЩИТЫ
-              </h1>
+              <div class="line-mask">
+                <h1 class="hero-title-reveal font-condensed font-medium uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[100px] text-white tracking-tight leading-[0.95]">
+                  СИСТЕМЫ ЗАЩИТЫ
+                </h1>
+              </div>
             </div>
 
-            <!-- Right: Subtitle with subtle guide line -->
+            <!-- Right: Subtitle (Onest 16 Regular) with subtle guide line -->
             <div class="lg:col-span-5 relative">
               <div class="hidden lg:block absolute -left-8 top-1/2 w-6 h-[1px] bg-white/20"></div>
-              <p class="text-white/85 font-sans text-sm sm:text-base leading-relaxed max-w-md">
+              <p class="text-white/85 font-sans font-normal text-[16px] leading-relaxed max-w-md">
                 Проектируем, монтируем и настраиваем системы безопасности и электрику — от квартиры до распределённой сети филиалов.
               </p>
             </div>
           </div>
 
-          <!-- 3 Chamfered Tags (Exact Text and White Chamfered Background) -->
+          <!-- 3 Chamfered Tags (JetBrains Mono 16 Medium + Staggered Entrance Animation) -->
           <div class="flex flex-wrap gap-2.5 sm:gap-3">
-            <span class="tag-chamfered">БИЗНЕСУ И ЧАСТНЫМ КЛИЕНТАМ</span>
-            <span class="tag-chamfered">ОДИН ПОДРЯДЧИК НА ВЕСЬ ЦИКЛ</span>
-            <span class="tag-chamfered">БЕСПЛАТНЫЙ ВЫЕЗД ИНЖЕНЕРА</span>
+            <span class="tag-chamfered tag-chamfered-stagger">БИЗНЕСУ И ЧАСТНЫМ КЛИЕНТАМ</span>
+            <span class="tag-chamfered tag-chamfered-stagger">ОДИН ПОДРЯДЧИК НА ВЕСЬ ЦИКЛ</span>
+            <span class="tag-chamfered tag-chamfered-stagger">БЕСПЛАТНЫЙ ВЫЕЗД ИНЖЕНЕРА</span>
           </div>
         </div>
 
-        <!-- Bottom: Lead text + Red Split Button on Left + DATE / 06.08.2026 on Right -->
+        <!-- Bottom: Lead text + Red Split Button on Left + Dynamic Actual DATE on Right -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-10">
           <div class="space-y-4 max-w-xl">
-            <p class="text-white/90 font-sans text-sm sm:text-base leading-snug">
+            <p class="text-white/90 font-sans font-normal text-[18px] sm:text-[20px] leading-snug">
               Установим любые системы защиты во Владивостоке<br class="hidden sm:inline">
               под ключ: проект, оборудование, монтаж и сдача объекта
             </p>
             
-            <!-- Red Split Button: [ ОСТАВИТЬ ЗАЯВКУ | → ] with Arrow Transition -->
+            <!-- Red Split Button: [ ОСТАВИТЬ ЗАЯВКУ | → ] with Arrow Transition (JetBrains Mono 16 Bold) -->
             <div>
               <a href="#lead-modal" class="btn-split-cta open-modal-btn group inline-flex">
-                <span class="split-label !bg-brand-red !text-white font-condensed font-extrabold text-base sm:text-lg uppercase tracking-wider px-6 py-3.5 group-hover:!bg-[#C7242D] transition-colors">
+                <span class="split-label !bg-brand-red !text-white font-mono font-bold text-[16px] uppercase tracking-wider px-6 py-3.5 group-hover:!bg-[#C7242D] transition-colors">
                   ОСТАВИТЬ ЗАЯВКУ
                 </span>
                 <span class="split-icon !bg-brand-red !text-white !border-white px-4 flex items-center justify-center font-bold text-lg group-hover:!bg-[#C7242D] transition-colors">
@@ -178,8 +180,8 @@
             </div>
           </div>
 
-          <!-- Bottom Right: Camera Timestamp -->
-          <div class="font-mono text-xs text-white/50 tracking-widest uppercase md:text-right">
+          <!-- Bottom Right: Camera Timestamp (Dynamic Current Date) -->
+          <div id="hero-date" class="font-mono text-xs text-white/50 tracking-widest uppercase md:text-right">
             DATE / 06.08.2026
           </div>
         </div>
@@ -188,11 +190,11 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 02. MARQUEE / TICKER (EXACT FIGMA RED STRIP #E02D37)                       -->
+    <!-- 02. MARQUEE / TICKER (EXACT FIGMA RED STRIP #E02D37, JetBrains Mono 16 Medium) -->
     <!-- ========================================================================= -->
     <section id="ticker" class="bg-brand-red py-3 border-y border-white/10 overflow-hidden relative z-20">
       <div class="flex whitespace-nowrap animate-marquee ticker-track">
-        <div class="flex items-center space-x-6 sm:space-x-8 text-white font-condensed font-extrabold uppercase tracking-widest text-base sm:text-lg px-4">
+        <div class="flex items-center space-x-6 sm:space-x-8 text-white font-mono font-medium uppercase tracking-wider text-[16px] px-4">
           <span>СКУД</span><span class="text-white/40 text-xs">■</span>
           <span>ДОМОФОНЫ</span><span class="text-white/40 text-xs">■</span>
           <span>ОХРАННАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/40 text-xs">■</span>
@@ -202,7 +204,7 @@
           <span>МОНТАЖНАЯ ИМПЕРИЯ</span><span class="text-white/40 text-xs">■</span>
           <span>ВИДЕОНАБЛЮДЕНИЕ</span><span class="text-white/40 text-xs">■</span>
         </div>
-        <div class="flex items-center space-x-6 sm:space-x-8 text-white font-condensed font-extrabold uppercase tracking-widest text-base sm:text-lg px-4">
+        <div class="flex items-center space-x-6 sm:space-x-8 text-white font-mono font-medium uppercase tracking-wider text-[16px] px-4">
           <span>СКУД</span><span class="text-white/40 text-xs">■</span>
           <span>ДОМОФОНЫ</span><span class="text-white/40 text-xs">■</span>
           <span>ОХРАННАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/40 text-xs">■</span>
@@ -683,7 +685,7 @@
           <!-- Column 4: Split CTA Button [ ОСТАВИТЬ ЗАЯВКУ | → ] -->
           <div class="flex lg:justify-end pb-1">
             <a href="#lead-modal" class="btn-split-cta open-modal-btn group inline-flex w-full sm:w-auto">
-              <span class="split-label !bg-brand-red !text-white font-mono font-bold text-sm sm:text-base uppercase tracking-wider px-6 py-4 flex-1 sm:flex-none justify-center group-hover:!bg-[#C7242D] transition-colors">
+              <span class="split-label !bg-brand-red !text-white font-mono font-bold text-[16px] uppercase tracking-wider px-6 py-4 flex-1 sm:flex-none justify-center group-hover:!bg-[#C7242D] transition-colors">
                 ОСТАВИТЬ ЗАЯВКУ
               </span>
               <span class="split-icon !bg-brand-red !text-white !border-white px-4 flex items-center justify-center font-bold text-lg group-hover:!bg-[#C7242D] transition-colors">
