@@ -1182,6 +1182,306 @@
 
     </section>
 
+    <!-- ========================================================================= -->
+    <!-- 09. SECTION 06 — КЕЙСЫ / ОБЪЕКТЫ, КОТОРЫЕ МЫ ЗАЩИТИЛИ (FIGMA DEV MODE)     -->
+    <!-- ========================================================================= -->
+    <section id="cases" class="relative tech-plate-sec6 text-white pt-16 sm:pt-20 pb-16 sm:pb-24">
+      
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+        
+        <!-- Header Grid: Title Left, Onest 20 Regular Subtitle Right -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-10 sm:mb-14">
+          <div class="lg:col-span-7">
+            <div class="text-[16px] font-mono font-normal uppercase tracking-wider text-white/70 mb-4 flex items-center space-x-2.5">
+              <span class="text-white/90">06</span>
+              <span class="w-6 h-[1.5px] bg-brand-red inline-block"></span>
+              <span>КЕЙСЫ</span>
+            </div>
+            <!-- EXACT FIGMA DEV MODE: Fira Sans Extra Condensed Medium 60px -->
+            <h2 class="font-condensed font-medium uppercase text-4xl sm:text-5xl lg:text-[60px] text-white leading-none tracking-normal">
+              ОБЪЕКТЫ, КОТОРЫЕ МЫ ЗАЩИТИЛИ
+            </h2>
+          </div>
+          <div class="lg:col-span-5 lg:pb-1">
+            <!-- Exact Figma Spec: Onest 20 regular -->
+            <p class="text-white/80 font-sans font-normal text-[18px] sm:text-[20px] leading-relaxed max-w-xl">
+              не просто устанавливаем системы — управляем всем процессом: от подбора оборудования до установки и сдачи объекта. Держим в курсе на каждом этапе
+            </p>
+          </div>
+        </div>
+
+        <!-- Case Tabs Pill Switcher -->
+        <div class="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 font-mono text-[13px] sm:text-[14px] overflow-x-auto pb-2 select-none">
+          <button class="case-tab-btn active px-4 py-2 border border-white/20 bg-[#1A1C22] text-white font-medium uppercase tracking-wider hover:border-brand-red transition-all" data-case-index="0">
+            01 / БИЗНЕС-ЦЕНТР СБЕРБАНКА
+          </button>
+          <button class="case-tab-btn px-4 py-2 border border-white/10 bg-[#141519] text-white/60 font-medium uppercase tracking-wider hover:border-white/30 hover:text-white transition-all" data-case-index="1">
+            02 / АДМИНИСТРАТИВНЫЙ КОМПЛЕКС ФССП
+          </button>
+          <button class="case-tab-btn px-4 py-2 border border-white/10 bg-[#141519] text-white/60 font-medium uppercase tracking-wider hover:border-white/30 hover:text-white transition-all" data-case-index="2">
+            03 / РЕГИОНАЛЬНЫЙ ЦОД Т-БАНК
+          </button>
+        </div>
+
+        <!-- STACKING CARDS CONTAINER (Interactive Stack + Scroll Overlap + Dimming + Fast Odometer) -->
+        <div id="cases-stack-container" class="case-cards-stack-grid">
+          
+          <!-- CARD 3 (Backmost / Image 3) -->
+          <div class="case-card card-pos-back bg-[#15161A] border border-white/10 p-6 sm:p-8 lg:p-10 shadow-2xl" data-case-idx="2">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              
+              <!-- Left: Photo Image 3 (Server Rack) -->
+              <div class="lg:col-span-5 relative h-[260px] sm:h-[320px] lg:h-[400px] overflow-hidden rounded-sm bg-[#101216] border border-white/10 flex items-center justify-center">
+                <img src="/images/case-3.png" alt="Региональный ЦОД Т-Банк" class="w-full h-full object-cover">
+              </div>
+
+              <!-- Right: Content -->
+              <div class="lg:col-span-7 flex flex-col justify-between space-y-6 lg:space-y-0">
+                <div>
+                  <!-- Header: Buttons Left (JetBrains Mono 14 Medium), Status Right -->
+                  <div class="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
+                    <div class="flex items-center gap-2.5">
+                      <span class="px-3.5 py-1.5 border border-white/20 font-mono font-medium text-[13px] sm:text-[14px] text-white/90 uppercase tracking-wide bg-white/[0.02]">СКС</span>
+                      <span class="px-3.5 py-1.5 border border-white/20 font-mono font-medium text-[13px] sm:text-[14px] text-white/90 uppercase tracking-wide bg-white/[0.02]">ВИДЕОНАБЛЮДЕНИЕ</span>
+                    </div>
+                    <span class="font-mono font-medium text-[12px] sm:text-[13px] text-white/40 uppercase tracking-wider">
+                      ОБЪЕКТ СДАН • НА ОБСЛУЖИВАНИИ
+                    </span>
+                  </div>
+
+                  <!-- Title: Fira Sans Extra Condensed 34.69 Semibold -->
+                  <h3 class="font-condensed font-semibold text-[28px] sm:text-[34.69px] uppercase text-white leading-tight mb-3">
+                    РЕГИОНАЛЬНЫЙ ЦОД Т-БАНК
+                  </h3>
+
+                  <!-- Description: Onest 16 Regular -->
+                  <p class="font-sans font-normal text-[15px] sm:text-[16px] text-white/70 leading-relaxed max-w-xl">
+                    Структурированная кабельная система категории 6A, серверные стойки и комплексный видеоконтроль серверных залов с архивом 90 дней.
+                  </p>
+                </div>
+
+                <!-- Bottom 3 Stats Badges (JetBrains Mono 32 Bold + JetBrains Mono 14 Medium) -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6">
+                  <div class="case-metric-tile p-4 sm:p-5">
+                    <div class="font-mono font-bold text-[28px] sm:text-[32px] text-white leading-none stat-odometer" data-target="120">0</div>
+                    <div class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wide mt-2">ПОРТОВ ЛВС</div>
+                  </div>
+                  <div class="case-metric-tile p-4 sm:p-5">
+                    <div class="font-mono font-bold text-[28px] sm:text-[32px] text-white leading-none">
+                      <span class="stat-odometer" data-target="7">0</span> <span class="text-[20px] sm:text-[24px]">дн</span>
+                    </div>
+                    <div class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wide mt-2">СРОК СДАЧИ</div>
+                  </div>
+                  <div class="case-metric-tile p-4 sm:p-5">
+                    <div class="font-mono font-bold text-[28px] sm:text-[32px] text-white leading-none stat-odometer" data-target="2">0</div>
+                    <div class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wide mt-2">СТОЙКИ 42U</div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- CARD 2 (Middle / Image 2) -->
+          <div class="case-card card-pos-middle bg-[#15161A] border border-white/10 p-6 sm:p-8 lg:p-10 shadow-2xl" data-case-idx="1">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              
+              <!-- Left: Photo Image 2 (Fire Hallway) -->
+              <div class="lg:col-span-5 relative h-[260px] sm:h-[320px] lg:h-[400px] overflow-hidden rounded-sm bg-[#101216] border border-white/10 flex items-center justify-center">
+                <img src="/images/case-2.jpg" alt="Административный комплекс ФССП" class="w-full h-full object-cover">
+              </div>
+
+              <!-- Right: Content -->
+              <div class="lg:col-span-7 flex flex-col justify-between space-y-6 lg:space-y-0">
+                <div>
+                  <!-- Header: Buttons Left (JetBrains Mono 14 Medium), Status Right -->
+                  <div class="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
+                    <div class="flex items-center gap-2.5">
+                      <span class="px-3.5 py-1.5 border border-white/20 font-mono font-medium text-[13px] sm:text-[14px] text-white/90 uppercase tracking-wide bg-white/[0.02]">ПОЖАРНАЯ СИГНАЛИЗАЦИЯ</span>
+                      <span class="px-3.5 py-1.5 border border-white/20 font-mono font-medium text-[13px] sm:text-[14px] text-white/90 uppercase tracking-wide bg-white/[0.02]">СКУД</span>
+                    </div>
+                    <span class="font-mono font-medium text-[12px] sm:text-[13px] text-white/40 uppercase tracking-wider">
+                      ОБЪЕКТ СДАН • НА ОБСЛУЖИВАНИИ
+                    </span>
+                  </div>
+
+                  <!-- Title: Fira Sans Extra Condensed 34.69 Semibold -->
+                  <h3 class="font-condensed font-semibold text-[28px] sm:text-[34.69px] uppercase text-white leading-tight mb-3">
+                    АДМИНИСТРАТИВНЫЙ КОМПЛЕКС ФССП
+                  </h3>
+
+                  <!-- Description: Onest 16 Regular -->
+                  <p class="font-sans font-normal text-[15px] sm:text-[16px] text-white/70 leading-relaxed max-w-xl">
+                    Адресная система пожарной безопасности и турникеты СКУД с биометрическим распознаванием. Полное согласование и сдача органам МЧС.
+                  </p>
+                </div>
+
+                <!-- Bottom 3 Stats Badges (JetBrains Mono 32 Bold + JetBrains Mono 14 Medium) -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6">
+                  <div class="case-metric-tile p-4 sm:p-5">
+                    <div class="font-mono font-bold text-[28px] sm:text-[32px] text-white leading-none stat-odometer" data-target="32">0</div>
+                    <div class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wide mt-2">ИЗВЕЩАТЕЛЕЙ АПС</div>
+                  </div>
+                  <div class="case-metric-tile p-4 sm:p-5">
+                    <div class="font-mono font-bold text-[28px] sm:text-[32px] text-white leading-none">
+                      <span class="stat-odometer" data-target="10">0</span> <span class="text-[20px] sm:text-[24px]">дн</span>
+                    </div>
+                    <div class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wide mt-2">СРОК СДАЧИ</div>
+                  </div>
+                  <div class="case-metric-tile p-4 sm:p-5">
+                    <div class="font-mono font-bold text-[28px] sm:text-[32px] text-white leading-none stat-odometer" data-target="4">0</div>
+                    <div class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wide mt-2">ТОЧКИ ПРОХОДА</div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- CARD 1 (Frontmost / Image 1 - EXACT FIGMA 1-TO-1 SPEC) -->
+          <div class="case-card card-pos-front bg-[#15161A] border border-white/10 p-6 sm:p-8 lg:p-10 shadow-2xl" data-case-idx="0">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              
+              <!-- Left: Photo Image 1 (Dome Cameras Ceiling) -->
+              <div class="lg:col-span-5 relative h-[260px] sm:h-[320px] lg:h-[400px] overflow-hidden rounded-sm bg-[#101216] border border-white/10 flex items-center justify-center">
+                <img src="/images/case-1.jpg" alt="Бизнес-центр Сбербанка" class="w-full h-full object-cover">
+              </div>
+
+              <!-- Right: Content -->
+              <div class="lg:col-span-7 flex flex-col justify-between space-y-6 lg:space-y-0">
+                <div>
+                  <!-- Header: Buttons Left (JetBrains Mono 14 Medium), Status Right -->
+                  <div class="flex flex-wrap items-center justify-between gap-3 mb-5 sm:mb-6">
+                    <div class="flex items-center gap-2.5">
+                      <span class="px-3.5 py-1.5 border border-white/20 font-mono font-medium text-[13px] sm:text-[14px] text-white/90 uppercase tracking-wide bg-white/[0.02]">ВИДЕОНАБЛЮДЕНИЕ</span>
+                      <span class="px-3.5 py-1.5 border border-white/20 font-mono font-medium text-[13px] sm:text-[14px] text-white/90 uppercase tracking-wide bg-white/[0.02]">СКУД</span>
+                    </div>
+                    <span class="font-mono font-medium text-[12px] sm:text-[13px] text-white/40 uppercase tracking-wider">
+                      ОБЪЕКТ СДАН • НА ОБСЛУЖИВАНИИ
+                    </span>
+                  </div>
+
+                  <!-- Title: Fira Sans Extra Condensed 34.69 Semibold -->
+                  <h3 class="font-condensed font-semibold text-[28px] sm:text-[34.69px] uppercase text-white leading-tight mb-3">
+                    БИЗНЕС-ЦЕНТР СБЕРБАНКА
+                  </h3>
+
+                  <!-- Description: Onest 16 Regular -->
+                  <p class="font-sans font-normal text-[15px] sm:text-[16px] text-white/70 leading-relaxed max-w-xl">
+                    Комплексная система безопасности класса А: 48 IP-камер с видеоаналитикой, СКУД на 6 входных групп и интеграция с постом охраны.
+                  </p>
+                </div>
+
+                <!-- Bottom 3 Stats Badges (JetBrains Mono 32 Bold + JetBrains Mono 14 Medium) -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6">
+                  
+                  <!-- Badge 1: 48 IP-КАМЕР -->
+                  <div class="case-metric-tile p-4 sm:p-5">
+                    <div class="font-mono font-bold text-[28px] sm:text-[32px] text-white leading-none stat-odometer" data-target="48">0</div>
+                    <div class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wide mt-2">IP-КАМЕР</div>
+                  </div>
+
+                  <!-- Badge 2: 14 дн СРОК СДАЧИ -->
+                  <div class="case-metric-tile p-4 sm:p-5">
+                    <div class="font-mono font-bold text-[28px] sm:text-[32px] text-white leading-none">
+                      <span class="stat-odometer" data-target="14">0</span> <span class="text-[20px] sm:text-[24px]">дн</span>
+                    </div>
+                    <div class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wide mt-2">СРОК СДАЧИ</div>
+                  </div>
+
+                  <!-- Badge 3: 6 ТОЧЕК СКУД -->
+                  <div class="case-metric-tile p-4 sm:p-5">
+                    <div class="font-mono font-bold text-[28px] sm:text-[32px] text-white leading-none stat-odometer" data-target="6">0</div>
+                    <div class="font-mono font-medium text-[13px] sm:text-[14px] text-white/50 uppercase tracking-wide mt-2">ТОЧЕК СКУД</div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 10. RED CTA BANNER 2 (Identical to Section 02 as requested by user) -->
+        <div class="pt-16 sm:pt-20 pb-4 relative z-20">
+          <div class="banner-container relative bg-[#15161A] overflow-hidden p-8 sm:p-12 lg:p-14 border border-[#C84E25]/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500" style="clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);">
+            
+            <!-- Smoothly Appearing Gradient Layer -->
+            <div class="banner-gradient-layer absolute inset-0 banner-figma-gradient pointer-events-none z-0"></div>
+
+            <!-- Background 3D Hardware Render -->
+            <div class="absolute right-0 top-0 bottom-0 w-full sm:w-2/3 lg:w-1/2 pointer-events-none overflow-hidden flex items-center justify-end z-10">
+              <img src="/images/banner-3d-hardware.png" alt="" class="h-full w-auto max-w-none object-contain opacity-55 mix-blend-screen transform translate-x-10 translate-y-2">
+            </div>
+
+            <div class="relative z-20 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+              
+              <!-- Left Info -->
+              <div class="space-y-4 max-w-2xl">
+                <h2 class="font-condensed font-medium uppercase text-4xl sm:text-5xl lg:text-[60px] text-white tracking-tight leading-[1.0]">
+                  НЕ НАШЛИ СВОЮ ЗАДАЧУ?
+                </h2>
+                <p class="text-white/90 font-sans font-normal text-[18px] sm:text-[20px] leading-snug">
+                  Оставьте заявку и мы подберём наилучшее решение под вашу индивидуальную задачу
+                </p>
+                
+                <!-- Subtle horizontal divider line from Figma -->
+                <div class="w-full max-w-lg h-px bg-white/20 my-4"></div>
+
+                <!-- 3 Chamfered Tags from Figma Banner -->
+                <div class="flex flex-row items-center gap-2 sm:gap-3 flex-nowrap overflow-x-auto sm:overflow-visible pt-1">
+                  <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ВЫЕЗД БЕСПЛАТНО</span>
+                  <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ПРОЕКТ ЗА 3 ДНЯ</span>
+                  <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ГАРАНТИЯ 3 ГОДА</span>
+                </div>
+              </div>
+
+              <!-- Right Contacts & Action Button -->
+              <div class="flex flex-col sm:flex-row sm:items-center lg:flex-col lg:items-end gap-5 shrink-0">
+                <div class="text-left lg:text-right">
+                  <a href="tel:+74232000000" class="block font-sans font-bold text-[18px] text-white hover:underline leading-tight">
+                    +7 (423) 200-00-00
+                  </a>
+                  <span class="block text-[14px] font-sans font-normal text-white/75 mt-0.5">Ежедневно 9:00–21:00</span>
+                </div>
+
+                <!-- Button: JetBrains Mono 16 Bold -->
+                <button class="btn-chamfered open-modal-btn !bg-white !text-[#0E1014] hover:!bg-[#0E1014] hover:!text-white !py-3.5 !px-7 font-mono font-bold text-[16px] tracking-wider flex items-center space-x-2">
+                  <span>ОБСУДИТЬ ЗАДАЧУ</span>
+                  <span class="text-base">→</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Chamfered Border Line (M 0 48 L calc(100% - 48px) 48 L 100% 0) -->
+      <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-[48px] z-20 overflow-hidden">
+        <!-- Desktop: 48px cut -->
+        <div class="absolute bottom-0 left-0 right-[48px] border-b border-white/[0.09] hidden sm:block"></div>
+        <div class="absolute bottom-0 right-0 w-[48px] h-[48px] hidden sm:block">
+          <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="48" x2="48" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+          </svg>
+        </div>
+        <!-- Mobile: 32px cut -->
+        <div class="absolute bottom-0 left-0 right-[32px] border-b border-white/[0.09] sm:hidden"></div>
+        <div class="absolute bottom-0 right-0 w-[32px] h-[32px] sm:hidden">
+          <svg viewBox="0 0 32 32" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="32" x2="32" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ========================================================================= -->
