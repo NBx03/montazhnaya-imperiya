@@ -218,17 +218,13 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTIONS 01 & 02 WRAPPER: CONTINUOUS SEAMLESS AMBIENT GLOW BACKDROP       -->
+    <!-- 03. SECTION 01 — ЭКСПЕРТИЗА (EXACT 1-TO-1 MATCH TO FIGMA SCREENSHOT)       -->
     <!-- ========================================================================= -->
-    <div class="relative overflow-hidden">
-      <!-- Unified Ambient Glow across Section 01 & Section 02 (Eliminates boundary artifacts) -->
-      <div class="ambient-glow ambient-glow-sections-1-2 pointer-events-none absolute inset-0 z-0"></div>
+    <section id="expertise" class="py-20 sm:py-24 relative overflow-hidden bg-transparent border-b border-white/5">
+      <!-- Ambient Glow (Top Right under ticker on grid) -->
+      <div class="ambient-glow ambient-glow-sec1 pointer-events-none absolute inset-0 z-0"></div>
 
-      <!-- ========================================================================= -->
-      <!-- 03. SECTION 01 — ЭКСПЕРТИЗА (EXACT 1-TO-1 MATCH TO FIGMA SCREENSHOT)       -->
-      <!-- ========================================================================= -->
-      <section id="expertise" class="py-20 sm:py-24 relative z-10 bg-transparent">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         
         <!-- Header Grid: Title Left, Text Right (Exact Figma Proportions & Typography) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14">
@@ -312,7 +308,10 @@
     <!-- ========================================================================= -->
     <!-- 04. SECTION 02 — УСЛУГИ / ВСЕ СИСТЕМЫ ПОД КЛЮЧ (EXACT FIGMA ASYMMETRIC GRID) -->
     <!-- ========================================================================= -->
-    <section id="services" class="py-20 sm:py-28 relative z-10 bg-transparent">
+    <section id="services" class="py-20 sm:py-28 relative overflow-hidden bg-[#0E1014]">
+      <!-- Amber ambient glow on the right (Figma specs: smooth slow float) -->
+      <div class="ambient-glow ambient-glow-sec2 pointer-events-none absolute inset-0 z-0"></div>
+
       <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         
         <!-- Header: Title Left (Fira Sans Extra Condensed Medium 60), Subtitle Right -->
@@ -329,31 +328,32 @@
             </h2>
           </div>
           <div class="lg:col-span-5 lg:pb-1">
-            <p class="text-white/75 font-sans text-sm sm:text-base leading-relaxed max-w-md">
+            <p class="text-white/75 font-sans font-normal text-[15px] sm:text-[16px] leading-relaxed max-w-md">
               Один договор, одна гарантия, одна ответственность — от проекта до обслуживания.
             </p>
           </div>
         </div>
 
-        <!-- COMPOUND ASYMMETRIC GRID (EXACT FIGMA COMPOSITION) -->
+        <!-- COMPOUND ASYMMETRIC GRID (EXACT FIGMA COMPOSITION + STAGGERED ENTRANCE + HOVER) -->
         <div class="space-y-6">
           
           <!-- ROW 1: 2 Wide Featured Cards (Видеонаблюдение & СКУД) -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             <!-- Card 1: ВИДЕОНАБЛЮДЕНИЕ -->
-            <div class="bg-[#15161A] border border-white/10 p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden group hover:border-brand-red/50 transition-colors">
+            <div class="service-card-stagger bg-[#15161A] border border-white/10 p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden group hover:border-brand-red hover:shadow-[0_0_24px_rgba(224,45,55,0.22)] transition-all duration-300">
               <div class="space-y-3 z-10 max-w-xs">
-                <h3 class="font-sans font-extrabold text-2xl sm:text-3xl lg:text-[32px] uppercase tracking-wide text-white leading-tight">
+                <h3 class="font-condensed font-semibold text-[26px] sm:text-[28px] uppercase tracking-wide text-white leading-tight">
                   ВИДЕОНАБЛЮДЕНИЕ
                 </h3>
-                <p class="text-white/65 font-sans text-xs sm:text-sm leading-relaxed">
+                <p class="text-white/70 font-sans font-normal text-[15px] sm:text-[16px] leading-relaxed">
                   Проектирование, монтаж и настройка IP-систем. Локальный или облачный архив и доступ с телефона.
                 </p>
                 <div class="pt-4">
-                  <a href="#lead-modal" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                  <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-[14px] uppercase tracking-wider group-hover:text-brand-red transition-colors">
                     <span>ОСТАВИТЬ ЗАЯВКУ</span>
-                    <span class="ml-1 text-sm transition-transform group-hover:translate-x-0.5">↗</span>
+                    <span class="arrow-default group-hover:hidden ml-1.5 transition-transform">↗</span>
+                    <span class="arrow-hover hidden group-hover:inline-block ml-1.5 transition-transform">→</span>
                   </a>
                 </div>
               </div>
@@ -363,18 +363,19 @@
             </div>
 
             <!-- Card 2: СКУД -->
-            <div class="bg-[#15161A] border border-white/10 p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden group hover:border-brand-red/50 transition-colors">
+            <div class="service-card-stagger bg-[#15161A] border border-white/10 p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden group hover:border-brand-red hover:shadow-[0_0_24px_rgba(224,45,55,0.22)] transition-all duration-300">
               <div class="space-y-3 z-10 max-w-xs">
-                <h3 class="font-sans font-extrabold text-2xl sm:text-3xl lg:text-[32px] uppercase tracking-wide text-white leading-tight">
+                <h3 class="font-condensed font-semibold text-[26px] sm:text-[28px] uppercase tracking-wide text-white leading-tight">
                   СКУД
                 </h3>
-                <p class="text-white/65 font-sans text-xs sm:text-sm leading-relaxed">
+                <p class="text-white/70 font-sans font-normal text-[15px] sm:text-[16px] leading-relaxed">
                   Контроль и управление доступом: карты, биометрия, домофония, интеграция с учётом.
                 </p>
                 <div class="pt-4">
-                  <a href="#lead-modal" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                  <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-[14px] uppercase tracking-wider group-hover:text-brand-red transition-colors">
                     <span>ОСТАВИТЬ ЗАЯВКУ</span>
-                    <span class="ml-1 text-sm transition-transform group-hover:translate-x-0.5">↗</span>
+                    <span class="arrow-default group-hover:hidden ml-1.5 transition-transform">↗</span>
+                    <span class="arrow-hover hidden group-hover:inline-block ml-1.5 transition-transform">→</span>
                   </a>
                 </div>
               </div>
@@ -392,18 +393,19 @@
             <div class="flex flex-col gap-6">
               
               <!-- Card: ОХРАННАЯ СИГНАЛИЗАЦИЯ -->
-              <div class="bg-[#15161A] border border-white/10 p-7 flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden group hover:border-brand-red/50 transition-colors min-h-[260px]">
+              <div class="service-card-stagger bg-[#15161A] border border-white/10 p-7 flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden group hover:border-brand-red hover:shadow-[0_0_24px_rgba(224,45,55,0.22)] transition-all duration-300 min-h-[260px]">
                 <div class="space-y-2.5 z-10 max-w-[210px]">
-                  <h3 class="font-sans font-extrabold text-xl sm:text-2xl uppercase tracking-wide text-white leading-tight">
+                  <h3 class="font-condensed font-semibold text-[24px] sm:text-[26px] uppercase tracking-wide text-white leading-tight">
                     ОХРАННАЯ СИГНАЛИЗАЦИЯ
                   </h3>
-                  <p class="text-white/65 font-sans text-xs leading-relaxed">
+                  <p class="text-white/70 font-sans font-normal text-[14px] sm:text-[15px] leading-relaxed">
                     Датчики движения и открытия, тревожные кнопки, настройка сценариев оповещения.
                   </p>
                   <div class="pt-3">
-                    <a href="#lead-modal" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                    <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-[14px] uppercase tracking-wider group-hover:text-brand-red transition-colors">
                       <span>ОСТАВИТЬ ЗАЯВКУ</span>
-                      <span class="ml-1 text-sm transition-transform group-hover:translate-x-0.5">→</span>
+                      <span class="arrow-default group-hover:hidden ml-1.5 transition-transform">↗</span>
+                      <span class="arrow-hover hidden group-hover:inline-block ml-1.5 transition-transform">→</span>
                     </a>
                   </div>
                 </div>
@@ -413,18 +415,19 @@
               </div>
 
               <!-- Card: ДОМОФОНЫ -->
-              <div class="bg-[#15161A] border border-white/10 p-7 flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden group hover:border-brand-red/50 transition-colors min-h-[260px]">
+              <div class="service-card-stagger bg-[#15161A] border border-white/10 p-7 flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden group hover:border-brand-red hover:shadow-[0_0_24px_rgba(224,45,55,0.22)] transition-all duration-300 min-h-[260px]">
                 <div class="space-y-2.5 z-10 max-w-[210px]">
-                  <h3 class="font-sans font-extrabold text-xl sm:text-2xl uppercase tracking-wide text-white leading-tight">
+                  <h3 class="font-condensed font-semibold text-[24px] sm:text-[26px] uppercase tracking-wide text-white leading-tight">
                     ДОМОФОНЫ
                   </h3>
-                  <p class="text-white/65 font-sans text-xs leading-relaxed">
+                  <p class="text-white/70 font-sans font-normal text-[14px] sm:text-[15px] leading-relaxed">
                     Аудио — и видеодомофония для подъездов, офисов и частных домов.
                   </p>
                   <div class="pt-3">
-                    <a href="#lead-modal" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                    <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-[14px] uppercase tracking-wider group-hover:text-brand-red transition-colors">
                       <span>ОСТАВИТЬ ЗАЯВКУ</span>
-                      <span class="ml-1 text-sm transition-transform group-hover:translate-x-0.5">↗</span>
+                      <span class="arrow-default group-hover:hidden ml-1.5 transition-transform">↗</span>
+                      <span class="arrow-hover hidden group-hover:inline-block ml-1.5 transition-transform">→</span>
                     </a>
                   </div>
                 </div>
@@ -439,18 +442,19 @@
             <div class="flex flex-col gap-6">
               
               <!-- Card: ПОЖАРНАЯ СИГНАЛИЗАЦИЯ -->
-              <div class="bg-[#15161A] border border-white/10 p-7 flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden group hover:border-brand-red/50 transition-colors min-h-[260px]">
+              <div class="service-card-stagger bg-[#15161A] border border-white/10 p-7 flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden group hover:border-brand-red hover:shadow-[0_0_24px_rgba(224,45,55,0.22)] transition-all duration-300 min-h-[260px]">
                 <div class="space-y-2.5 z-10 max-w-[210px]">
-                  <h3 class="font-sans font-extrabold text-xl sm:text-2xl uppercase tracking-wide text-white leading-tight">
+                  <h3 class="font-condensed font-semibold text-[24px] sm:text-[26px] uppercase tracking-wide text-white leading-tight">
                     ПОЖАРНАЯ СИГНАЛИЗАЦИЯ
                   </h3>
-                  <p class="text-white/65 font-sans text-xs leading-relaxed">
+                  <p class="text-white/70 font-sans font-normal text-[14px] sm:text-[15px] leading-relaxed">
                     Проект, монтаж и обслуживание АПС. Сдача надзорным органам.
                   </p>
                   <div class="pt-3">
-                    <a href="#lead-modal" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                    <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-[14px] uppercase tracking-wider group-hover:text-brand-red transition-colors">
                       <span>ОСТАВИТЬ ЗАЯВКУ</span>
-                      <span class="ml-1 text-sm transition-transform group-hover:translate-x-0.5">↗</span>
+                      <span class="arrow-default group-hover:hidden ml-1.5 transition-transform">↗</span>
+                      <span class="arrow-hover hidden group-hover:inline-block ml-1.5 transition-transform">→</span>
                     </a>
                   </div>
                 </div>
@@ -460,18 +464,19 @@
               </div>
 
               <!-- Card: СКС -->
-              <div class="bg-[#15161A] border border-white/10 p-7 flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden group hover:border-brand-red/50 transition-colors min-h-[260px]">
+              <div class="service-card-stagger bg-[#15161A] border border-white/10 p-7 flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative overflow-hidden group hover:border-brand-red hover:shadow-[0_0_24px_rgba(224,45,55,0.22)] transition-all duration-300 min-h-[260px]">
                 <div class="space-y-2.5 z-10 max-w-[210px]">
-                  <h3 class="font-sans font-extrabold text-xl sm:text-2xl uppercase tracking-wide text-white leading-tight">
+                  <h3 class="font-condensed font-semibold text-[24px] sm:text-[26px] uppercase tracking-wide text-white leading-tight">
                     СКС
                   </h3>
-                  <p class="text-white/65 font-sans text-xs leading-relaxed">
+                  <p class="text-white/70 font-sans font-normal text-[14px] sm:text-[15px] leading-relaxed">
                     Структурированные кабельные сети, ЛВС и серверные «под ключ».
                   </p>
                   <div class="pt-3">
-                    <a href="#lead-modal" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                    <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-[14px] uppercase tracking-wider group-hover:text-brand-red transition-colors">
                       <span>ОСТАВИТЬ ЗАЯВКУ</span>
-                      <span class="ml-1 text-sm transition-transform group-hover:translate-x-0.5">↗</span>
+                      <span class="arrow-default group-hover:hidden ml-1.5 transition-transform">↗</span>
+                      <span class="arrow-hover hidden group-hover:inline-block ml-1.5 transition-transform">→</span>
                     </a>
                   </div>
                 </div>
@@ -483,18 +488,19 @@
             </div>
 
             <!-- Column 3: TALL CARD ЭЛЕКТРОМОНТАЖ (SPANS FULL HEIGHT) -->
-            <div class="bg-[#15161A] border border-white/10 p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-brand-red/50 transition-colors min-h-[544px]">
+            <div class="service-card-stagger bg-[#15161A] border border-white/10 p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-brand-red hover:shadow-[0_0_24px_rgba(224,45,55,0.22)] transition-all duration-300 min-h-[544px]">
               <div class="space-y-3 z-10">
-                <h3 class="font-sans font-extrabold text-2xl sm:text-3xl uppercase tracking-wide text-white leading-tight">
+                <h3 class="font-condensed font-semibold text-[26px] sm:text-[28px] uppercase tracking-wide text-white leading-tight">
                   ЭЛЕКТРОМОНТАЖ
                 </h3>
-                <p class="text-white/65 font-sans text-xs sm:text-sm leading-relaxed max-w-xs">
+                <p class="text-white/70 font-sans font-normal text-[15px] sm:text-[16px] leading-relaxed max-w-xs">
                   Силовые и слаботочные сети, щиты, прокладка трасс. Проектирование и сдача под ключ.
                 </p>
                 <div class="pt-3">
-                  <a href="#lead-modal" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                  <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-[14px] uppercase tracking-wider group-hover:text-brand-red transition-colors">
                     <span>ОСТАВИТЬ ЗАЯВКУ</span>
-                    <span class="ml-1 text-sm transition-transform group-hover:translate-x-0.5">↗</span>
+                    <span class="arrow-default group-hover:hidden ml-1.5 transition-transform">↗</span>
+                    <span class="arrow-hover hidden group-hover:inline-block ml-1.5 transition-transform">→</span>
                   </a>
                 </div>
               </div>
@@ -511,46 +517,50 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 05. RED CTA BANNER 1 (EXACT FIGMA 1440px BANNER: DARK LEFT -> FIERY ORANGE RIGHT) -->
+    <!-- 05. RED CTA BANNER 1 ("Плавно появляется градиент" - Figma specs)          -->
     <!-- ========================================================================= -->
     <section class="py-12 bg-[#0E1014] relative z-20">
       <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div class="relative banner-figma-gradient overflow-hidden p-8 sm:p-12 lg:p-14 border border-[#C84E25]/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" style="clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);">
+        <div class="banner-container relative bg-[#15161A] overflow-hidden p-8 sm:p-12 lg:p-14 border border-[#C84E25]/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500" style="clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);">
           
+          <!-- Smoothly Appearing Gradient Layer (Figma: "Плавно появляется градиент") -->
+          <div class="banner-gradient-layer absolute inset-0 banner-figma-gradient pointer-events-none z-0"></div>
+
           <!-- Background 3D Hardware Render (Figma Blend) -->
-          <div class="absolute right-0 top-0 bottom-0 w-full sm:w-2/3 lg:w-1/2 pointer-events-none overflow-hidden flex items-center justify-end">
+          <div class="absolute right-0 top-0 bottom-0 w-full sm:w-2/3 lg:w-1/2 pointer-events-none overflow-hidden flex items-center justify-end z-10">
             <img src="/images/banner-3d-hardware.png" alt="" class="h-full w-auto max-w-none object-contain opacity-55 mix-blend-screen transform translate-x-10 translate-y-2">
           </div>
 
-          <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div class="relative z-20 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             
             <!-- Left Info -->
             <div class="space-y-4 max-w-xl">
-              <h2 class="font-sans font-extrabold uppercase text-3xl sm:text-5xl lg:text-[52px] text-white tracking-tight leading-none">
+              <h2 class="font-condensed font-medium uppercase text-4xl sm:text-5xl lg:text-[60px] text-white tracking-tight leading-[1.0]">
                 НЕ НАШЛИ СВОЮ ЗАДАЧУ?
               </h2>
-              <p class="text-white/90 font-sans text-sm sm:text-base leading-snug">
+              <p class="text-white/90 font-sans font-normal text-[18px] sm:text-[20px] leading-snug">
                 Оставьте заявку и мы подберём наилучшее решение под вашу индивидуальную задачу
               </p>
               
-              <!-- 3 Chamfered Tags from Figma Banner -->
+              <!-- 3 Chamfered Tags from Figma Banner (JetBrains Mono 16 Medium) -->
               <div class="flex flex-wrap gap-2.5 pt-2">
-                <span class="tag-chamfered !text-xs !py-1.5 !px-3.5">ВЫЕЗД БЕСПЛАТНО</span>
-                <span class="tag-chamfered !text-xs !py-1.5 !px-3.5">ПРОЕКТ ЗА 3 ДНЯ</span>
-                <span class="tag-chamfered !text-xs !py-1.5 !px-3.5">ГАРАНТИЯ 3 ГОДА</span>
+                <span class="tag-chamfered !text-[16px] !font-medium !py-2 !px-4 !font-mono">ВЫЕЗД БЕСПЛАТНО</span>
+                <span class="tag-chamfered !text-[16px] !font-medium !py-2 !px-4 !font-mono">ПРОЕКТ ЗА 3 ДНЯ</span>
+                <span class="tag-chamfered !text-[16px] !font-medium !py-2 !px-4 !font-mono">ГАРАНТИЯ 3 ГОДА</span>
               </div>
             </div>
 
             <!-- Right Contacts & Action Button -->
             <div class="flex flex-col sm:flex-row sm:items-center lg:flex-col lg:items-end gap-5 shrink-0">
               <div class="text-left lg:text-right">
-                <a href="tel:+74232000000" class="block font-mono font-extrabold text-lg sm:text-xl text-white hover:underline leading-tight">
+                <a href="tel:+74232000000" class="block font-sans font-bold text-[18px] text-white hover:underline leading-tight">
                   +7 (423) 200-00-00
                 </a>
-                <span class="block text-xs font-sans text-white/75 font-medium">Ежедневно 9:00–21:00</span>
+                <span class="block text-[14px] font-sans font-normal text-white/75 mt-0.5">Ежедневно 9:00–21:00</span>
               </div>
 
-              <button class="btn-chamfered open-modal-btn !bg-white !text-[#0E1014] hover:!bg-[#0E1014] hover:!text-white !py-3.5 !px-7 font-sans font-bold text-sm tracking-wider flex items-center space-x-2">
+              <!-- Button: JetBrains Mono 16 Bold -->
+              <button class="btn-chamfered open-modal-btn !bg-white !text-[#0E1014] hover:!bg-[#0E1014] hover:!text-white !py-3.5 !px-7 font-mono font-bold text-[16px] tracking-wider flex items-center space-x-2">
                 <span>ОБСУДИТЬ ЗАДАЧУ</span>
                 <span class="text-base">→</span>
               </button>
@@ -561,7 +571,6 @@
         </div>
       </div>
     </section>
-    </div>
 
     <!-- ========================================================================= -->
     <!-- 06. SECTION 03 — ПОЧЕМУ МЫ / ЦИФРЫ (EXACT FIGMA 1-TO-1 MATCH)             -->
