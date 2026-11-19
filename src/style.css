@@ -74,6 +74,31 @@ body {
   animation: ambientFloat1 14s ease-in-out infinite alternate;
 }
 
+/* Section 05: Raster Amber Glow at Bottom-Right behind Ticker */
+.ambient-glow-sec5 {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  background: radial-gradient(ellipse 65% 55% at 90% 90%, rgba(235, 75, 25, 0.22) 0%, rgba(185, 50, 20, 0.09) 38%, transparent 72%);
+}
+
+.sec5-glow-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom right;
+  opacity: 0.85;
+  pointer-events: none;
+  transform: scaleY(-1);
+  animation: ambientFloat2 16s ease-in-out infinite alternate;
+}
+
 /* Section 04: 3D Illustration Floating Levitation (Figma interactive specs) */
 @keyframes floatSlow3D {
   0% {
