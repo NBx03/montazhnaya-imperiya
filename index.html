@@ -5,24 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Монтажная Империя — Системы безопасности и слаботочные сети во Владивостоке</title>
   <meta name="description" content="Проектирование и монтаж систем безопасности, видеонаблюдения, СКУД, пожарной сигнализации, СКС и электрики во Владивостоке и Приморском крае под ключ.">
-  <link rel="icon" type="image/svg+xml" href="/icons/logo.svg">
+  <link rel="icon" type="image/png" href="/icons/logo-icon.png">
   <link rel="stylesheet" href="/src/style.css">
 </head>
-<body class="bg-brand-dark text-white selection:bg-brand-red selection:text-white font-sans antialiased bg-tech-grid min-h-screen flex flex-col justify-between">
+<body class="bg-brand-dark text-white selection:bg-brand-red selection:text-white font-sans antialiased min-h-screen flex flex-col justify-between">
 
   <!-- ========================================================================= -->
-  <!-- 00. HEADER (FIGMA CANONICAL: CLEAN WHITE BAR, DARK LOGO, CONTACTS, TG/WA) -->
+  <!-- 00. HEADER (EXACT MATCH TO FIGMA SCREENSHOT)                              -->
   <!-- ========================================================================= -->
-  <header id="header" class="sticky top-0 z-40 w-full bg-white border-b border-gray-200 shadow-sm transition-colors">
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
+  <header id="header" class="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
       
-      <!-- Logo: Exact Figma Icon & Typography -->
-      <a href="/" class="flex items-center group py-2">
-        <img src="/icons/logo-dark.svg" alt="Монтажная Империя" class="h-10 sm:h-11 w-auto transition-transform group-hover:scale-[1.02]">
+      <!-- Logo: Exact PNG from Figma -->
+      <a href="/" class="flex items-center group py-1">
+        <img src="/icons/logo-header.png" alt="Монтажная Империя" class="h-9 sm:h-10 w-auto object-contain">
       </a>
 
-      <!-- Desktop Navigation (Matching Figma 1440px) -->
-      <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-gray-700">
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center space-x-9 text-sm font-medium text-[#111827]">
         <a href="#services" class="hover:text-brand-red transition-colors">Услуги</a>
         <a href="#expertise" class="hover:text-brand-red transition-colors">О компании</a>
         <a href="#cases" class="hover:text-brand-red transition-colors">Кейсы</a>
@@ -30,40 +30,38 @@
         <a href="#contacts" class="hover:text-brand-red transition-colors">Контакты</a>
       </nav>
 
-      <!-- Header Right: Phone + Hours + Messengers (Telegram / WhatsApp) + Chamfered Button -->
-      <div class="hidden md:flex items-center space-x-6">
-        <!-- Phone & Working Hours -->
+      <!-- Header Right: Phone, Hours, Telegram, WhatsApp (NO extra button as in screenshot) -->
+      <div class="hidden sm:flex items-center space-x-4 lg:space-x-5">
         <div class="text-right">
-          <a href="tel:+74232000000" class="block font-mono font-bold text-sm text-[#0E1014] hover:text-brand-red transition-colors">
+          <a href="tel:+74232000000" class="block font-mono font-extrabold text-[15px] text-[#0E1014] hover:text-brand-red transition-colors leading-tight">
             +7 (423) 200-00-00
           </a>
-          <span class="block text-[11px] font-sans text-gray-500 -mt-0.5">Ежедневно 9:00–21:00</span>
+          <span class="block text-[11px] font-sans text-gray-500 font-medium">Ежедневно 9:00–21:00</span>
         </div>
 
-        <!-- Messengers -->
         <div class="flex items-center space-x-2">
-          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors" title="Telegram">
-            <img src="/icons/telegram.svg" alt="Telegram" class="w-4 h-4">
+          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#0088cc] hover:opacity-90 flex items-center justify-center transition-opacity shadow-sm" title="Telegram">
+            <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+            </svg>
           </a>
-          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors" title="WhatsApp">
-            <img src="/icons/whatsapp.svg" alt="WhatsApp" class="w-4 h-4">
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-[#25D366] hover:opacity-90 flex items-center justify-center transition-opacity shadow-sm" title="WhatsApp">
+            <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm0 18.09c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 01-1.26-4.32c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 012.41 5.83c.01 4.54-3.69 8.23-8.22 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.17-.48-.29z"/>
+            </svg>
           </a>
         </div>
-
-        <!-- Chamfered Button -->
-        <button class="btn-chamfered open-modal-btn !bg-[#0E1014] !text-white hover:!bg-brand-red !py-2.5 !px-5 !text-xs !tracking-wider">
-          ВЫЕЗД БЕСПЛАТНО
-        </button>
       </div>
 
       <!-- Mobile Burger -->
       <div class="lg:hidden flex items-center">
-        <button id="mobile-menu-btn" class="p-2 text-gray-800 hover:text-brand-red hover:bg-gray-100 rounded transition-colors" aria-label="Открыть меню">
+        <button id="mobile-menu-btn" class="p-2 text-gray-800 hover:text-brand-red transition-colors" aria-label="Открыть меню">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
       </div>
+
     </div>
   </header>
 
@@ -72,7 +70,7 @@
   <div id="mobile-drawer" class="fixed top-0 right-0 h-full w-[280px] sm:w-[340px] max-w-[85vw] bg-brand-surface border-l border-white/10 z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between overflow-y-auto">
     <div>
       <div class="flex items-center justify-between pb-5 border-b border-white/10">
-        <img src="/icons/logo.svg" alt="Монтажная Империя" class="h-8 w-auto">
+        <img src="/icons/logo-header.png" alt="Монтажная Империя" class="h-8 w-auto">
         <button id="close-menu-btn" class="p-2 text-white/60 hover:text-white" aria-label="Закрыть">✕</button>
       </div>
       <nav class="flex flex-col space-y-4 py-6 font-condensed text-xl uppercase tracking-wider">
@@ -85,111 +83,140 @@
     </div>
     <div class="pt-6 border-t border-white/10 space-y-4">
       <a href="tel:+74232000000" class="block font-mono text-base font-bold text-white hover:text-brand-red">+7 (423) 200-00-00</a>
-      <button class="w-full btn-chamfered open-modal-btn text-center block">ВЫЕЗД БЕСПЛАТНО</button>
+      <div class="flex space-x-3">
+        <a href="https://t.me/" class="px-4 py-2 bg-[#0088cc] text-white rounded text-xs font-mono">Telegram</a>
+        <a href="https://wa.me/" class="px-4 py-2 bg-[#25D366] text-white rounded text-xs font-mono">WhatsApp</a>
+      </div>
     </div>
   </div>
 
   <main class="flex-grow">
     <!-- ========================================================================= -->
-    <!-- 01. HERO (DARK #0E1014, LIVE VIDEO BG, REC 00:00:00, EXACT TITLE & TAGS) -->
+    <!-- 01. HERO (EXACT 1-TO-1 MATCH TO FIGMA SCREENSHOT)                         -->
     <!-- ========================================================================= -->
-    <section id="hero" class="relative min-h-[680px] flex items-center justify-center overflow-hidden border-b border-white/10 bg-[#0E1014]">
+    <section id="hero" class="relative min-h-[660px] lg:min-h-[700px] flex items-center overflow-hidden border-b border-white/10 bg-[#0E1014]" style="background-image: linear-gradient(180deg, rgba(14,16,20,0.55) 0%, rgba(14,16,20,0.75) 100%), url('/images/hero-rack-bg.jpg'); background-size: cover; background-position: center;">
       
-      <!-- Video Background Container (Figma video bg) with fallback rack gradient -->
-      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-35">
-          <source src="/images/hero-bg.mp4" type="video/mp4">
-        </video>
-        <!-- Figma Layer Blends: E02D37 6% + 0E1014 10% + Linear Gradient -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0E1014]/80 via-[#0E1014]/65 to-[#0E1014]"></div>
-        <div class="absolute inset-0 bg-[#E02D37]/5 mix-blend-color"></div>
-      </div>
+      <!-- Subtle Technical Grid Lines -->
+      <div class="absolute inset-0 pointer-events-none bg-tech-grid opacity-30"></div>
 
-      <!-- HUD Corner Brackets -->
-      <div class="corner-tl"></div>
-      <div class="corner-tr"></div>
-      <div class="corner-bl"></div>
-      <div class="corner-br"></div>
+      <!-- HUD Corner Brackets (Exact Figma 1440px) -->
+      <div class="corner-tl !top-6 !left-6 !w-6 !h-6 !border-white/50"></div>
+      <div class="corner-tr !top-6 !right-6 !w-6 !h-6 !border-white/50"></div>
+      <div class="corner-bl !bottom-6 !left-6 !w-6 !h-6 !border-white/50"></div>
+      <div class="corner-br !bottom-6 !right-6 !w-6 !h-6 !border-white/50"></div>
 
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-16 sm:py-24 relative z-10 w-full">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12 py-10 lg:py-14 relative z-10 w-full flex flex-col justify-between min-h-[580px]">
         
-        <!-- CCTV REC Timecode -->
-        <div class="flex items-center space-x-3 text-xs font-mono text-brand-red mb-8">
-          <span class="w-2.5 h-2.5 rounded-full bg-brand-red inline-block animate-pulse-rec"></span>
-          <span class="font-bold tracking-wider">REC</span>
-          <span id="rec-timer" class="text-white">00:00:00</span>
-        </div>
-
-        <!-- 3 Chamfered Tags from Figma -->
-        <div class="flex flex-wrap gap-2.5 sm:gap-3 mb-8">
-          <div class="tag-chamfered">БИЗНЕСУ И ЧАСТНЫМ КЛИЕНТАМ</div>
-          <div class="tag-chamfered">ОДИН ПОДРЯДЧИК НА ВЕСЬ ЦИКЛ</div>
-          <div class="tag-chamfered">БЕСПЛАТНЫЙ ВЫЕЗД ИНЖЕНЕРА</div>
-        </div>
-
-        <!-- Title & Subtitle Grid (Matching Figma 1440px Artboard) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
-          <div class="lg:col-span-8">
-            <h1 class="font-condensed font-extrabold uppercase text-5xl sm:text-7xl md:text-8xl text-white tracking-tight leading-[0.9]">
-              СИСТЕМЫ ЗАЩИТЫ
-            </h1>
+        <!-- Top HUD Bar: REC Timecode on Left + Battery on Right -->
+        <div class="flex items-center justify-between mb-8">
+          <!-- REC 00:00:00 -->
+          <div class="flex items-center space-x-2.5 text-xs font-mono text-white/90">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-red inline-block animate-pulse-rec shadow-[0_0_8px_#E02D37]"></span>
+            <span class="font-bold tracking-wider text-brand-red">REC</span>
+            <span id="rec-timer" class="tracking-widest text-white/90 font-mono">00:00:00</span>
           </div>
-          <div class="lg:col-span-4 lg:pb-2">
-            <p class="text-white/80 font-sans text-sm sm:text-base leading-relaxed border-l-2 border-brand-red pl-4">
-              Проектируем, монтируем и настраиваем системы безопасности и электрику — от квартиры до распределённой сети филиалов.
-            </p>
-            <p class="text-xs font-mono text-white/50 mt-2 pl-4">
-              Установим любые системы защиты во Владивостоке
-            </p>
+
+          <!-- Battery Icon Indicator -->
+          <div class="flex items-center space-x-1 opacity-80" title="Battery 100%">
+            <div class="w-7 h-3.5 border border-white/80 rounded-[2px] p-0.5 flex items-center space-x-0.5">
+              <div class="h-full w-1.5 bg-white rounded-[1px]"></div>
+              <div class="h-full w-1.5 bg-white rounded-[1px]"></div>
+              <div class="h-full w-1.5 bg-white rounded-[1px]"></div>
+            </div>
+            <div class="w-0.5 h-1.5 bg-white/80 rounded-r-[1px]"></div>
           </div>
         </div>
 
-        <!-- Split CTA Button from Figma -->
-        <div>
-          <button class="open-modal-btn inline-flex items-stretch border border-white/80 hover:border-brand-red bg-transparent transition-all group">
-            <span class="font-condensed font-bold uppercase tracking-wider text-base sm:text-lg text-white px-7 py-3.5 group-hover:bg-brand-red transition-colors">
-              ОСТАВИТЬ ЗАЯВКУ
-            </span>
-            <span class="border-l border-white/80 group-hover:border-brand-red flex items-center justify-center px-4 group-hover:bg-brand-red transition-colors text-white font-mono text-lg">
-              →
-            </span>
-          </button>
+        <!-- Middle: Headline + Right Offer Subtitle with Connecting Horizontal Guide -->
+        <div class="my-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center mb-6">
+            <!-- Left H1: СИСТЕМЫ ЗАЩИТЫ -->
+            <div class="lg:col-span-7">
+              <h1 class="font-condensed font-extrabold uppercase text-6xl sm:text-7xl md:text-8xl lg:text-[104px] text-white tracking-tight leading-[0.9]">
+                СИСТЕМЫ ЗАЩИТЫ
+              </h1>
+            </div>
+
+            <!-- Right: Subtitle with subtle guide line -->
+            <div class="lg:col-span-5 relative">
+              <div class="hidden lg:block absolute -left-8 top-1/2 w-6 h-[1px] bg-white/20"></div>
+              <p class="text-white/85 font-sans text-sm sm:text-base leading-relaxed max-w-md">
+                Проектируем, монтируем и настраиваем системы безопасности и электрику — от квартиры до распределённой сети филиалов.
+              </p>
+            </div>
+          </div>
+
+          <!-- 3 Chamfered Tags (Exact Text and White Chamfered Background) -->
+          <div class="flex flex-wrap gap-2.5 sm:gap-3">
+            <span class="tag-chamfered">БИЗНЕСУ И ЧАСТНЫМ КЛИЕНТАМ</span>
+            <span class="tag-chamfered">ОДИН ПОДРЯДЧИК НА ВЕСЬ ЦИКЛ</span>
+            <span class="tag-chamfered">БЕСПЛАТНЫЙ ВЫЕЗД ИНЖЕНЕРА</span>
+          </div>
+        </div>
+
+        <!-- Bottom: Lead text + Red Split Button on Left + DATE / 06.08.2026 on Right -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-10">
+          <div class="space-y-4 max-w-xl">
+            <p class="text-white/90 font-sans text-sm sm:text-base leading-snug">
+              Установим любые системы защиты во Владивостоке<br class="hidden sm:inline">
+              под ключ: проект, оборудование, монтаж и сдача объекта
+            </p>
+            
+            <!-- Red Split Button: [ ОСТАВИТЬ ЗАЯВКУ | → ] with Arrow Transition -->
+            <div>
+              <a href="#lead-modal" class="btn-split-cta open-modal-btn group inline-flex">
+                <span class="split-label !bg-brand-red !text-white font-condensed font-extrabold text-base sm:text-lg uppercase tracking-wider px-6 py-3.5 group-hover:!bg-[#C7242D] transition-colors">
+                  ОСТАВИТЬ ЗАЯВКУ
+                </span>
+                <span class="split-icon !bg-brand-red !text-white !border-white px-4 flex items-center justify-center font-bold text-lg group-hover:!bg-[#C7242D] transition-colors">
+                  <span class="inline-block transition-transform duration-200 group-hover:-rotate-45">→</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Bottom Right: Camera Timestamp -->
+          <div class="font-mono text-xs text-white/50 tracking-widest uppercase md:text-right">
+            DATE / 06.08.2026
+          </div>
         </div>
 
       </div>
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 02. MARQUEE / TICKER (FIGMA CANONICAL RED STRIP #E02D37) -->
+    <!-- 02. MARQUEE / TICKER (EXACT FIGMA RED STRIP #E02D37)                       -->
     <!-- ========================================================================= -->
-    <section id="ticker" class="bg-brand-red py-3.5 border-y border-white/10 overflow-hidden relative z-20">
+    <section id="ticker" class="bg-brand-red py-3 border-y border-white/10 overflow-hidden relative z-20">
       <div class="flex whitespace-nowrap animate-marquee ticker-track">
-        <div class="flex items-center space-x-8 text-white font-condensed font-bold uppercase tracking-widest text-lg sm:text-xl px-4">
-          <span>СКУД</span><span class="text-white/50 text-xs">■</span>
-          <span>ДОМОФОНЫ</span><span class="text-white/50 text-xs">■</span>
-          <span>ОХРАННАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/50 text-xs">■</span>
-          <span>ПОЖАРНАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/50 text-xs">■</span>
-          <span>ЭЛЕКТРОМОНТАЖ</span><span class="text-white/50 text-xs">■</span>
-          <span>МОНТАЖНАЯ ИМПЕРИЯ</span><span class="text-white/50 text-xs">■</span>
-          <span>ВИДЕОНАБЛЮДЕНИЕ</span><span class="text-white/50 text-xs">■</span>
+        <div class="flex items-center space-x-6 sm:space-x-8 text-white font-condensed font-extrabold uppercase tracking-widest text-base sm:text-lg px-4">
+          <span>СКУД</span><span class="text-white/40 text-xs">■</span>
+          <span>ДОМОФОНЫ</span><span class="text-white/40 text-xs">■</span>
+          <span>ОХРАННАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/40 text-xs">■</span>
+          <span>ПОЖАРНАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/40 text-xs">■</span>
+          <span>СКС</span><span class="text-white/40 text-xs">■</span>
+          <span>ЭЛЕКТРОМОНТАЖ</span><span class="text-white/40 text-xs">■</span>
+          <span>МОНТАЖНАЯ ИМПЕРИЯ</span><span class="text-white/40 text-xs">■</span>
+          <span>ВИДЕОНАБЛЮДЕНИЕ</span><span class="text-white/40 text-xs">■</span>
         </div>
-        <div class="flex items-center space-x-8 text-white font-condensed font-bold uppercase tracking-widest text-lg sm:text-xl px-4">
-          <span>СКУД</span><span class="text-white/50 text-xs">■</span>
-          <span>ДОМОФОНЫ</span><span class="text-white/50 text-xs">■</span>
-          <span>ОХРАННАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/50 text-xs">■</span>
-          <span>ПОЖАРНАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/50 text-xs">■</span>
-          <span>ЭЛЕКТРОМОНТАЖ</span><span class="text-white/50 text-xs">■</span>
-          <span>МОНТАЖНАЯ ИМПЕРИЯ</span><span class="text-white/50 text-xs">■</span>
-          <span>ВИДЕОНАБЛЮДЕНИЕ</span><span class="text-white/50 text-xs">■</span>
+        <div class="flex items-center space-x-6 sm:space-x-8 text-white font-condensed font-extrabold uppercase tracking-widest text-base sm:text-lg px-4">
+          <span>СКУД</span><span class="text-white/40 text-xs">■</span>
+          <span>ДОМОФОНЫ</span><span class="text-white/40 text-xs">■</span>
+          <span>ОХРАННАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/40 text-xs">■</span>
+          <span>ПОЖАРНАЯ СИГНАЛИЗАЦИЯ</span><span class="text-white/40 text-xs">■</span>
+          <span>СКС</span><span class="text-white/40 text-xs">■</span>
+          <span>ЭЛЕКТРОМОНТАЖ</span><span class="text-white/40 text-xs">■</span>
+          <span>МОНТАЖНАЯ ИМПЕРИЯ</span><span class="text-white/40 text-xs">■</span>
+          <span>ВИДЕОНАБЛЮДЕНИЕ</span><span class="text-white/40 text-xs">■</span>
         </div>
       </div>
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 03. SECTION 01 — ЭКСПЕРТИЗА (3 CARDS: ГАРАНТИЯ 1 ГОД, СМЕТА, СКЛАД) -->
+    <!-- 03. SECTION 01 — ЭКСПЕРТИЗА (3 CARDS: ГАРАНТИЯ 1 ГОД, СМЕТА, СКЛАД)        -->
     <!-- ========================================================================= -->
     <section id="expertise" class="py-20 sm:py-28 border-b border-white/10 relative">
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
         
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
@@ -277,10 +304,10 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 04. SECTION 02 — ВСЕ СИСТЕМЫ ПОД КЛЮЧ (ASYMMETRIC GRID: 2 TOP, 3 BOTTOM) -->
+    <!-- 04. SECTION 02 — ВСЕ СИСТЕМЫ ПОД КЛЮЧ (ASYMMETRIC GRID: 2 TOP, 3 BOTTOM)  -->
     <!-- ========================================================================= -->
     <section id="services" class="py-20 sm:py-28 border-b border-white/10 relative">
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
         
         <div class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
@@ -298,14 +325,14 @@
           </p>
         </div>
 
-        <!-- ASYMMETRIC GRID (NOT 3x2!) -->
+        <!-- ASYMMETRIC GRID -->
         <div class="space-y-6">
           
           <!-- TOP ROW: 2 Large Cards (50% / 50%) -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             <!-- Card 1: ВИДЕОНАБЛЮДЕНИЕ -->
-            <div class="bg-brand-surface border border-white/10 p-8 sm:p-10 flex flex-col justify-between min-h-[360px] group hover:border-brand-red/50 transition-colors">
+            <div class="bg-brand-surface border border-white/10 p-8 sm:p-10 flex flex-col justify-between min-h-[340px] group hover:border-brand-red/50 transition-colors">
               <div>
                 <h3 class="font-condensed font-extrabold text-3xl sm:text-4xl uppercase tracking-wide text-white leading-none mb-4">
                   ВИДЕОНАБЛЮДЕНИЕ
@@ -315,7 +342,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between pt-6 border-t border-white/10">
-                <a href="#lead-form" class="inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider group-hover:text-white transition-colors">
+                <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider group-hover:text-white transition-colors">
                   <span>ОСТАВИТЬ ЗАЯВКУ</span>
                   <span class="ml-1.5 text-base transition-transform group-hover:translate-x-1">↗</span>
                 </a>
@@ -324,7 +351,7 @@
             </div>
 
             <!-- Card 2: СКУД И ТУРНИКЕТЫ -->
-            <div class="bg-brand-surface border border-white/10 p-8 sm:p-10 flex flex-col justify-between min-h-[360px] group hover:border-brand-red/50 transition-colors">
+            <div class="bg-brand-surface border border-white/10 p-8 sm:p-10 flex flex-col justify-between min-h-[340px] group hover:border-brand-red/50 transition-colors">
               <div>
                 <h3 class="font-condensed font-extrabold text-3xl sm:text-4xl uppercase tracking-wide text-white leading-none mb-4">
                   СКУД И ТУРНИКЕТЫ
@@ -334,7 +361,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between pt-6 border-t border-white/10">
-                <a href="#lead-form" class="inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider group-hover:text-white transition-colors">
+                <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-sm uppercase tracking-wider group-hover:text-white transition-colors">
                   <span>ОСТАВИТЬ ЗАЯВКУ</span>
                   <span class="ml-1.5 text-base transition-transform group-hover:translate-x-1">↗</span>
                 </a>
@@ -348,7 +375,7 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             <!-- Card 3: ПОЖАРНАЯ СИГНАЛИЗАЦИЯ -->
-            <div class="bg-brand-surface border border-white/10 p-8 flex flex-col justify-between min-h-[320px] group hover:border-brand-red/50 transition-colors">
+            <div class="bg-brand-surface border border-white/10 p-8 flex flex-col justify-between min-h-[300px] group hover:border-brand-red/50 transition-colors">
               <div>
                 <h3 class="font-condensed font-extrabold text-2xl sm:text-3xl uppercase tracking-wide text-white leading-none mb-3">
                   ПОЖАРНАЯ<br>СИГНАЛИЗАЦИЯ
@@ -358,7 +385,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                <a href="#lead-form" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
                   <span>ОСТАВИТЬ ЗАЯВКУ</span>
                   <span class="ml-1">↗</span>
                 </a>
@@ -367,7 +394,7 @@
             </div>
 
             <!-- Card 4: СКС И СЕРВЕРНЫЕ -->
-            <div class="bg-brand-surface border border-white/10 p-8 flex flex-col justify-between min-h-[320px] group hover:border-brand-red/50 transition-colors">
+            <div class="bg-brand-surface border border-white/10 p-8 flex flex-col justify-between min-h-[300px] group hover:border-brand-red/50 transition-colors">
               <div>
                 <h3 class="font-condensed font-extrabold text-2xl sm:text-3xl uppercase tracking-wide text-white leading-none mb-3">
                   СКС И СЕРВЕРНЫЕ
@@ -377,7 +404,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                <a href="#lead-form" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
                   <span>ОСТАВИТЬ ЗАЯВКУ</span>
                   <span class="ml-1">↗</span>
                 </a>
@@ -386,7 +413,7 @@
             </div>
 
             <!-- Card 5: ЭЛЕКТРОМОНТАЖ -->
-            <div class="bg-brand-surface border border-white/10 p-8 flex flex-col justify-between min-h-[320px] group hover:border-brand-red/50 transition-colors">
+            <div class="bg-brand-surface border border-white/10 p-8 flex flex-col justify-between min-h-[300px] group hover:border-brand-red/50 transition-colors">
               <div>
                 <h3 class="font-condensed font-extrabold text-2xl sm:text-3xl uppercase tracking-wide text-white leading-none mb-3">
                   ЭЛЕКТРОМОНТАЖ
@@ -396,7 +423,7 @@
                 </p>
               </div>
               <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                <a href="#lead-form" class="inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
+                <a href="#lead-modal" class="open-modal-btn inline-flex items-center text-brand-red font-mono font-bold text-xs uppercase tracking-wider group-hover:text-white transition-colors">
                   <span>ОСТАВИТЬ ЗАЯВКУ</span>
                   <span class="ml-1">↗</span>
                 </a>
@@ -411,20 +438,15 @@
       </div>
     </section>
 
-    <!-- Placeholder marker for subsequent blocks -->
-    <section class="py-12 border-b border-white/10 text-center font-mono text-xs text-white/30 uppercase tracking-widest">
-      [ Блоки 03–08: Готовы к подключению ассетов ]
-    </section>
-
   </main>
 
   <!-- ========================================================================= -->
-  <!-- 13. FOOTER -->
+  <!-- 13. FOOTER                                                                -->
   <!-- ========================================================================= -->
   <footer id="footer" class="py-12 bg-[#090A0D] border-t border-white/10 text-white/50 font-mono text-xs">
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center space-x-4">
-        <img src="/icons/logo.svg" alt="Монтажная Империя" class="h-6 w-auto opacity-70">
+        <img src="/icons/logo-icon.png" alt="Монтажная Империя" class="h-6 w-auto opacity-70">
         <span>© 2026 ООО «Монтажная Империя». Все права защищены.</span>
       </div>
       <div class="text-right">
