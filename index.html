@@ -308,15 +308,23 @@
     <!-- ========================================================================= -->
     <!-- 04. SECTION 02 — УСЛУГИ / ВСЕ СИСТЕМЫ ПОД КЛЮЧ (EXACT FIGMA ASYMMETRIC GRID) -->
     <!-- ========================================================================= -->
-    <section id="services" class="pt-20 pb-20 sm:pt-28 sm:pb-28 relative overflow-hidden bg-transparent">
+    <section id="services" class="pt-20 pb-16 sm:pt-28 sm:pb-24 relative tech-plate-sec2 text-white">
       <!-- Top Chamfered Border Line (M 0 48 L 48 0 L 100% 0) -->
-      <div class="pointer-events-none absolute top-0 left-0 w-full h-[48px] z-20 overflow-hidden">
-        <svg class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="48" x2="48" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" class="hidden sm:inline" />
-          <line x1="48" y1="0" x2="100%" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" class="hidden sm:inline" />
-          <line x1="0" y1="32" x2="32" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" class="sm:hidden" />
-          <line x1="32" y1="0" x2="100%" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" class="sm:hidden" />
-        </svg>
+      <div class="pointer-events-none absolute top-0 left-0 right-0 h-[48px] z-20 overflow-hidden">
+        <!-- Desktop: 48px cut -->
+        <div class="absolute top-0 left-0 w-[48px] h-[48px] hidden sm:block">
+          <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="48" x2="48" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+          </svg>
+        </div>
+        <div class="absolute top-0 left-[48px] right-0 border-t border-white/[0.09] hidden sm:block"></div>
+        <!-- Mobile: 32px cut -->
+        <div class="absolute top-0 left-0 w-[32px] h-[32px] sm:hidden">
+          <svg viewBox="0 0 32 32" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="32" x2="32" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+          </svg>
+        </div>
+        <div class="absolute top-0 left-[32px] right-0 border-t border-white/[0.09] sm:hidden"></div>
       </div>
 
       <!-- Figma Raster Amber Glow Background (from user's Background.png) -->
@@ -536,64 +544,78 @@
 
         </div>
 
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 05. RED CTA BANNER 1 ("Плавно появляется градиент" - Figma specs)          -->
-    <!-- ========================================================================= -->
-    <section class="py-12 bg-[#0E1014] relative z-20">
-      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div class="banner-container relative bg-[#15161A] overflow-hidden p-8 sm:p-12 lg:p-14 border border-[#C84E25]/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500" style="clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);">
-          
-          <!-- Smoothly Appearing Gradient Layer (Figma: "Плавно появляется градиент") -->
-          <div class="banner-gradient-layer absolute inset-0 banner-figma-gradient pointer-events-none z-0"></div>
-
-          <!-- Background 3D Hardware Render (Figma Blend) -->
-          <div class="absolute right-0 top-0 bottom-0 w-full sm:w-2/3 lg:w-1/2 pointer-events-none overflow-hidden flex items-center justify-end z-10">
-            <img src="/images/banner-3d-hardware.png" alt="" class="h-full w-auto max-w-none object-contain opacity-55 mix-blend-screen transform translate-x-10 translate-y-2">
-          </div>
-
-          <div class="relative z-20 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <!-- 05. RED CTA BANNER 1 ("Плавно появляется градиент" - Figma specs) -->
+        <div class="pt-16 sm:pt-20 pb-4 relative z-20">
+          <div class="banner-container relative bg-[#15161A] overflow-hidden p-8 sm:p-12 lg:p-14 border border-[#C84E25]/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500" style="clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);">
             
-            <!-- Left Info -->
-            <div class="space-y-4 max-w-2xl">
-              <h2 class="font-condensed font-medium uppercase text-4xl sm:text-5xl lg:text-[60px] text-white tracking-tight leading-[1.0]">
-                НЕ НАШЛИ СВОЮ ЗАДАЧУ?
-              </h2>
-              <p class="text-white/90 font-sans font-normal text-[18px] sm:text-[20px] leading-snug">
-                Оставьте заявку и мы подберём наилучшее решение под вашу индивидуальную задачу
-              </p>
-              
-              <!-- Subtle horizontal divider line from Figma -->
-              <div class="w-full max-w-lg h-px bg-white/20 my-4"></div>
+            <!-- Smoothly Appearing Gradient Layer (Figma: "Плавно появляется градиент") -->
+            <div class="banner-gradient-layer absolute inset-0 banner-figma-gradient pointer-events-none z-0"></div>
 
-              <!-- 3 Chamfered Tags from Figma Banner (Single Row, Never Wrapping) -->
-              <div class="flex flex-row items-center gap-2 sm:gap-3 flex-nowrap overflow-x-auto sm:overflow-visible pt-1">
-                <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ВЫЕЗД БЕСПЛАТНО</span>
-                <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ПРОЕКТ ЗА 3 ДНЯ</span>
-                <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ГАРАНТИЯ 3 ГОДА</span>
-              </div>
+            <!-- Background 3D Hardware Render (Figma Blend) -->
+            <div class="absolute right-0 top-0 bottom-0 w-full sm:w-2/3 lg:w-1/2 pointer-events-none overflow-hidden flex items-center justify-end z-10">
+              <img src="/images/banner-3d-hardware.png" alt="" class="h-full w-auto max-w-none object-contain opacity-55 mix-blend-screen transform translate-x-10 translate-y-2">
             </div>
 
-            <!-- Right Contacts & Action Button -->
-            <div class="flex flex-col sm:flex-row sm:items-center lg:flex-col lg:items-end gap-5 shrink-0">
-              <div class="text-left lg:text-right">
-                <a href="tel:+74232000000" class="block font-sans font-bold text-[18px] text-white hover:underline leading-tight">
-                  +7 (423) 200-00-00
-                </a>
-                <span class="block text-[14px] font-sans font-normal text-white/75 mt-0.5">Ежедневно 9:00–21:00</span>
+            <div class="relative z-20 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+              
+              <!-- Left Info -->
+              <div class="space-y-4 max-w-2xl">
+                <h2 class="font-condensed font-medium uppercase text-4xl sm:text-5xl lg:text-[60px] text-white tracking-tight leading-[1.0]">
+                  НЕ НАШЛИ СВОЮ ЗАДАЧУ?
+                </h2>
+                <p class="text-white/90 font-sans font-normal text-[18px] sm:text-[20px] leading-snug">
+                  Оставьте заявку и мы подберём наилучшее решение под вашу индивидуальную задачу
+                </p>
+                
+                <!-- Subtle horizontal divider line from Figma -->
+                <div class="w-full max-w-lg h-px bg-white/20 my-4"></div>
+
+                <!-- 3 Chamfered Tags from Figma Banner (Single Row, Never Wrapping) -->
+                <div class="flex flex-row items-center gap-2 sm:gap-3 flex-nowrap overflow-x-auto sm:overflow-visible pt-1">
+                  <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ВЫЕЗД БЕСПЛАТНО</span>
+                  <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ПРОЕКТ ЗА 3 ДНЯ</span>
+                  <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ГАРАНТИЯ 3 ГОДА</span>
+                </div>
               </div>
 
-              <!-- Button: JetBrains Mono 16 Bold -->
-              <button class="btn-chamfered open-modal-btn !bg-white !text-[#0E1014] hover:!bg-[#0E1014] hover:!text-white !py-3.5 !px-7 font-mono font-bold text-[16px] tracking-wider flex items-center space-x-2">
-                <span>ОБСУДИТЬ ЗАДАЧУ</span>
-                <span class="text-base">→</span>
-              </button>
+              <!-- Right Contacts & Action Button -->
+              <div class="flex flex-col sm:flex-row sm:items-center lg:flex-col lg:items-end gap-5 shrink-0">
+                <div class="text-left lg:text-right">
+                  <a href="tel:+74232000000" class="block font-sans font-bold text-[18px] text-white hover:underline leading-tight">
+                    +7 (423) 200-00-00
+                  </a>
+                  <span class="block text-[14px] font-sans font-normal text-white/75 mt-0.5">Ежедневно 9:00–21:00</span>
+                </div>
+
+                <!-- Button: JetBrains Mono 16 Bold -->
+                <button class="btn-chamfered open-modal-btn !bg-white !text-[#0E1014] hover:!bg-[#0E1014] hover:!text-white !py-3.5 !px-7 font-mono font-bold text-[16px] tracking-wider flex items-center space-x-2">
+                  <span>ОБСУДИТЬ ЗАДАЧУ</span>
+                  <span class="text-base">→</span>
+                </button>
+              </div>
+
             </div>
 
           </div>
+        </div>
 
+      </div>
+
+      <!-- Bottom Chamfered Border Line (M 0 48 L calc(100% - 48px) 48 L 100% 0) -->
+      <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-[48px] z-20 overflow-hidden">
+        <!-- Desktop: 48px cut -->
+        <div class="absolute bottom-0 left-0 right-[48px] border-b border-white/[0.09] hidden sm:block"></div>
+        <div class="absolute bottom-0 right-0 w-[48px] h-[48px] hidden sm:block">
+          <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="48" x2="48" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+          </svg>
+        </div>
+        <!-- Mobile: 32px cut -->
+        <div class="absolute bottom-0 left-0 right-[32px] border-b border-white/[0.09] sm:hidden"></div>
+        <div class="absolute bottom-0 right-0 w-[32px] h-[32px] sm:hidden">
+          <svg viewBox="0 0 32 32" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="32" x2="32" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+          </svg>
         </div>
       </div>
     </section>
@@ -952,21 +974,24 @@
     <!-- ========================================================================= -->
     <!-- 08. SECTION 05 — ОБЛАСТЬ РАБОТЫ / РАБОТАЕМ В РАЗЛИЧНЫХ СФЕРАХ             -->
     <!-- ========================================================================= -->
-    <section id="sectors" class="relative bg-transparent pt-12 lg:pt-16">
+    <section id="sectors" class="relative pt-12 lg:pt-16 tech-plate-sec5 text-white">
       
       <!-- Top Chamfered Border Line (M 0 48 L 48 0 L 100% 0) like Section 02 -->
-      <div class="pointer-events-none absolute top-0 left-0 w-full h-[48px] z-20 overflow-hidden">
-        <svg class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="48" x2="48" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" class="hidden sm:inline" />
-          <line x1="48" y1="0" x2="100%" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" class="hidden sm:inline" />
-          <line x1="0" y1="32" x2="32" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" class="sm:hidden" />
-          <line x1="32" y1="0" x2="100%" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" class="sm:hidden" />
-        </svg>
-      </div>
-
-      <!-- Figma Raster Amber Glow in Bottom-Right (behind ticker) -->
-      <div class="ambient-glow-sec5 pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <img src="/images/bg-sec2-glow.png" alt="" class="sec5-glow-img">
+      <div class="pointer-events-none absolute top-0 left-0 right-0 h-[48px] z-20 overflow-hidden">
+        <!-- Desktop: 48px cut -->
+        <div class="absolute top-0 left-0 w-[48px] h-[48px] hidden sm:block">
+          <svg viewBox="0 0 48 48" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="48" x2="48" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+          </svg>
+        </div>
+        <div class="absolute top-0 left-[48px] right-0 border-t border-white/[0.09] hidden sm:block"></div>
+        <!-- Mobile: 32px cut -->
+        <div class="absolute top-0 left-0 w-[32px] h-[32px] sm:hidden">
+          <svg viewBox="0 0 32 32" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="32" x2="32" y2="0" stroke="rgba(255, 255, 255, 0.09)" stroke-width="1" />
+          </svg>
+        </div>
+        <div class="absolute top-0 left-[32px] right-0 border-t border-white/[0.09] sm:hidden"></div>
       </div>
 
       <!-- Pinned Scroll Track Container (Figma: "Фиксация экрана + горизонтальная прокрутка до конца карточек") -->
@@ -974,6 +999,11 @@
         
         <!-- Sticky Window -->
         <div id="sectors-sticky-window" class="sticky top-0 h-screen flex flex-col justify-between py-8 sm:py-10 lg:py-12 overflow-hidden z-10">
+          
+          <!-- Warm Amber Glow strictly at Bottom-Right behind Ticker & Cards 3/4 (NO glow at top!) -->
+          <div class="ambient-glow-sec5 pointer-events-none absolute inset-0 z-0 overflow-hidden">
+            <div class="sec5-bottom-glow"></div>
+          </div>
           
           <!-- Top: Section Tag & Title (Exact Figma 1440 Grid) -->
           <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10 shrink-0">
