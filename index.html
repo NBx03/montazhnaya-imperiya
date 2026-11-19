@@ -220,43 +220,46 @@
     <!-- ========================================================================= -->
     <!-- 03. SECTION 01 — ЭКСПЕРТИЗА (EXACT 1-TO-1 MATCH TO FIGMA SCREENSHOT)       -->
     <!-- ========================================================================= -->
-    <section id="expertise" class="py-20 sm:py-24 border-b border-white/10 relative bg-[#0E1014]">
-      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <section id="expertise" class="py-20 sm:py-24 relative overflow-hidden bg-transparent">
+      <!-- Ambient Glow (Top Right under ticker, seamlessly flowing into Section 02) -->
+      <div class="ambient-glow ambient-glow-sec1 pointer-events-none absolute inset-0"></div>
+
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         
-        <!-- Header Grid: Title Left, Text Right (Exact Figma Proportions & Onest Font) -->
+        <!-- Header Grid: Title Left, Text Right (Exact Figma Proportions & Typography) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14">
           <div class="lg:col-span-8">
-            <div class="text-xs font-mono uppercase tracking-widest text-brand-red mb-4 flex items-center space-x-2">
-              <span class="font-bold text-white/90">01</span>
+            <div class="text-[16px] font-mono font-normal uppercase tracking-wider text-white/70 mb-4 flex items-center space-x-2.5">
+              <span class="text-white/90">01</span>
               <span class="w-6 h-[1.5px] bg-brand-red inline-block"></span>
-              <span class="text-white/70">ЭКСПЕРТИЗА</span>
+              <span>ЭКСПЕРТИЗА</span>
             </div>
-            <!-- EXACT FIGMA DEV MODE: Fira Sans Extra Condensed Medium 60px in 3 lines -->
+            <!-- EXACT FIGMA DEV MODE: Fira Sans Extra Condensed Medium 60px with line-by-line masked reveal -->
             <h2 class="font-condensed font-medium uppercase text-4xl sm:text-5xl lg:text-[60px] text-white leading-[1.0] tracking-normal">
-              ПОМОГАЕМ ПРИНЯТЬ РЕШЕНИЕ,<br>
-              КОТОРОЕ НЕ ПРИДЁТСЯ<br>
-              ПЕРЕДЕЛЫВАТЬ
+              <span class="line-mask block"><span class="title-reveal-line block" style="transition-delay: 0.1s;">ПОМОГАЕМ ПРИНЯТЬ РЕШЕНИЕ,</span></span>
+              <span class="line-mask block"><span class="title-reveal-line block" style="transition-delay: 0.22s;">КОТОРОЕ НЕ ПРИДЁТСЯ</span></span>
+              <span class="line-mask block"><span class="title-reveal-line block" style="transition-delay: 0.35s;">ПЕРЕДЕЛЫВАТЬ</span></span>
             </h2>
           </div>
 
           <div class="lg:col-span-4 lg:pb-1">
-            <p class="text-white/70 font-sans text-sm sm:text-base leading-relaxed max-w-sm">
+            <p class="text-white/75 font-sans font-normal text-[18px] sm:text-[20px] leading-relaxed max-w-sm">
               Честно показываем, что на объекте действительно нужно. Выезд инженера и смета — бесплатно.
             </p>
           </div>
         </div>
 
-        <!-- 3 Exact Cards from Figma (Exact same font size for both lines of title!) -->
+        <!-- 3 Exact Cards from Figma (Staggered Entrance Animation) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          <!-- Card 1: ГАРАНТИЯ 1 ГОД НА МОНТАЖ (Единый размер шрифта!) -->
-          <div class="bg-[#15161A] border border-white/10 p-7 sm:p-8 flex items-center justify-between gap-4 group hover:border-brand-red/50 transition-colors">
+          <!-- Card 1: ГАРАНТИЯ 1 ГОД НА МОНТАЖ -->
+          <div class="card-stagger bg-[#15161A]/90 backdrop-blur-sm border border-white/10 p-7 sm:p-8 flex items-center justify-between gap-4 group hover:border-brand-red/50 hover:shadow-[0_0_20px_rgba(224,45,55,0.12)] transition-all duration-300" style="transition-delay: 0.2s;">
             <div class="space-y-2.5 max-w-[210px]">
-              <h3 class="font-condensed font-medium uppercase text-[22px] sm:text-[24px] text-white leading-[1.15]">
+              <h3 class="font-condensed font-semibold uppercase text-[22px] sm:text-[24px] text-white leading-[1.15]">
                 ГАРАНТИЯ<br>
                 1 ГОД НА МОНТАЖ
               </h3>
-              <p class="text-xs sm:text-sm text-white/60 font-sans leading-relaxed">
+              <p class="text-[15px] sm:text-[16px] text-white/60 font-sans font-normal leading-relaxed">
                 Плюс официальная гарантия производителя на оборудование.
               </p>
             </div>
@@ -265,14 +268,14 @@
             </div>
           </div>
 
-          <!-- Card 2: ПРОЕКТ, СХЕМА И СМЕТА (Единый размер шрифта!) -->
-          <div class="bg-[#15161A] border border-white/10 p-7 sm:p-8 flex items-center justify-between gap-4 group hover:border-brand-red/50 transition-colors">
+          <!-- Card 2: ПРОЕКТ, СХЕМА И СМЕТА -->
+          <div class="card-stagger bg-[#15161A]/90 backdrop-blur-sm border border-white/10 p-7 sm:p-8 flex items-center justify-between gap-4 group hover:border-brand-red/50 hover:shadow-[0_0_20px_rgba(224,45,55,0.12)] transition-all duration-300" style="transition-delay: 0.4s;">
             <div class="space-y-2.5 max-w-[210px]">
-              <h3 class="font-condensed font-medium uppercase text-[22px] sm:text-[24px] text-white leading-[1.15]">
+              <h3 class="font-condensed font-semibold uppercase text-[22px] sm:text-[24px] text-white leading-[1.15]">
                 ПРОЕКТ, СХЕМА<br>
                 И СМЕТА
               </h3>
-              <p class="text-xs sm:text-sm text-white/60 font-sans leading-relaxed">
+              <p class="text-[15px] sm:text-[16px] text-white/60 font-sans font-normal leading-relaxed">
                 Проектирование небольших объектов. Крупные — по проекту заказчика.
               </p>
             </div>
@@ -281,14 +284,14 @@
             </div>
           </div>
 
-          <!-- Card 3: СВОЁ ОБОРУДОВАНИЕ НА СКЛАДЕ (Единый размер шрифта!) -->
-          <div class="bg-[#15161A] border border-white/10 p-7 sm:p-8 flex items-center justify-between gap-4 group hover:border-brand-red/50 transition-colors">
+          <!-- Card 3: СВОЁ ОБОРУДОВАНИЕ НА СКЛАДЕ -->
+          <div class="card-stagger bg-[#15161A]/90 backdrop-blur-sm border border-white/10 p-7 sm:p-8 flex items-center justify-between gap-4 group hover:border-brand-red/50 hover:shadow-[0_0_20px_rgba(224,45,55,0.12)] transition-all duration-300" style="transition-delay: 0.6s;">
             <div class="space-y-2.5 max-w-[210px]">
-              <h3 class="font-condensed font-medium uppercase text-[22px] sm:text-[24px] text-white leading-[1.15]">
+              <h3 class="font-condensed font-semibold uppercase text-[22px] sm:text-[24px] text-white leading-[1.15]">
                 СВОЁ ОБОРУДОВАНИЕ<br>
                 НА СКЛАДЕ
               </h3>
-              <p class="text-xs sm:text-sm text-white/60 font-sans leading-relaxed">
+              <p class="text-[15px] sm:text-[16px] text-white/60 font-sans font-normal leading-relaxed">
                 Стартуем через несколько дней, а не через месяц ожидания поставки.
               </p>
             </div>
@@ -305,16 +308,19 @@
     <!-- ========================================================================= -->
     <!-- 04. SECTION 02 — УСЛУГИ / ВСЕ СИСТЕМЫ ПОД КЛЮЧ (EXACT FIGMA ASYMMETRIC GRID) -->
     <!-- ========================================================================= -->
-    <section id="services" class="py-20 sm:py-28 border-b border-white/10 relative bg-[#0E1014] bg-ambient-glow">
-      <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <section id="services" class="py-20 sm:py-28 relative overflow-hidden bg-transparent">
+      <!-- Ambient Glow (Connecting from Section 01, down right edge and bottom-left) -->
+      <div class="ambient-glow ambient-glow-sec2 pointer-events-none absolute inset-0"></div>
+
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         
         <!-- Header: Title Left (Fira Sans Extra Condensed Medium 60), Subtitle Right -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mb-14">
           <div class="lg:col-span-7">
-            <div class="text-xs font-mono uppercase tracking-widest text-brand-red mb-4 flex items-center space-x-2">
-              <span class="font-bold text-white/90">02</span>
+            <div class="text-[16px] font-mono font-normal uppercase tracking-wider text-white/70 mb-4 flex items-center space-x-2.5">
+              <span class="text-white/90">02</span>
               <span class="w-6 h-[1.5px] bg-brand-red inline-block"></span>
-              <span class="text-white/70">УСЛУГИ</span>
+              <span>УСЛУГИ</span>
             </div>
             <!-- EXACT FIGMA DEV MODE: Fira Sans Extra Condensed Medium 60px -->
             <h2 class="font-condensed font-medium uppercase text-4xl sm:text-5xl lg:text-[60px] text-white leading-none tracking-normal">
@@ -558,14 +564,16 @@
     <!-- ========================================================================= -->
     <!-- 06. SECTION 03 — ПОЧЕМУ МЫ / ЦИФРЫ (EXACT FIGMA 1-TO-1 MATCH)             -->
     <!-- ========================================================================= -->
-    <section id="why-us" class="py-20 sm:py-24 lg:py-28 border-b border-white/10 relative overflow-hidden">
-      
+    <section id="why-us" class="py-20 sm:py-24 lg:py-28 relative overflow-hidden bg-transparent">
+      <!-- Ambient Glow on Left behind Stats -->
+      <div class="ambient-glow ambient-glow-sec3 pointer-events-none absolute inset-0"></div>
+
       <!-- Top Tag (03 — ПОЧЕМУ МЫ) -->
-      <div class="max-w-[1440px] mx-auto px-6 lg:px-12 mb-10 sm:mb-12">
-        <div class="text-xs font-mono uppercase tracking-widest text-brand-red flex items-center space-x-2">
-          <span class="font-bold text-white/90">03</span>
+      <div class="max-w-[1440px] mx-auto px-6 lg:px-12 mb-10 sm:mb-12 relative z-10">
+        <div class="text-[16px] font-mono font-normal uppercase tracking-wider text-white/70 flex items-center space-x-2.5">
+          <span class="text-white/90">03</span>
           <span class="w-6 h-[1.5px] bg-brand-red inline-block"></span>
-          <span class="text-white/70">ПОЧЕМУ МЫ</span>
+          <span>ПОЧЕМУ МЫ</span>
         </div>
       </div>
 

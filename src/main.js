@@ -47,6 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
     heroDateEl.textContent = `DATE / ${d}.${m}.${y}`;
   }
 
+  // 1c. Section 01 Scroll Reveal (Title lines masked reveal + Cards staggered entrance)
+  const expertiseSection = document.getElementById('expertise');
+  if (expertiseSection) {
+    const expertiseObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          expertiseSection.classList.add('is-visible');
+          expertiseObserver.unobserve(expertiseSection);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    expertiseObserver.observe(expertiseSection);
+  }
+
   // 2. Mobile Menu Drawer Toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const closeMenuBtn = document.getElementById('close-menu-btn');
