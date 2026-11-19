@@ -74,6 +74,42 @@ body {
   animation: ambientFloat1 14s ease-in-out infinite alternate;
 }
 
+/* Section 04: Subtle top-left halo bleed continuing from Section 03 */
+.ambient-glow-sec4 {
+  background: radial-gradient(ellipse 55% 45% at 0% 0%, rgba(215, 75, 30, 0.16) 0%, rgba(160, 45, 20, 0.06) 35%, transparent 70%);
+  animation: ambientFloat1 14s ease-in-out infinite alternate;
+}
+
+/* Section 04: 3D Illustration Floating Levitation (Figma interactive specs) */
+@keyframes floatSlow3D {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.6deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.installation-3d-float {
+  animation: floatSlow3D 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Section 04: Step Item Stagger Animation */
+.step-item-stagger {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.is-visible .step-item-stagger {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Section 02: Distinct Dark Graphite Block with Chamfered Left Corner ("кармашек согнутый") */
 .section-services-chamfer {
   background-color: #15161A;
