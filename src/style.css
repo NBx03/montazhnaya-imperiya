@@ -70,13 +70,7 @@ body {
 }
 
 .ambient-glow-sec3 {
-  background: radial-gradient(ellipse 70% 60% at 5% 45%, rgba(215, 75, 35, 0.18) 0%, rgba(165, 45, 25, 0.07) 38%, transparent 70%);
-  animation: ambientFloat1 14s ease-in-out infinite alternate;
-}
-
-/* Section 04: Subtle top-left halo bleed continuing from Section 03 */
-.ambient-glow-sec4 {
-  background: radial-gradient(ellipse 55% 45% at 0% 0%, rgba(215, 75, 30, 0.16) 0%, rgba(160, 45, 20, 0.06) 35%, transparent 70%);
+  background: radial-gradient(ellipse 65% 55% at 5% 55%, rgba(215, 75, 30, 0.18) 0%, rgba(165, 45, 20, 0.07) 38%, transparent 70%);
   animation: ambientFloat1 14s ease-in-out infinite alternate;
 }
 
@@ -95,6 +89,34 @@ body {
 
 .installation-3d-float {
   animation: floatSlow3D 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Section 04: Step Rows & Interactive Indicators */
+.step-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.step-row:hover,
+.step-row.is-active {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.step-row:hover .step-num,
+.step-row.is-active .step-num {
+  color: #E02D37;
+  text-shadow: 0 0 16px rgba(224, 45, 55, 0.5);
+}
+
+.step-row:hover .step-title,
+.step-row.is-active .step-title {
+  color: #FFFFFF;
+}
+
+#installation-3d-wrap {
+  perspective: 1000px;
+  transform-style: preserve-3d;
   will-change: transform;
 }
 
