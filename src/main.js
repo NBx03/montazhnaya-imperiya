@@ -62,6 +62,36 @@ document.addEventListener('DOMContentLoaded', () => {
     expertiseObserver.observe(expertiseSection);
   }
 
+  // 1d. Section 02 Scroll Reveal (Service Cards Staggered Entrance)
+  const servicesSection = document.getElementById('services');
+  if (servicesSection) {
+    const servicesObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          servicesSection.classList.add('is-visible');
+          servicesObserver.unobserve(servicesSection);
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+    servicesObserver.observe(servicesSection);
+  }
+
+  // 1e. CTA Banner Gradient Reveal ("Плавно появляется градиент")
+  const bannerContainer = document.querySelector('.banner-container');
+  if (bannerContainer) {
+    const bannerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          bannerContainer.classList.add('is-visible');
+          bannerObserver.unobserve(bannerContainer);
+        }
+      });
+    }, { threshold: 0.20, rootMargin: '0px 0px -50px 0px' });
+
+    bannerObserver.observe(bannerContainer);
+  }
+
   // 2. Mobile Menu Drawer Toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const closeMenuBtn = document.getElementById('close-menu-btn');

@@ -37,68 +37,65 @@ body {
     radial-gradient(circle at 12% 65%, rgba(185, 48, 30, 0.09) 0%, transparent 50%);
 }
 
-/* Continuous Multi-Section Ambient Glow Architecture matching Figma */
-.ambient-glow-sections-1-2 {
-  background-image: 
-    /* Upper-right glow in Section 01 under ticker */
-    radial-gradient(ellipse 65% 22% at 85% 5%, rgba(215, 75, 35, 0.22) 0%, rgba(165, 45, 25, 0.08) 35%, transparent 70%),
-    /* Mid-right transition glow bridging Section 01 into Section 02 */
-    radial-gradient(ellipse 68% 28% at 88% 30%, rgba(215, 75, 35, 0.20) 0%, rgba(165, 45, 25, 0.08) 42%, transparent 75%),
-    /* Core right-side ambient illumination in Section 02 */
-    radial-gradient(ellipse 72% 34% at 88% 54%, rgba(215, 75, 35, 0.22) 0%, rgba(165, 45, 25, 0.08) 45%, transparent 75%),
-    /* Soft accent glow on bottom-left in Section 02 */
-    radial-gradient(ellipse 52% 24% at 10% 84%, rgba(185, 48, 30, 0.08) 0%, transparent 65%);
-  animation: ambientFloat12 11s ease-in-out infinite alternate;
-}
-
-@keyframes ambientFloat12 {
-  0% {
-    transform: translateY(0px) scale(1);
-    opacity: 0.90;
-  }
-  100% {
-    transform: translateY(14px) scale(1.02);
-    opacity: 1;
-  }
-}
-
+/* Ambient Glow System matching Figma specs and slow subtle movement */
 .ambient-glow-sec1 {
   background: radial-gradient(ellipse 70% 60% at 85% 0%, rgba(215, 75, 35, 0.24) 0%, rgba(165, 45, 25, 0.10) 38%, transparent 72%);
-  animation: ambientFloat1 7s ease-in-out infinite alternate;
+  animation: ambientFloat1 12s ease-in-out infinite alternate;
 }
 
 .ambient-glow-sec2 {
-  background: 
-    radial-gradient(ellipse 75% 65% at 88% 20%, rgba(215, 75, 35, 0.22) 0%, rgba(165, 45, 25, 0.08) 45%, transparent 75%),
-    radial-gradient(ellipse 55% 45% at 8% 75%, rgba(185, 48, 30, 0.08) 0%, transparent 65%);
-  animation: ambientFloat2 9s ease-in-out infinite alternate;
+  background: radial-gradient(ellipse 65% 55% at 92% 38%, rgba(215, 82, 38, 0.28) 0%, rgba(165, 48, 25, 0.12) 35%, transparent 70%);
+  animation: ambientFloat2 16s ease-in-out infinite alternate;
 }
 
 .ambient-glow-sec3 {
   background: radial-gradient(ellipse 70% 60% at 5% 45%, rgba(215, 75, 35, 0.18) 0%, rgba(165, 45, 25, 0.07) 38%, transparent 70%);
-  animation: ambientFloat1 8s ease-in-out infinite alternate;
+  animation: ambientFloat1 14s ease-in-out infinite alternate;
 }
 
 @keyframes ambientFloat1 {
   0% {
     transform: translateY(0px) scale(1);
-    opacity: 0.85;
+    opacity: 0.88;
   }
   100% {
-    transform: translateY(14px) scale(1.04);
+    transform: translateY(10px) scale(1.02);
     opacity: 1;
   }
 }
 
 @keyframes ambientFloat2 {
   0% {
-    transform: translateY(-6px) scale(0.98);
+    transform: translateY(0px) scale(1);
     opacity: 0.88;
   }
   100% {
     transform: translateY(12px) scale(1.03);
     opacity: 1;
   }
+}
+
+/* Section 02: Service Cards Staggered Slide-Up */
+.service-card-stagger {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.is-visible .service-card-stagger {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA Banner: "Плавно появляется градиент" */
+.banner-gradient-layer {
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.banner-container.is-visible .banner-gradient-layer,
+.banner-container:hover .banner-gradient-layer {
+  opacity: 1;
 }
 
 /* Section 01: Headline Masked Line-by-Line Reveal */
