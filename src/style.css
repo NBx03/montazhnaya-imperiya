@@ -85,6 +85,20 @@ body {
   }
 }
 
+/* Technical Plate Block - Footer */
+.tech-plate-footer {
+  background-color: #121418;
+  position: relative;
+  /* Top-left cut 48px */
+  clip-path: polygon(48px 0, 100% 0, 100% 100%, 0 100%, 0 48px);
+}
+
+@media (max-width: 639px) {
+  .tech-plate-footer {
+    clip-path: polygon(32px 0, 100% 0, 100% 100%, 0 100%, 0 32px);
+  }
+}
+
 /* Stacking Cards Grid Container */
 .case-cards-stack-grid {
   display: grid;
