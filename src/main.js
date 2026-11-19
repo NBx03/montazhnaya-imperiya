@@ -526,10 +526,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Active step scroll spy & hover mutually exclusive highlight
   if (stepRows.length > 0) {
     let scrollActiveRow = null;
-    let isHoveringStep = false;
+    let hoveredRow = null;
 
     const updateActiveStep = () => {
-      if (isHoveringStep) return;
       const viewportCenter = window.innerHeight / 2;
       let closestStep = null;
       let minDistance = Infinity;
@@ -545,26 +544,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      if (closestStep && minDistance < 320) {
-        stepRows.forEach(r => r.classList.remove('is-active'));
-        closestStep.classList.add('is-active');
+      if (closestStep) {
         scrollActiveRow = closestStep;
+        // Only update active class if the user is not actively hovering over another row
+        if (!hoveredRow) {
+          stepRows.forEach(r => r.classList.remove('is-active'));
+          closestStep.classList.add('is-active');
+        }
       }
     };
 
     // On hover of any step row: transfer highlight to it only
     stepRows.forEach(row => {
       row.addEventListener('mouseenter', () => {
-        isHoveringStep = true;
+        hoveredRow = row;
         stepRows.forEach(r => r.classList.remove('is-active'));
         row.classList.add('is-active');
       });
-    });
 
-    // When mouse leaves the steps list: restore the scroll-active step
-    if (stepsList) {
-      stepsList.addEventListener('mouseleave', () => {
-        isHoveringStep = false;
+      row.addEventListener('mouseleave', () => {
+        if (hoveredRow === row) {
+          hoveredRow = null;
+        }
+        // When mouse leaves this step (to the right, left, etc.), restore scroll-active step
         stepRows.forEach(r => r.classList.remove('is-active'));
         if (scrollActiveRow) {
           scrollActiveRow.classList.add('is-active');
@@ -572,9 +574,14 @@ document.addEventListener('DOMContentLoaded', () => {
           updateActiveStep();
         }
       });
-    }
+    });
 
-    window.addEventListener('scroll', updateActiveStep, { passive: true });
+    // On scroll: clear any stale hover state and update scroll-active step
+    window.addEventListener('scroll', () => {
+      hoveredRow = null;
+      updateActiveStep();
+    }, { passive: true });
+
     updateActiveStep();
   }
 

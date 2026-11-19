@@ -47,6 +47,8 @@ body {
 .tech-plate-sec2 {
   background-color: #141519;
   position: relative;
+  isolation: isolate;
+  transform: translateZ(0);
   /* Top-left cut 48px, bottom-right cut 48px */
   clip-path: polygon(48px 0, 100% 0, 100% calc(100% - 48px), calc(100% - 48px) 100%, 0 100%, 0 48px);
 }
@@ -55,6 +57,11 @@ body {
   .tech-plate-sec2 {
     clip-path: polygon(32px 0, 100% 0, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0 100%, 0 32px);
   }
+}
+
+.banner-container {
+  isolation: isolate;
+  transform: translateZ(0);
 }
 
 /* Technical Plate Block - Section 05 (Sectors + Bank Ticker Block) */
@@ -280,9 +287,6 @@ body {
   background: 
     radial-gradient(ellipse 950px 750px at 95% 15%, rgba(235, 75, 25, 0.28) 0%, rgba(205, 65, 22, 0.18) 25%, rgba(170, 50, 18, 0.09) 48%, rgba(120, 35, 15, 0.03) 70%, transparent 88%),
     radial-gradient(ellipse 700px 900px at 85% 45%, rgba(200, 60, 20, 0.08) 0%, rgba(150, 40, 15, 0.03) 45%, transparent 75%);
-  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-  animation: ambientFloat2 16s ease-in-out infinite alternate;
 }
 
 .sec2-glow-img {
