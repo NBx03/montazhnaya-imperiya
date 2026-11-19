@@ -585,4 +585,39 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(animateBankTicker);
   }
 
+  // 10. Section 07: FAQ Accordion Interactivity
+  const faqRows = document.querySelectorAll('.faq-row');
+  faqRows.forEach(row => {
+    row.addEventListener('click', () => {
+      const wasOpen = row.classList.contains('is-open');
+      row.classList.toggle('is-open', !wasOpen);
+    });
+  });
+
+  // Section 07: Consult Form Submission
+  const consultForm = document.getElementById('consult-form');
+  const consultSuccess = document.getElementById('consult-success');
+  if (consultForm) {
+    consultForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const phoneInput = document.getElementById('consult-phone');
+      const cleanPhone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+      if (cleanPhone.length < 11) {
+        if (phoneInput) {
+          phoneInput.focus();
+          phoneInput.classList.add('border-brand-red');
+        }
+        return;
+      }
+      if (phoneInput) phoneInput.classList.remove('border-brand-red');
+      if (consultSuccess) consultSuccess.classList.remove('hidden');
+      const submitBtn = consultForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-60', 'pointer-events-none');
+      }
+      consultForm.reset();
+    });
+  }
+
 });
