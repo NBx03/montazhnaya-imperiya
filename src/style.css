@@ -300,24 +300,26 @@ body {
   animation: ambientFloat1 14s ease-in-out infinite alternate;
 }
 
-/* Section 05: Warm Amber Glow strictly at Bottom-Right (NOT at the top!) */
+/* Section 05 & 06: Seamless continuous ambient glow across the boundary */
 .ambient-glow-sec5 {
   position: absolute;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
   z-index: 0;
+  background: radial-gradient(ellipse 750px 450px at 88% 100%, rgba(225, 80, 25, 0.32) 0%, rgba(185, 55, 20, 0.15) 38%, rgba(120, 30, 15, 0.03) 68%, transparent 100%);
 }
 
-.sec5-bottom-glow {
+.ambient-glow-sec6 {
   position: absolute;
-  bottom: -60px;
-  right: -60px;
-  width: 850px;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 600px;
-  background: radial-gradient(ellipse 70% 60% at 75% 75%, rgba(220, 75, 25, 0.28) 0%, rgba(180, 50, 20, 0.12) 35%, rgba(120, 30, 15, 0.03) 60%, transparent 75%);
-  filter: blur(40px);
   pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  background: radial-gradient(ellipse 750px 450px at 88% 0%, rgba(225, 80, 25, 0.32) 0%, rgba(185, 55, 20, 0.15) 38%, rgba(120, 30, 15, 0.03) 68%, transparent 100%);
 }
 
 /* Section 04: 3D Illustration Floating Levitation (Figma interactive specs) */
@@ -424,13 +426,12 @@ body {
   transform: translateY(0);
 }
 
-/* CTA Banner: "Плавно появляется градиент" */
+/* CTA Banner: Hover glowing gradient */
 .banner-gradient-layer {
   opacity: 0;
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.5s ease-in-out;
 }
 
-.banner-container.is-visible .banner-gradient-layer,
 .banner-container:hover .banner-gradient-layer {
   opacity: 1;
 }

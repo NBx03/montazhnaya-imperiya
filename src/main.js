@@ -77,21 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     servicesObserver.observe(servicesSection);
   }
 
-  // 1e. CTA Banner Gradient Reveal ("Плавно появляется градиент")
-  const bannerContainer = document.querySelector('.banner-container');
-  if (bannerContainer) {
-    const bannerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          bannerContainer.classList.add('is-visible');
-          bannerObserver.unobserve(bannerContainer);
-        }
-      });
-    }, { threshold: 0.20, rootMargin: '0px 0px -50px 0px' });
-
-    bannerObserver.observe(bannerContainer);
-  }
-
   // 1f. Section 04 Scroll Reveal (Steps Staggered Entrance)
   const stepsSection = document.getElementById('steps');
   if (stepsSection) {
