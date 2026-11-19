@@ -92,6 +92,21 @@ document.addEventListener('DOMContentLoaded', () => {
     bannerObserver.observe(bannerContainer);
   }
 
+  // 1f. Section 04 Scroll Reveal (Steps Staggered Entrance)
+  const stepsSection = document.getElementById('steps');
+  if (stepsSection) {
+    const stepsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stepsSection.classList.add('is-visible');
+          stepsObserver.unobserve(stepsSection);
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+    stepsObserver.observe(stepsSection);
+  }
+
   // 2. Mobile Menu Drawer Toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const closeMenuBtn = document.getElementById('close-menu-btn');
