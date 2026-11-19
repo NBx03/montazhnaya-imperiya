@@ -39,18 +39,32 @@ body {
 
 /* Ambient Glow System matching Figma specs and slow subtle movement */
 .ambient-glow-sec1 {
-  background: radial-gradient(ellipse 70% 60% at 85% 0%, rgba(215, 75, 35, 0.24) 0%, rgba(165, 45, 25, 0.10) 38%, transparent 72%);
+  background: radial-gradient(ellipse 65% 50% at 65% 0%, rgba(230, 80, 25, 0.32) 0%, rgba(185, 55, 20, 0.16) 35%, rgba(120, 30, 15, 0.06) 60%, transparent 80%);
   animation: ambientFloat1 12s ease-in-out infinite alternate;
 }
 
 .ambient-glow-sec2 {
-  background: radial-gradient(ellipse 65% 55% at 92% 38%, rgba(215, 82, 38, 0.28) 0%, rgba(165, 48, 25, 0.12) 35%, transparent 70%);
+  background-image: 
+    radial-gradient(ellipse 55% 55% at 100% 10%, rgba(245, 85, 25, 0.52) 0%, rgba(215, 65, 20, 0.34) 32%, rgba(150, 40, 15, 0.14) 58%, transparent 78%),
+    radial-gradient(ellipse 65% 75% at 100% 38%, rgba(235, 75, 22, 0.44) 0%, rgba(190, 55, 18, 0.26) 30%, rgba(125, 32, 12, 0.10) 58%, transparent 80%);
   animation: ambientFloat2 16s ease-in-out infinite alternate;
 }
 
 .ambient-glow-sec3 {
   background: radial-gradient(ellipse 70% 60% at 5% 45%, rgba(215, 75, 35, 0.18) 0%, rgba(165, 45, 25, 0.07) 38%, transparent 70%);
   animation: ambientFloat1 14s ease-in-out infinite alternate;
+}
+
+/* Section 02: Distinct Dark Graphite Block with Chamfered Left Corner ("кармашек согнутый") */
+.section-services-chamfer {
+  background-color: #15161A;
+  clip-path: polygon(0 32px, 32px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@media (min-width: 640px) {
+  .section-services-chamfer {
+    clip-path: polygon(0 48px, 48px 0, 100% 0, 100% 100%, 0 100%);
+  }
 }
 
 @keyframes ambientFloat1 {
