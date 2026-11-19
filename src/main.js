@@ -1,5 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // 0. Smart Header (Hide on scroll down, show on scroll up)
+  const header = document.getElementById('header');
+  if (header) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          // Hide when scrolling down past 80px, reveal when scrolling up
+          if (currentScrollY > 80 && currentScrollY > lastScrollY) {
+            header.classList.add('-translate-y-full');
+          } else {
+            header.classList.remove('-translate-y-full');
+          }
+          lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
   // 1. Live REC Timer (CCTV timecode)
   const recTimerEl = document.getElementById('rec-timer');
   if (recTimerEl) {
@@ -11,6 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const secs = String(seconds % 60).padStart(2, '0');
       recTimerEl.textContent = `${hrs}:${mins}:${secs}`;
     }, 1000);
+  }
+
+  // 1b. Dynamic Current Date (Figma: "Дата отображается актуальная DATE / DD.MM.YYYY")
+  const heroDateEl = document.getElementById('hero-date');
+  if (heroDateEl) {
+    const now = new Date();
+    const d = String(now.getDate()).padStart(2, '0');
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const y = now.getFullYear();
+    heroDateEl.textContent = `DATE / ${d}.${m}.${y}`;
   }
 
   // 2. Mobile Menu Drawer Toggle
