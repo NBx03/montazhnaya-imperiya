@@ -308,7 +308,7 @@
     <!-- ========================================================================= -->
     <!-- 04. SECTION 02 — УСЛУГИ / ВСЕ СИСТЕМЫ ПОД КЛЮЧ (EXACT FIGMA ASYMMETRIC GRID) -->
     <!-- ========================================================================= -->
-    <section id="services" class="pt-20 pb-20 sm:pt-28 sm:pb-28 relative overflow-hidden section-services-chamfer">
+    <section id="services" class="pt-20 pb-20 sm:pt-28 sm:pb-28 relative overflow-hidden bg-transparent">
       <!-- Top Chamfered Border Line (M 0 48 L 48 0 L 100% 0) -->
       <div class="pointer-events-none absolute top-0 left-0 w-full h-[48px] z-20 overflow-hidden">
         <svg class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -319,8 +319,10 @@
         </svg>
       </div>
 
-      <!-- Amber ambient glow on the right (Figma specs: saturated fiery amber in corner + slow float) -->
-      <div class="ambient-glow ambient-glow-sec2 pointer-events-none absolute inset-0 z-0"></div>
+      <!-- Figma Raster Amber Glow Background (from user's Background.png) -->
+      <div class="ambient-glow-sec2 pointer-events-none absolute inset-0 z-0">
+        <img src="/images/bg-sec2-glow.png" alt="" class="sec2-glow-img">
+      </div>
 
       <!-- Technical Radar / Sonar Arcs Linework (Figma engineering layer) -->
       <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden flex items-center justify-end">
@@ -555,7 +557,7 @@
           <div class="relative z-20 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             
             <!-- Left Info -->
-            <div class="space-y-4 max-w-xl">
+            <div class="space-y-4 max-w-2xl">
               <h2 class="font-condensed font-medium uppercase text-4xl sm:text-5xl lg:text-[60px] text-white tracking-tight leading-[1.0]">
                 НЕ НАШЛИ СВОЮ ЗАДАЧУ?
               </h2>
@@ -563,11 +565,14 @@
                 Оставьте заявку и мы подберём наилучшее решение под вашу индивидуальную задачу
               </p>
               
-              <!-- 3 Chamfered Tags from Figma Banner (JetBrains Mono 16 Medium) -->
-              <div class="flex flex-wrap gap-2.5 pt-2">
-                <span class="tag-chamfered !text-[16px] !font-medium !py-2 !px-4 !font-mono">ВЫЕЗД БЕСПЛАТНО</span>
-                <span class="tag-chamfered !text-[16px] !font-medium !py-2 !px-4 !font-mono">ПРОЕКТ ЗА 3 ДНЯ</span>
-                <span class="tag-chamfered !text-[16px] !font-medium !py-2 !px-4 !font-mono">ГАРАНТИЯ 3 ГОДА</span>
+              <!-- Subtle horizontal divider line from Figma -->
+              <div class="w-full max-w-lg h-px bg-white/20 my-4"></div>
+
+              <!-- 3 Chamfered Tags from Figma Banner (Single Row, Never Wrapping) -->
+              <div class="flex flex-row items-center gap-2 sm:gap-3 flex-nowrap overflow-x-auto sm:overflow-visible pt-1">
+                <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ВЫЕЗД БЕСПЛАТНО</span>
+                <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ПРОЕКТ ЗА 3 ДНЯ</span>
+                <span class="tag-chamfered !text-[13px] sm:!text-[15px] lg:!text-[16px] !font-medium !py-2 !px-3 sm:!px-4 !font-mono whitespace-nowrap">ГАРАНТИЯ 3 ГОДА</span>
               </div>
             </div>
 
