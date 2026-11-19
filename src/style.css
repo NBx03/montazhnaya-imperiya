@@ -24,9 +24,20 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-/* Subtle radial glow */
+/* Subtle radial glow & warm amber ambient glows matching Figma */
 .bg-radial-glow {
   background: radial-gradient(circle at 50% 20%, rgba(224, 45, 55, 0.12) 0%, rgba(14, 16, 20, 0) 70%);
+}
+
+.bg-ambient-glow {
+  background-image: 
+    radial-gradient(circle at 88% 18%, rgba(215, 82, 38, 0.24) 0%, rgba(165, 48, 25, 0.12) 38%, transparent 68%),
+    radial-gradient(circle at 12% 65%, rgba(185, 48, 30, 0.09) 0%, transparent 50%);
+}
+
+/* Exact Figma Red CTA Banner Gradient: Dark on left -> Fiery Orange on right */
+.banner-figma-gradient {
+  background: linear-gradient(98deg, #18191E 0%, #35171B 16%, #792328 38%, #B43625 65%, #CB4E24 85%, #D65A26 100%);
 }
 
 /* Chamfered tech cut badges (top-left & bottom-right cut at 45 deg) */
