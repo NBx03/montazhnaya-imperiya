@@ -312,25 +312,59 @@ document.addEventListener('DOMContentLoaded', () => {
     areaSlider.addEventListener('input', updateCalcTotal);
   }
 
-  // 7. Strict Phone Input Formatting and Validation
+  // 7. Strict Phone Input Formatting and Validation (+7 (XXX) XXX-XX-XX)
   const phoneInputs = document.querySelectorAll('input[type="tel"]');
   phoneInputs.forEach(input => {
+    // When focusing an empty input, prime it with +7 (
+    input.addEventListener('focus', () => {
+      if (!input.value.trim()) {
+        input.value = '+7 (';
+      }
+    });
+
     input.addEventListener('input', (e) => {
       let value = e.target.value.replace(/\D/g, '');
       if (!value) {
         e.target.value = '';
         return;
       }
-      if (['7', '8', '9'].includes(value[0])) {
-        if (value[0] === '9') value = '7' + value;
-        let formatted = '+7 (';
-        if (value.length > 1) formatted += value.substring(1, 4);
-        if (value.length >= 4) formatted += ') ' + value.substring(4, 7);
-        if (value.length >= 7) formatted += '-' + value.substring(7, 9);
-        if (value.length >= 9) formatted += '-' + value.substring(9, 11);
-        e.target.value = formatted;
+      // If user typed without 7 (e.g. 9...), prepend 7
+      if (['7', '8'].includes(value[0])) {
+        value = '7' + value.substring(1);
       } else {
-        e.target.value = '+' + value.substring(0, 15);
+        value = '7' + value;
+      }
+
+      let formatted = '+7 (';
+      if (value.length > 1) formatted += value.substring(1, 4);
+      if (value.length >= 4) formatted += ') ' + value.substring(4, 7);
+      if (value.length >= 7) formatted += '-' + value.substring(7, 9);
+      if (value.length >= 9) formatted += '-' + value.substring(9, 11);
+      e.target.value = formatted;
+
+      // Clear red border and error message when valid length reached
+      if (value.length === 11) {
+        input.classList.remove('border-brand-red');
+        const err = input.parentElement.querySelector('#consult-phone-error, #modal-lead-phone-error');
+        if (err) err.classList.add('hidden');
+      }
+    });
+
+    input.addEventListener('blur', () => {
+      const clean = input.value.replace(/\D/g, '');
+      if (clean === '7' || clean === '') {
+        input.value = '';
+        input.classList.remove('border-brand-red');
+        const err = input.parentElement.querySelector('#consult-phone-error, #modal-lead-phone-error');
+        if (err) err.classList.add('hidden');
+      } else if (clean.length < 11) {
+        input.classList.add('border-brand-red');
+        const err = input.parentElement.querySelector('#consult-phone-error, #modal-lead-phone-error');
+        if (err) err.classList.remove('hidden');
+      } else {
+        input.classList.remove('border-brand-red');
+        const err = input.parentElement.querySelector('#consult-phone-error, #modal-lead-phone-error');
+        if (err) err.classList.add('hidden');
       }
     });
   });
@@ -417,6 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalLeadForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const phoneInput = document.getElementById('modal-lead-phone');
+      const phoneError = document.getElementById('modal-lead-phone-error');
       const cleanPhone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
 
       if (cleanPhone.length < 11) {
@@ -424,11 +459,14 @@ document.addEventListener('DOMContentLoaded', () => {
           phoneInput.focus();
           phoneInput.classList.add('border-brand-red');
         }
+        if (phoneError) phoneError.classList.remove('hidden');
         return;
       }
 
       if (phoneInput) phoneInput.classList.remove('border-brand-red');
+      if (phoneError) phoneError.classList.add('hidden');
       modalLeadForm.reset();
+      closeLeadModal();
       openSuccessModal();
     });
   }
@@ -462,6 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 9. Section 04: Interactive 3D Parallax Tilt & Active Step Scroll Spy
   const installation3dWrap = document.getElementById('installation-3d-wrap');
   const stepRows = document.querySelectorAll('#steps .step-row');
+  const stepsList = document.getElementById('steps') || document.querySelector('.steps-container');
 
   // Interactive 3D mouse tilt on equipment composition
   if (stepsSection && installation3dWrap) {
@@ -484,9 +523,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Active step scroll spy
+  // Active step scroll spy & hover mutually exclusive highlight
   if (stepRows.length > 0) {
+    let scrollActiveRow = null;
+    let isHoveringStep = false;
+
     const updateActiveStep = () => {
+      if (isHoveringStep) return;
       const viewportCenter = window.innerHeight / 2;
       let closestStep = null;
       let minDistance = Infinity;
@@ -502,11 +545,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      if (closestStep && minDistance < 250) {
+      if (closestStep && minDistance < 320) {
         stepRows.forEach(r => r.classList.remove('is-active'));
         closestStep.classList.add('is-active');
+        scrollActiveRow = closestStep;
       }
     };
+
+    // On hover of any step row: transfer highlight to it only
+    stepRows.forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        isHoveringStep = true;
+        stepRows.forEach(r => r.classList.remove('is-active'));
+        row.classList.add('is-active');
+      });
+    });
+
+    // When mouse leaves the steps list: restore the scroll-active step
+    if (stepsList) {
+      stepsList.addEventListener('mouseleave', () => {
+        isHoveringStep = false;
+        stepRows.forEach(r => r.classList.remove('is-active'));
+        if (scrollActiveRow) {
+          scrollActiveRow.classList.add('is-active');
+        } else {
+          updateActiveStep();
+        }
+      });
+    }
 
     window.addEventListener('scroll', updateActiveStep, { passive: true });
     updateActiveStep();
@@ -615,15 +681,18 @@ document.addEventListener('DOMContentLoaded', () => {
     consultForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const phoneInput = document.getElementById('consult-phone');
+      const phoneError = document.getElementById('consult-phone-error');
       const cleanPhone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
       if (cleanPhone.length < 11) {
         if (phoneInput) {
           phoneInput.focus();
           phoneInput.classList.add('border-brand-red');
         }
+        if (phoneError) phoneError.classList.remove('hidden');
         return;
       }
       if (phoneInput) phoneInput.classList.remove('border-brand-red');
+      if (phoneError) phoneError.classList.add('hidden');
       consultForm.reset();
       openSuccessModal();
     });
