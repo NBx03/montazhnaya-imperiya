@@ -137,10 +137,25 @@
     <!-- ========================================================================= -->
     <!-- 01. HERO (EXACT 1-TO-1 MATCH TO FIGMA SCREENSHOT & ANIMATIONS)            -->
     <!-- ========================================================================= -->
-    <section id="hero" class="relative min-h-[660px] lg:min-h-[700px] flex items-center overflow-hidden border-b border-white/10 bg-[#0E1014]" style="background-image: url('/images/hero-rack-bg.jpg'); background-size: cover; background-position: center;">
+    <section id="hero" class="relative min-h-[660px] lg:min-h-[700px] flex items-center overflow-hidden border-b border-white/10 bg-[#0E1014]">
+      
+      <!-- Hero Background Video with Seamless Loop & Fallback Poster -->
+      <video
+        id="hero-bg-video"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto"
+        poster="/images/hero-rack-bg.jpg"
+        class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-60"
+      >
+        <source src="/videos/hero-bg.webm" type="video/webm">
+        <source src="/videos/hero-bg.mp4" type="video/mp4">
+      </video>
       
       <!-- Subtle Technical Grid Lines -->
-      <div class="absolute inset-0 pointer-events-none bg-tech-grid opacity-30"></div>
+      <div class="absolute inset-0 pointer-events-none bg-tech-grid opacity-30 z-[1]"></div>
 
       <!-- HUD Corner Brackets (Exact Figma 1440px) -->
       <div class="corner-tl !top-6 !left-6 !w-6 !h-6 !border-white/50"></div>
