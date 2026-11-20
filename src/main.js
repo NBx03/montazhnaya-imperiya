@@ -1,5 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Hero Background Video Autoplay Assurance
+  const heroVideo = document.getElementById('hero-bg-video');
+  if (heroVideo) {
+    const startVideo = () => {
+      heroVideo.muted = true;
+      const playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Fallback: trigger play on first user interaction if browser policy blocks it
+          const playOnInteract = () => {
+            heroVideo.play().catch(() => {});
+            ['click', 'touchstart', 'scroll'].forEach(evt => window.removeEventListener(evt, playOnInteract));
+          };
+          ['click', 'touchstart', 'scroll'].forEach(evt => window.addEventListener(evt, playOnInteract, { passive: true, once: true }));
+        });
+      }
+    };
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      startVideo();
+    } else {
+      window.addEventListener('load', startVideo);
+    }
+  }
+
   // 0. Smart Header (Hide on scroll down, show on scroll up)
   const header = document.getElementById('header');
   if (header) {
