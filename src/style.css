@@ -741,79 +741,6 @@ body {
   animation-play-state: paused;
 }
 
-/* Interactive Photo Pill inside Title (fdrv.pro animation style) */
-.photo-pill-inline {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: middle;
-  height: 38px;
-  width: 76px;
-  border-radius: 9999px;
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  margin: 0 6px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
-}
-
-@media (min-width: 640px) {
-  .photo-pill-inline {
-    height: 52px;
-    width: 100px;
-    margin: 0 8px;
-  }
-}
-
-.photo-pill-inline img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.photo-pill-inline:hover {
-  width: 110px;
-  border-color: #E02D37;
-  box-shadow: 0 0 25px rgba(224, 45, 55, 0.4);
-}
-
-@media (min-width: 640px) {
-  .photo-pill-inline:hover {
-    width: 150px;
-  }
-}
-
-.photo-pill-inline:hover img {
-  transform: scale(1.08);
-}
-
-/* Accordion Rows for Section 04 */
-.stage-row {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 24px 0;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.stage-row:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.stage-row:hover, .stage-row.is-active {
-  border-top-color: #E02D37;
-}
-
-.stage-row:hover .stage-title, .stage-row.is-active .stage-title {
-  color: #E02D37;
-}
-
-.stage-row:hover .stage-num, .stage-row.is-active .stage-num {
-  border-color: #E02D37;
-  color: #FFFFFF;
-  background-color: rgba(224, 45, 55, 0.1);
-}
-
 /* Corner HUD crosshairs */
 .corner-tl {
   position: absolute;
@@ -869,11 +796,6 @@ body {
 .blend-hardware {
   mask-image: radial-gradient(circle at center, black 55%, transparent 95%);
   -webkit-mask-image: radial-gradient(circle at center, black 55%, transparent 95%);
-}
-
-.stage-num {
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
 }
 
 @keyframes float {
