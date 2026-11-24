@@ -1,0 +1,12 @@
+[Unit]
+Description=Montazh SQLite Database Automated Backup Service
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/var/www/montazh-backend
+ExecStart=/bin/bash /var/www/montazh-backend/backup.sh
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=montazh-backup

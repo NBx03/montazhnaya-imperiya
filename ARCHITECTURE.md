@@ -1,210 +1,136 @@
-# ARCHITECTURE & AI ASSISTANT GUIDE
+# Архитектура проекта
 
-> **Для разработчиков и языковых моделей (LLM / AI Agents):**  
-> Этот документ содержит полное техническое описание архитектуры проекта «Монтажная Империя». Он спроектирован так, чтобы любой разработчик или нейросетевой ассистент (Claude, Copilot, ChatGPT, Gemini) мог мгновенно понять устройство проекта, найти нужный модуль и внести изменения без галлюцинаций и сайд-эффектов.
+Документ описывает устройство системы «Монтажная Империя» целиком: фронтенд, бэкенд, базу данных, админ-панель и типовые сценарии доработки. Предназначен для разработчиков и агентских инструментов.
 
 ---
 
-## 1. Стек технологий и архитектура
+## 1. Общая схема работы
 
-| Уровень | Технология | Описание |
+В продакшне весь трафик принимает **Caddy 2** (`Caddyfile.production`):
+
+- Статический лендинг (`dist/`: `index.html`, `privacy.html`, `404.html`, `/assets/*`, `/images/*`, `/videos/*`, `/icons/*`) отдаётся напрямую с диска.
+- Запросы `/api/*`, `/admin*`, `/uploads/*`, `/docs*`, `/redoc*`, `/openapi.json` проксируются на локальный процесс FastAPI (`127.0.0.1:8000`).
+- `/assets/*` отдаются с `Cache-Control: public, max-age=31536000, immutable`; HTML-страницы и `/admin*` — с `Cache-Control: no-cache`, чтобы правки в админке и обновления SPA подхватывались сразу.
+
+Поток данных при открытии главной страницы:
+
+1. Браузер получает предрендеренный `index.html`.
+2. `src/main.js` запускает модули интерфейса и `initContentLoader()`.
+3. `content-loader.js` проверяет кэш в `sessionStorage` (`montazh_content_cache` + `montazh_content_etag`) и отправляет `GET /api/v1/content` с заголовком `If-None-Match`.
+4. При ответе `200` новые данные из БД применяются к DOM (с санитизацией URL и медиа-путей); при `304 Not Modified` используется кэш; при ошибке сети страница остаётся рабочей на статической разметке.
+
+---
+
+## 2. Frontend (`src/`, `index.html`)
+
+Сборка — Vite 5 (`vite.config.js`), 3 entrypoints (`index.html`, `404.html`, `privacy.html`).
+
+### 2.1. Модули (`src/js/modules/`)
+
+| Файл | Экспорты | Назначение |
 | :--- | :--- | :--- |
-| **Сборщик** | [Vite 5](https://vitejs.dev/) | Быстрая ESM-сборка, мгновенный HMR, чистый продакшен-бандлинг |
-| **Стилизация** | [Tailwind CSS 3](https://tailwindcss.com/) + PostCSS | Утилитарные стили + кастомная дизайн-система в `src/style.css` |
-| **JS-архитектура** | Vanilla JS (ES Modules) | 10 независимых изолированных модулей в `src/js/modules/` |
-| **Шрифты** | Google Fonts | `Fira Sans Extra Condensed`, `Onest`, `JetBrains Mono` |
-| **Медиа** | H.264 (MP4) + VP9 (WebM) | Бесшовное зацикленное фоновое видео без звука (`public/videos/`) |
+| `content-loader.js` | `initContentLoader()` | Загрузка 11 секций из `/api/v1/content` (ETag/304), гидрация текстов, контактов, изображений и Hero-видео, XSS-фильтрация ссылок. |
+| `header.js` | `initHeader()`, `openMobileMenu()`, `closeMobileMenu()` | Скрытие шапки при скролле вниз (`>80px`), показ при скролле вверх, управление мобильным меню `#mobile-drawer`. |
+| `hero.js` | `initHero()` | Автоплей `<video id="hero-bg-video">`, тикающий таймер `#rec-timer`, текущая дата в `#hero-date`. |
+| `scroll-reveal.js` | `initScrollReveals()` | `IntersectionObserver` для секций `#expertise`, `#services`, `#steps` (добавляет `.is-visible`). |
+| `odometer.js` | `animateOdometerGroup()`, `initOdometers()` | Анимация счётчиков статистики (`1 - (1 - p)^4`) в `#why-us` и при переключении кейсов. |
+| `stages.js` | `initStages()` | Перспективный наклон 3D-иллюстрации `#installation-3d-wrap` за курсором и взаимоисключающая подсветка шагов `01–05`. |
+| `sectors.js` | `initSectors()` | Горизонтальный скролл карточек `#sectors-track` и бегущая строка логотипов `#bank-ticker-track` (ускорение от скролла, пауза на hover). |
+| `cases.js` | `initCases()` | Стопка карточек `#cases` (`card-pos-front`, `card-pos-middle`, `card-pos-back`), переключение табов и перезапуск одометра. |
+| `faq.js` | `initFaq()` | Аккордеон `.faq-row` через CSS Grid (`grid-template-rows: 0fr -> 1fr`). |
+| `phone-mask.js` | `initPhoneMasks()`, `cleanPhoneDigits()`, `isPhoneValid()` | Маска `+7 (XXX) XXX-XX-XX` для `input[type="tel"]`, нормализация `8`/`9`, валидация 11 цифр. |
+| `modals.js` | `initModals()`, `openLeadModal()`, `closeLeadModal()`, `openSuccessModal()`, `closeSuccessModal()` | Модалка заявки и окно подтверждения, отправка `POST /api/v1/leads` (включая honeypot-поле `company_website`). |
+
+### 2.2. Карта секций лендинга и ключей в БД
+
+Каждая секция в `index.html` соответствует записи `section_key` в таблице `site_content` (задаются в `backend/app/seed.py`):
+
+| `order` | `section_key` | Селектор в DOM | Что хранится в `data` |
+| :---: | :--- | :--- | :--- |
+| `1` | `header` | `#header`, `#mobile-drawer` | `phone`, `phone_clean`, `working_hours`, `tg_link`, `wa_link`, `cta_button`, `logo_image` |
+| `2` | `hero` | `#hero` | `title`, `description`, `features[]`, `subtext`, `cta_button`, `bg_video`, `bg_poster` |
+| `3` | `expertise` | `#expertise` | `title`, `lead`, `items[]` (`title`, `desc`, `image`) |
+| `4` | `services` | `#services` | `title`, `subtitle`, `banner_image`, `items[]` (`name`, `desc`, `image`) |
+| `5` | `why_us` | `#why-us` | `items[]` (`val`, `unit`, `title`, `desc`), `ticker_photos` (`worker_yellow`, `cables`, `worker_helmet`) |
+| `6` | `steps` | `#steps` | `title`, `illustration_image`, `items[]` (`step`, `name`, `desc`) |
+| `7` | `sectors` | `#sectors` | `title`, `items[]` (`title`, `desc`, `image`, `icon`), `partner_logos[]` |
+| `8` | `cases` | `#cases` | `title`, `items[]` (`title`, `scope`, `image`) |
+| `9` | `engineer_cta` | `#consult-form`, `#lead-modal`, `#success-modal` | `title`, `subtitle`, `button_text`, `engineer_photo`, `success_bg_image` |
+| `10` | `faq` | `#faq` | `title`, `items[]` (`q`, `a`) |
+| `11` | `contacts` | `#footer` | `title`, `phone`, `phone_clean`, `email`, `address`, `hours`, `inn`, `tg_link`, `wa_link`, `footer_logo` |
+
+### 2.3. Стили и токены (`src/style.css`, `tailwind.config.js`)
+
+- **Палитра:** `#0E1014` (`brand-dark`), `#14171D` (`brand-surface`), `#E02D37` (`brand-red`), `#FF4D55`.
+- **Шрифты:** `Onest` (`font-sans`), `Fira Sans Extra Condensed` / `Sofia Sans Condensed` (`font-condensed`), `JetBrains Mono` (`font-mono`).
+- **Декоративные классы:** `.cut-corner-badge`, `.tech-btn-chamfer`, `.bg-tech-grid`, `.plate-sec2`, `.plate-sec5`, `.plate-sec6`.
 
 ---
 
-## 2. Структура проекта
+## 3. Backend (`backend/app/`)
 
-```
-montazhnaya-imperiya/
-├── 404.html                     # Автономная страница ошибки 404 (в стиле NO VIDEO FEED)
-├── index.html                   # Основной лендинг со всеми секциями и модалками
-├── ARCHITECTURE.md              # Данный гид по архитектуре (для людей и ИИ)
-├── README.md                    # Общее описание проекта и команды запуска
-├── package.json                 # Скрипты и зависимости
-├── tailwind.config.js           # Токены дизайн-системы Tailwind
-├── vite.config.js               # Конфигурация сборщика Vite
-│
-├── public/                      # Статические ассеты (доступны из корня /)
-│   ├── icons/                   # SVG и PNG иконки брендов, соцсетей, логотипы
-│   ├── images/                  # Фотографии оборудования, инженеров, 3D-рендеры
-│   │   └── logos/               # Логотипы банков и партнеров
-│   └── videos/                  # Видеофон hero-секции (hero-bg.mp4, hero-bg.webm)
-│
-└── src/
-    ├── main.js                  # Главный диспетчер (загружает и инициализирует модули)
-    ├── style.css                # Глобальные стили, амбиентные свечения, кастомные анимации
-    └── js/
-        └── modules/             # Изолированные функциональные модули:
-            ├── hero.js          # Автоплей видео, таймер REC, актуальная дата
-            ├── header.js        # Умный скрывающийся хедер, мобильный бургер-дровер
-            ├── scroll-reveal.js # IntersectionObserver для плавного появления секций
-            ├── odometer.js      # Механический одометр (бегущие цифры статистики)
-            ├── stages.js        # Секция 04: 3D-тилт оборудования, scroll-spy шагов
-            ├── sectors.js       # Секция 05: горизонтальный скролл и бегущая строка
-            ├── cases.js         # Секция 06: колода карточек (stacking cards) и табы
-            ├── faq.js           # Секция 07: аккордеон вопросов и ответов
-            ├── phone-mask.js    # Строгая маска +7 (999) 123-45-67 и валидатор
-            └── modals.js        # Модалки «Обсудим проект», «Заявка отправлена», сабмит
-```
+Точка входа: `backend/app/main.py`. Конфигурация загружается из `.env` через `pydantic-settings` (`backend/app/config.py`).
+
+### 3.1. База данных (`models.py`, `database.py`)
+
+Используется SQLite в режиме `WAL` с `PRAGMA foreign_keys = ON` и `busy_timeout = 30000`. Таблицы:
+
+- `admin_users` — логин (`username`), `bcrypt`-хеш пароля (`hashed_password`), `created_at`.
+- `site_content` — `section_key` (unique), `title`, `order`, JSON-поле `data`, `updated_at`.
+- `leads` — `name`, `phone`, `source`, `status` (`new` / `processed`), `notes`, `created_at`.
+- `media_assets` — реестр загруженных файлов: `filename` (unique UUID-имя на диске), `url`, `original_name`, `content_type`, `size_bytes`, `section_key`, `field_path`, `last_used_at`, `created_at`.
+
+### 3.2. Валидация и роутеры
+
+- **`routers/auth.py`**: `POST /api/v1/auth/login` (rate limit `5/10min`, выпуск HS256 JWT на 7 дней), `GET /api/v1/auth/me`.
+- **`routers/content.py`**:
+  - `GET /api/v1/content` — отдаёт все 11 секций + слабый `ETag` и `304 Not Modified`.
+  - `PUT /api/v1/admin/content/{section_key}` — прогоняет payload через `validate_section_payload` из `schemas.py` (строгие лимиты длин, проверка телефона `10–15` цифр, запрет `<script`, `javascript:`, `data:`, `..`), сохраняет секцию и обновляет привязки `section_key` / `field_path` / `last_used_at` в `media_assets`.
+- **`routers/leads.py`**:
+  - `POST /api/v1/leads` — rate limit `5/min`, если заполнено honeypot-поле `company_website` или `website`, тихо возвращает `200` без записи в БД.
+  - `GET /api/v1/admin/leads`, `PATCH /api/v1/admin/leads/{id}`, `DELETE /api/v1/admin/leads/{id}`, `GET /api/v1/admin/leads/export-csv` (UTF-8 BOM, экранирование формул `=`, `+`, `-`, `@` апострофом от CSV injection).
+- **`routers/upload.py`**:
+  - `POST /api/v1/admin/upload` — принимает файл до 25 МБ + опциональные поля `section_key` и `field_path`. Проверяет magic bytes (MP4 `ftyp`, WebM `1A 45 DF A3`, реальное декодирование картинок через Pillow), конвертирует изображения в WebP (`quality=85`), сохраняет в `backend/uploads/` и создаёт запись в `media_assets`.
+  - `GET /api/v1/admin/upload` — объединяет файлы на диске с метаданными из `media_assets` и помечает `is_active`, сверяя ссылки с текущим `site_content`.
+  - `DELETE /api/v1/admin/upload/{filename}` — защита от path traversal, удаляет файл и запись из `media_assets`.
+
+### 3.3. Ограничение размера тела запроса (`main.py`)
+
+Middleware `limit_request_payload_size` отсекает запросы до чтения тела с кодом `413`:
+- Для `/api/v1/admin/upload*` лимит `MAX_UPLOAD_SIZE_BYTES + 1 МБ` (по умолчанию ~26 МБ).
+- Для остальных эндпоинтов (формы, JSON, логин) — `1 МБ`.
 
 ---
 
-## 3. Карта секций лендинга (`index.html`)
+## 4. Админ-панель (`backend/static_admin/`)
 
-Каждая секция в `index.html` снабжена подробным комментарием и уникальным семантическим ID:
+SPA-интерфейс без сборки (`index.html`, `login.html`, `admin.css`, `admin.js`).
 
-| № | Селектор / ID | Название в макете Figma | Модуль JS | Ключевой функционал |
-| :--- | :--- | :--- | :--- | :--- |
-| **00** | `#header` | Хедер | `header.js` | Скрывается при скролле вниз (>80px), появляется при скролле вверх. Бургер на мобильных. |
-| **01** | `#hero` | Главный экран (Hero) | `hero.js` | Видеофон (loop, muted), таймер записи `REC`, текущая дата `hero-date`, HUD-прицелы. |
-| **--** | `.ticker-wrapper` | Верхняя бегущая строка | CSS | Бесконечный красный бегущий текст направлений (`#E02D37`). |
-| **01** | `#expertise` | 01 — Экспертиза | `scroll-reveal.js` | Карточки гарантии, склада и сметы со строгим таймлайн-появлением. |
-| **02** | `#services` | 02 — Услуги | `scroll-reveal.js` | 7 технических направлений + темная графитовая плашка + баннер «Не нашли свою задачу?». |
-| **03** | `#why-us` | 03 — Почему мы | `odometer.js` | Цифры статистики с анимацией механического одометра при первом появлении. |
-| **04** | `#steps` | 04 — Этапы работы | `stages.js` | 3D-тилт оборудования за курсором мыши, взаимно-исключающий hover/scroll-spy подсветки шагов. |
-| **05** | `#sectors` | 05 — Область работы | `sectors.js` | Фиксация экрана + горизонтальная прокрутка 4 сфер + динамический тикер банков (реагирует на скролл). |
-| **06** | `#cases` | 06 — Кейсы | `cases.js`, `odometer.js` | Интерактивная 3D-колода наложенных карточек (front/middle/back) + табы объектов + одометр. |
-| **07** | `#faq` | 07 — Частые вопросы & Консультация | `faq.js`, `modals.js` | Аккордеон с маскированным появлением текста + карточка инженера и форма заявки с маской. |
-| **--** | `#footer` | Подвал (Footer) | — | Контакты, реквизиты, крупный водяной знак «МОНТАЖНАЯ ИМПЕРИЯ». |
-| **M1** | `#mobile-drawer` | Бургер-меню | `header.js` | Боковая шторка навигации для мобильных экранов с блокировкой скролла страницы. |
-| **M2** | `#lead-modal` | Модалка «Обсудим проект?» | `modals.js` | Всплывающее окно консультации с валидацией телефона. |
-| **M3** | `#success-modal` | Модалка «Заявка отправлена» | `modals.js` | Экран подтверждения с кнопкой «На главную». |
+Вкладки разделены по принципу **одна задача — одна вкладка**:
+
+1. **`📋 Входящие заявки` (`#tab-leads`)** — счётчики, фильтр по статусу, поиск, редактирование заметок (`#notes-modal`), смена статуса, кнопка быстрого перехода в WhatsApp, удаление, экспорт CSV.
+2. **`✍️ Тексты и контакты` (`#tab-content`)** — редактирование исключительно текстов, цифр, телефонов и ссылок по 11 секциям. Медиа-поля (`isMediaFieldKey`) намеренно не рендерятся в этой форме, но автоматически сохраняются внутри JSON при отправке `PUT /api/v1/admin/content/{section_key}`. Есть автосинхронизация `phone` -> `phone_clean`, инлайн-валидация и шорткат `Ctrl/Cmd + S`.
+3. **`🖼️ Медиа сайта` (`#tab-media`)** — единая визуальная карта всех 37 медиа-слотов лендинга (`getSiteMediaSlots()`), сгруппированных по блокам. Загрузка по клику или Drag & Drop сразу заливает файл с тегами слота и обновляет секцию без отдельного нажатия «Сохранить». При наличии прошлых версий на карточке появляется кнопка `🕘 N` (быстрый выбор в `#slot-history-modal`); изменённые слоты можно сбросить к исходному ассету (`↺ Сбросить`).
+4. **`🕘 История медиа` (`#tab-media-history`)** — список всех загруженных файлов с фильтром («Все файлы» / «Можно вернуть» / «Сейчас на сайте»), бейджем привязанного слота, исходным именем, кнопкой мгновенного отката `⚡ Вернуть на сайт`, копированием URL и удалением (с предупреждением, если файл активен на сайте).
 
 ---
 
-## 4. Справочник JavaScript-модулей (`src/js/modules/`)
+## 5. Типовые задачи (Playbook)
 
-Каждый модуль следует принципу единственной ответственности (SRP). Ни один модуль не содержит глобальных сайд-эффектов вне функции `init...()`.
+### Добавить или изменить текстовое поле в существующей секции
 
-### 4.1. `hero.js`
-* **Экспорт:** `initHero()`
-* **Цели:**
-  - `initHeroVideo()`: гарантирует воспроизведение `<video id="hero-bg-video">` со звуком off (`muted`), циклом (`loop`) и fallback-обработчиком на случай жестких политик энергосбережения мобильных браузеров.
-  - `initRecTimer()`: запускает тикающий таймер видеонаблюдения `#rec-timer` в формате `00:00:00`.
-  - `initHeroDate()`: генерирует актуальную текущую дату в `#hero-date` (`DATE / DD.MM.YYYY`).
+1. Обновите дефолт в `backend/app/seed.py` (`DEFAULT_SECTIONS`).
+2. Добавьте поле и ограничения в соответствующую Pydantic-модель в `backend/app/schemas.py`.
+3. Добавьте подпись поля и лимит в `FIELD_LIMITS` / `humanizeKey()` в `backend/static_admin/admin.js` (если ключ новый).
+4. Привяжите DOM-элемент в `src/js/modules/content-loader.js` и в `index.html`.
+5. Прогоните `python backend/manage.py seed` (или обновите секцию в БД) и тесты `backend/test_stage2.py`, `backend/test_stage4_deep.py`.
 
-### 4.2. `header.js`
-* **Экспорт:** `initHeader()`, `openMobileMenu()`, `closeMobileMenu()`
-* **Цели:**
-  - Плавное сокрытие `#header` при скролле вниз и мгновенное возвращение при скролле вверх.
-  - Управление состоянием мобильного меню `#mobile-drawer` и затемнения `#drawer-backdrop`.
-  - Блокировка/разблокировка скролла страницы (`document.body.style.overflow`).
+### Добавить новый медиа-слот на сайт
 
-### 4.3. `scroll-reveal.js`
-* **Экспорт:** `initScrollReveals()`
-* **Цели:**
-  - Отслеживает секции `#expertise`, `#services`, `#steps` через `IntersectionObserver`.
-  - При попадании в поле зрения добавляет класс `is-visible`, активирующий каскадную CSS-анимацию.
+1. Убедитесь, что имя ключа в `seed.py` и `schemas.py` подпадает под `isMediaFieldKey(key)` в `backend/static_admin/admin.js` (содержит `image`, `photo`, `logo`, `icon`, `poster`, `video`), чтобы слот не дублировался в текстовом редакторе.
+2. Зарегистрируйте слот в `getSiteMediaSlots()` в `backend/static_admin/admin.js` (`group`, `badge`, `title`, `sectionKey`, `path`, `defaultSrc`, `kind`).
+3. Добавьте гидрацию этого элемента в `src/js/modules/content-loader.js` (через `setImageSrc` или видео-источник) и соберите фронтенд (`npm run build`).
 
-### 4.4. `odometer.js`
-* **Экспорт:** `animateOdometerGroup(elements, duration)`, `initOdometers()`
-* **Цели:**
-  - Реализует математическую кривую замедления 4-й степени ($1 - (1-p)^4$) для эффекта механического одометра.
-  - Анимирует числа в секции 03 (`#why-us .stat-odometer`).
-  - Экспортируется для переиспользования в карточках кейсов (`cases.js`).
+### Перезапустить сервис и обновить продакшн
 
-### 4.5. `stages.js`
-* **Экспорт:** `initStages()`
-* **Цели:**
-  - Рассчитывает координаты мыши относительно `#installation-3d-wrap` и накладывает перспективный поворот (`perspective(1000px) rotateX(...) rotateY(...)`).
-  - Обеспечивает взаимное исключение активного шага: при наведении подсвечивается только курсорный шаг; при уводе мыши в сторону подсветка мгновенно возвращается к шагу, находящемуся по центру экрана.
-
-### 4.6. `sectors.js`
-* **Экспорт:** `initSectors()`
-* **Цели:**
-  - Горизонтальный скролл карточек `#sectors-track` внутри закрепленного окна `#sectors-scroll-container`.
-  - Интерактивная бегущая строка банков `#bank-ticker-track`: при скролле вниз ускоряется, при скролле вверх замедляется, при наведении замирает (`isHovered`), плавно возвращается к базовой скорости через коэффициент `0.93`.
-
-### 4.7. `cases.js`
-* **Экспорт:** `initCases()`
-* **Цели:**
-  - Переключает наслоение трех карточек кейсов через классы `card-pos-front`, `card-pos-middle`, `card-pos-back`.
-  - Синхронизирует табы `#cases .case-tab-btn` и клики по задним карточкам.
-  - Запускает пересчет цифр одометра на передней карточке.
-
-### 4.8. `faq.js`
-* **Экспорт:** `initFaq()`
-* **Цели:**
-  - Обрабатывает клики по `.faq-row`. Переключает класс `.is-open`.
-  - Раскрытие ответа управляется через CSS `grid-template-rows: 0fr -> 1fr`, что исключает скачки верстки.
-
-### 4.9. `phone-mask.js`
-* **Экспорт:** `initPhoneMasks()`, `cleanPhoneDigits(val)`, `isPhoneValid(val)`
-* **Цели:**
-  - Автоматически подключается ко всем `input[type="tel"]`.
-  - При фокусе на пустом поле подставляет `+7 (`.
-  - Форматирует ввод строго по шаблону `+7 (XXX) XXX-XX-XX`.
-  - При вставке/вводе с девятки автоматически нормализует ведущую цифру `7`.
-  - Подсвечивает поле красной рамкой `border-brand-red` только при незаполненном номере (менее 11 цифр).
-
-### 4.10. `modals.js`
-* **Экспорт:** `initModals()`, `openLeadModal()`, `closeLeadModal()`, `openSuccessModal()`, `closeSuccessModal()`
-* **Цели:**
-  - Открытие модалки консультации по кнопкам `.open-modal-btn`.
-  - Закрытие по крестику, клику в фон (backdrop) и клавише `Escape`.
-  - Валидация и сабмит форм `#modal-lead-form` и `#consult-form`.
-
----
-
-## 5. Дизайн-система и CSS-токены (`src/style.css` и `tailwind.config.js`)
-
-### Цветовая палитра:
-* `bg-brand-black` / `#0E1014` — основной темный фон страницы.
-* `#141519`, `#14171D` — цвет плашек и технических подложек.
-* `#18191E` — цвет модальных окон и карточек.
-* `brand-red` / `#E02D37` — акцентный красный цвет бренда.
-* `#FF4D55` — цвет свечений и активных ховеров.
-
-### Шрифтовые семейства:
-* `font-sans`: **Onest** — основной интерфейсный текст, навигация, кнопки, описания.
-* `font-condensed`: **Fira Sans Extra Condensed** — крупные акцидентные заголовки (Hero, секции, водяной знак).
-* `font-mono`: **JetBrains Mono** — технические плашки, бейджи, таймкоды, дата, номера телефонов.
-
-### Ключевые декоративные классы:
-* `.cut-corner-badge` — технический бейдж со скошенными углами 45°.
-* `.tech-btn-chamfer` — кнопка с фирменным срезом правого нижнего угла.
-* `.bg-tech-grid` — фоновая техническая сетка по макету Figma.
-* `.plate-sec2`, `.plate-sec5`, `.plate-sec6` — бесшовные графитовые плашки с закруглением `rounded-t-[32px]`.
-
----
-
-## 6. Памятка по внесению изменений (Playbook для ИИ и инженеров)
-
-### Задача 1: Добавить новый вопрос в FAQ
-1. Откройте `index.html` и найдите блок `#faq`.
-2. Скопируйте существующий элемент `.faq-row` и вставьте его в список.
-3. Измените текст вопроса в `.faq-question` и текст ответа в блоке `.faq-answer-inner`.
-4. **В JS ничего менять не нужно**: модуль `faq.js` использует делегирование `querySelectorAll('.faq-row')` и автоматически активирует новый элемент.
-
-### Задача 2: Добавить или изменить кейс в портфолио (Секция 06)
-1. В `index.html` найдите `#cases`.
-2. Для табов добавьте/измените кнопку `.case-tab-btn` с атрибутом `data-case-index="N"`.
-3. Для карточки задайте атрибут `data-case-idx="N"`.
-4. Цифры, требующие анимации одометра, оберните в класс `.stat-odometer` с атрибутом `data-target="ЧИСЛО"`.
-
-### Задача 3: Изменить номер телефона или контактные данные
-1. Все телефоны оформлены через тег `<a href="tel:+74232000000">`.
-2. Поиск по проекту: `+7 (423) 200-00-00` (присутствует в хедере, футере, бургер-меню и карточках).
-
----
-
-## 7. Команды сборки и верификации
-
-```bash
-# Установка зависимостей
-npm install
-
-# Запуск локального dev-сервера (с поддержкой доступа по сети)
-npm run dev -- --host 0.0.0.0
-
-# Сборка оптимизированного продакшен-бандла
-npm run build
-
-# Предпросмотр собранного продакшен-билда
-npm run preview
-```
+Подробные команды настройки окружения, systemd-юнитов, резервного копирования и деплоя собраны в [backend/README.md](./backend/README.md).

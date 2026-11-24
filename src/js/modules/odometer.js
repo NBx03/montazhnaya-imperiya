@@ -18,6 +18,7 @@ export function animateOdometerGroup(elements, duration = 1000) {
   if (!elements || !elements.length) return;
 
   elements.forEach((counter) => {
+    counter.dataset.animated = 'true';
     const target = parseInt(counter.dataset.target, 10);
     if (isNaN(target)) return;
 

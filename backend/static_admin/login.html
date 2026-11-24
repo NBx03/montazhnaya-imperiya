@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в панель управления // Монтажная Империя</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <div class="brand-badge">СИСТЕМЫ ЗАЩИТЫ // ПАНЕЛЬ УПРАВЛЕНИЯ</div>
+      <h1>МОНТАЖНАЯ ИМПЕРИЯ</h1>
+      <p class="subtitle">Авторизуйтесь для управления заявками и контентом сайта</p>
+
+      <div id="login-alert" class="alert alert-danger"></div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username">Имя пользователя</label>
+          <input type="text" id="username" class="form-control" placeholder="admin" required minlength="3" maxlength="64" autofocus autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <div style="position: relative;">
+            <input type="password" id="password" class="form-control" placeholder="••••••••" required minlength="4" maxlength="128" autocomplete="current-password" style="padding-right: 2.75rem;">
+            <button type="button" id="toggle-password" style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 0.25rem;" title="Показать/скрыть пароль">
+              👁️
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" id="login-submit" class="btn btn-primary btn-block">
+          <span>Войти в систему →</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // If token already exists and valid, redirect to index
+    const token = localStorage.getItem("admin_token");
+    if (token) {
+      fetch("/api/v1/auth/me", {
+        headers: { "Authorization": "Bearer " + token }
+      }).then(res => {
+        if (res.ok) window.location.href = "/admin/index.html";
+        else localStorage.removeItem("admin_token");
+      }).catch(() => {});
+    }
+
+    // Toggle password visibility
+    const passwordInput = document.getElementById("password");
+    const toggleBtn = document.getElementById("toggle-password");
+    toggleBtn.addEventListener("click", () => {
+      const isPassword = passwordInput.type === "password";
+      passwordInput.type = isPassword ? "text" : "password";
+      toggleBtn.style.opacity = isPassword ? "1" : "0.5";
+    });
+
+    const form = document.getElementById("login-form");
+    const alertBox = document.getElementById("login-alert");
+    const submitBtn = document.getElementById("login-submit");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      alertBox.classList.remove("show");
+      alertBox.textContent = "";
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "<span>Вход...</span>";
+
+      try {
+        const response = await fetch("/api/v1/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.access_token) {
+          localStorage.setItem("admin_token", data.access_token);
+          localStorage.setItem("admin_username", data.username);
+          window.location.href = "/admin/index.html";
+        } else {
+          // Properly display rate-limiting (429), validation arrays (422), or invalid credentials (401)
+          let errMsg = "Неверный логин или пароль";
+          if (data.message) {
+            errMsg = data.message;
+          } else if (Array.isArray(data.detail) && data.detail.length > 0) {
+            errMsg = data.detail[0].msg || "Проверьте правильность заполнения полей";
+          } else if (typeof data.detail === "string") {
+            errMsg = data.detail;
+          }
+          alertBox.textContent = errMsg;
+          alertBox.classList.add("show");
+        }
+      } catch (err) {
+        alertBox.textContent = "Ошибка соединения с сервером";
+        alertBox.classList.add("show");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "<span>Войти в систему →</span>";
+      }
+    });
+  </script>
+</body>
+</html>

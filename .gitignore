@@ -4,3 +4,19 @@ dist/
 *.local
 scratch/
 
+# Python & Backend runtime artifacts
+__pycache__/
+*.py[cod]
+*.sqlite
+*.sqlite3
+.pytest_cache/
+backend/uploads/
+backend/backups/
+backend/content_dump.json
+
+# Secrets & server-local configs (never commit!)
+.env
+.env.*
+!.env.example
+Caddyfile.timeweb
+

@@ -1,0 +1,28 @@
+[Unit]
+Description=Montazh FastAPI Backend Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/montazh-backend
+EnvironmentFile=-/var/www/montazh-backend/.env
+Environment="PYTHONPATH=/var/www/montazh-backend"
+ExecStart=/var/www/montazh-backend/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1 --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=always
+RestartSec=3
+
+# Resource & File Descriptor Limits
+LimitNOFILE=65536
+
+# Security Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=montazh-backend
+
+[Install]
+WantedBy=multi-user.target

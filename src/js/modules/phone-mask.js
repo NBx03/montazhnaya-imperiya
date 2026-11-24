@@ -41,6 +41,21 @@ export function initPhoneMasks() {
       }
     });
 
+    // Handle Backspace gracefully: clear field when user deletes down to prefix
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace') {
+        const digits = cleanPhoneDigits(input.value);
+        if (digits.length <= 1) {
+          input.value = '';
+          const err = input.parentElement.querySelector(
+            '#consult-phone-error, #modal-lead-phone-error'
+          );
+          input.classList.remove('border-brand-red');
+          if (err) err.classList.add('hidden');
+        }
+      }
+    });
+
     input.addEventListener('input', (e) => {
       let value = cleanPhoneDigits(e.target.value);
       if (!value) {

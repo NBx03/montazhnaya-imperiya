@@ -1,0 +1,91 @@
+# ==============================================================================
+# Production Caddyfile for Montazhnaya Imperiya
+# Domain: montazh.documentics.ru
+# Features:
+# - API & Admin reverse proxy to FastAPI backend (127.0.0.1:8000)
+# - Static landing page serving with clean URLs (try_files) and 404 handler
+# - Modern Zstandard & Gzip compression
+# - Hardened security headers (HSTS, nosniff, SAMEORIGIN, privacy headers)
+# - Performance: immutable caching for hashed Vite assets, no-cache for HTML
+# - Request body size protection (50MB)
+# ==============================================================================
+
+montazh.documentics.ru {
+    encode zstd gzip
+
+    # Hardened security headers
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options SAMEORIGIN
+        Referrer-Policy strict-origin-when-cross-origin
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        -Server
+    }
+
+    # 1. Reverse proxy REST API to FastAPI backend
+    handle /api/* {
+        request_body {
+            max_size 50MB
+        }
+        reverse_proxy 127.0.0.1:8000
+    }
+
+    # 2. Reverse proxy SPA Admin Panel to FastAPI backend (always revalidate UI scripts)
+    handle /admin* {
+        header Cache-Control "no-cache"
+        request_body {
+            max_size 50MB
+        }
+        reverse_proxy 127.0.0.1:8000
+    }
+
+    # 3. Reverse proxy uploaded media assets
+    handle /uploads/* {
+        reverse_proxy 127.0.0.1:8000
+    }
+
+    # 4. Reverse proxy Swagger UI / OpenAPI documentation
+    handle /docs* {
+        reverse_proxy 127.0.0.1:8000
+    }
+
+    handle /redoc* {
+        reverse_proxy 127.0.0.1:8000
+    }
+
+    handle /openapi.json {
+        reverse_proxy 127.0.0.1:8000
+    }
+
+    # 5. Long-term immutable caching for hashed Vite build bundles
+    @hashedAssets {
+        path /assets/*
+    }
+    header @hashedAssets Cache-Control "public, max-age=31536000, immutable"
+
+    # 6. Media caching (images, videos, icons, favicon)
+    @mediaFiles {
+        path /images/* /videos/* /icons/* /favicon.ico
+    }
+    header @mediaFiles Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+
+    # 7. SEO & HTML revalidation
+    @htmlAndSeo {
+        path / /index.html /privacy.html /404.html /robots.txt /sitemap.xml
+    }
+    header @htmlAndSeo Cache-Control "no-cache"
+
+    # 8. Serve static frontend landing page with clean URLs and strict 404
+    handle {
+        root * /var/www/montazh
+        try_files {path} {path}.html {path}/ =404
+        file_server
+    }
+
+    # 9. Custom 404 error page fallback
+    handle_errors {
+        root * /var/www/montazh
+        rewrite * /404.html
+        file_server
+    }
+}

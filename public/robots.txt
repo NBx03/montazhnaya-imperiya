@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /privacy
+Disallow: /admin/
+Disallow: /api/
+Disallow: /docs
+Disallow: /redoc
+Disallow: /openapi.json
+
+Sitemap: https://montazh.documentics.ru/sitemap.xml

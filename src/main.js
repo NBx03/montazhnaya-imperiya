@@ -26,8 +26,10 @@ import { initCases } from './js/modules/cases.js';
 import { initFaq } from './js/modules/faq.js';
 import { initPhoneMasks } from './js/modules/phone-mask.js';
 import { initModals } from './js/modules/modals.js';
+import { initContentLoader } from './js/modules/content-loader.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  initContentLoader();
   initHero();
   initHeader();
   initScrollReveals();
